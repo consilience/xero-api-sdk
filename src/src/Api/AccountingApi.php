@@ -206,7 +206,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -217,7 +217,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -255,6 +255,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Accounts';
@@ -545,7 +560,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -556,7 +571,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -594,6 +609,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -916,7 +946,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -927,7 +957,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -965,6 +995,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransactions';
@@ -1262,7 +1307,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1273,7 +1318,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1311,6 +1356,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -1633,7 +1693,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1644,7 +1704,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1682,6 +1742,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -1985,7 +2060,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1996,7 +2071,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2034,6 +2109,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransfers';
@@ -2320,7 +2410,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2331,7 +2421,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2369,6 +2459,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -2687,7 +2792,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2698,7 +2803,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2736,6 +2841,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -3039,7 +3159,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3050,7 +3170,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3088,6 +3208,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BatchPayments';
@@ -3376,7 +3511,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3387,7 +3522,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3425,6 +3560,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -3730,7 +3880,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3741,7 +3891,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3779,6 +3929,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PaymentServices';
@@ -4078,7 +4243,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4089,7 +4254,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4127,6 +4292,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Contacts';
@@ -4413,7 +4593,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4424,7 +4604,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4462,6 +4642,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -4782,7 +4977,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4793,7 +4988,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4831,6 +5026,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ContactGroups';
@@ -5113,7 +5323,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -5124,7 +5334,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -5162,6 +5372,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Contacts';
@@ -5461,7 +5686,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -5472,7 +5697,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -5510,6 +5735,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -5815,7 +6055,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -5826,7 +6066,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -5864,6 +6104,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CreditNotes';
@@ -6153,7 +6408,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -6164,7 +6419,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -6202,6 +6457,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Allocations';
@@ -6503,7 +6773,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -6514,7 +6784,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -6552,6 +6822,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -6874,7 +7159,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -6885,7 +7170,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -6923,6 +7208,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -7222,7 +7522,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -7233,7 +7533,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -7254,6 +7554,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Currencies';
@@ -7532,7 +7847,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -7543,7 +7858,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -7581,6 +7896,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Employees';
@@ -7869,7 +8199,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -7880,7 +8210,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -7918,6 +8248,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ExpenseClaims';
@@ -8213,7 +8558,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -8224,7 +8569,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -8245,6 +8590,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -8542,7 +8902,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -8553,7 +8913,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -8591,6 +8951,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Invoices';
@@ -8888,7 +9263,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -8899,7 +9274,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -8937,6 +9312,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -9259,7 +9649,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -9270,7 +9660,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -9308,6 +9698,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -9611,7 +10016,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -9622,7 +10027,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -9660,6 +10065,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Items';
@@ -9948,7 +10368,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -9959,7 +10379,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -9980,6 +10400,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -10275,7 +10710,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -10286,7 +10721,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -10324,6 +10759,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\LinkedTransactions';
@@ -10610,7 +11060,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -10621,7 +11071,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -10659,6 +11109,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ManualJournals';
@@ -10949,7 +11414,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -10960,7 +11425,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -10998,6 +11463,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -11320,7 +11800,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -11331,7 +11811,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -11369,6 +11849,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Allocations';
@@ -11674,7 +12169,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -11685,7 +12180,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -11723,6 +12218,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -12026,7 +12536,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -12037,7 +12547,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -12075,6 +12585,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Payments';
@@ -12363,7 +12888,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -12374,7 +12899,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -12412,6 +12937,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -12715,7 +13255,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -12726,7 +13266,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -12764,6 +13304,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PaymentServices';
@@ -13052,7 +13607,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -13063,7 +13618,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -13101,6 +13656,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Allocations';
@@ -13406,7 +13976,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -13417,7 +13987,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -13455,6 +14025,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -13760,7 +14345,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -13771,7 +14356,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -13809,6 +14394,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PurchaseOrders';
@@ -14104,7 +14704,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -14115,7 +14715,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -14153,6 +14753,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -14456,7 +15071,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -14467,7 +15082,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -14505,6 +15120,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Receipts';
@@ -14795,7 +15425,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -14806,7 +15436,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -14844,6 +15474,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -15166,7 +15811,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -15177,7 +15822,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -15215,6 +15860,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -15522,7 +16182,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -15533,7 +16193,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -15571,6 +16231,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -15893,7 +16568,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -15904,7 +16579,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -15942,6 +16617,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -16245,7 +16935,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -16256,7 +16946,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -16294,6 +16984,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TaxRates';
@@ -16580,7 +17285,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -16591,7 +17296,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -16629,6 +17334,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingCategories';
@@ -16917,7 +17637,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -16928,7 +17648,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -16966,6 +17686,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingOptions';
@@ -17269,7 +18004,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -17280,7 +18015,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -17318,6 +18053,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Accounts';
@@ -17610,7 +18360,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -17621,7 +18371,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             return [null, $statusCode, $response->getHeaders()];
 
@@ -17896,7 +18646,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -17907,7 +18657,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             return [null, $statusCode, $response->getHeaders()];
 
@@ -18157,7 +18907,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -18168,7 +18918,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             return [null, $statusCode, $response->getHeaders()];
 
@@ -18426,7 +19176,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -18437,7 +19187,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             return [null, $statusCode, $response->getHeaders()];
 
@@ -18698,7 +19448,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -18709,7 +19459,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -18747,6 +19497,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Payments';
@@ -19050,7 +19815,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -19061,7 +19826,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -19099,6 +19864,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingCategories';
@@ -19392,7 +20172,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -19403,7 +20183,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -19441,6 +20221,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingOptions';
@@ -19750,7 +20545,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -19761,7 +20556,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             return [null, $statusCode, $response->getHeaders()];
 
@@ -20032,7 +20827,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -20043,7 +20838,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -20064,6 +20859,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Accounts';
@@ -20351,7 +21161,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -20362,7 +21172,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -20383,6 +21193,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -20700,7 +21525,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -20711,7 +21536,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -20732,6 +21557,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -21045,7 +21885,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -21056,7 +21896,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -21077,6 +21917,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -21364,7 +22219,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -21375,7 +22230,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -21396,6 +22251,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Accounts';
@@ -21683,7 +22553,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -21694,7 +22564,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -21715,6 +22585,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransactions';
@@ -22002,7 +22887,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -22013,7 +22898,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -22034,6 +22919,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -22351,7 +23251,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -22362,7 +23262,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -22383,6 +23283,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -22696,7 +23611,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -22707,7 +23622,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -22728,6 +23643,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -23019,7 +23949,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -23030,7 +23960,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -23051,6 +23981,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransactions';
@@ -23352,7 +24297,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -23363,7 +24308,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -23384,6 +24329,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -23667,7 +24627,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -23678,7 +24638,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -23699,6 +24659,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransfers';
@@ -23986,7 +24961,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -23997,7 +24972,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -24018,6 +24993,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -24335,7 +25325,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -24346,7 +25336,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -24367,6 +25357,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -24680,7 +25685,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -24691,7 +25696,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -24712,6 +25717,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -24995,7 +26015,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -25006,7 +26026,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -25027,6 +26047,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -25314,7 +26349,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -25325,7 +26360,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -25346,6 +26381,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransfers';
@@ -25633,7 +26683,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -25644,7 +26694,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -25665,6 +26715,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -25952,7 +27017,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -25963,7 +27028,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -25984,6 +27049,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BatchPayments';
@@ -26271,7 +27351,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -26282,7 +27362,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -26303,6 +27383,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BrandingThemes';
@@ -26586,7 +27681,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -26597,7 +27692,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -26618,6 +27713,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PaymentServices';
@@ -26899,7 +28009,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -26910,7 +28020,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -26931,6 +28041,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BrandingThemes';
@@ -27197,7 +28322,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -27208,7 +28333,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -27229,6 +28354,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Contacts';
@@ -27516,7 +28656,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -27527,7 +28667,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -27548,6 +28688,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -27865,7 +29020,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -27876,7 +29031,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -27897,6 +29052,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -28210,7 +29380,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -28221,7 +29391,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -28242,6 +29412,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -28525,7 +29710,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -28536,7 +29721,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -28557,6 +29742,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CISSettings';
@@ -28840,7 +30040,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -28851,7 +30051,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -28872,6 +30072,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ContactGroups';
@@ -29157,7 +30372,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -29168,7 +30383,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -29189,6 +30404,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ContactGroups';
@@ -29469,7 +30699,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -29480,7 +30710,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -29501,6 +30731,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -29794,7 +31039,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -29805,7 +31050,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -29826,6 +31071,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Contacts';
@@ -30134,7 +31394,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -30145,7 +31405,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -30166,6 +31426,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CreditNotes';
@@ -30451,7 +31726,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -30462,7 +31737,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -30483,6 +31758,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -30783,7 +32073,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -30794,7 +32084,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -30815,6 +32105,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -31132,7 +32437,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -31143,7 +32448,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -31164,6 +32469,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -31477,7 +32797,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -31488,7 +32808,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -31509,6 +32829,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -31792,7 +33127,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -31803,7 +33138,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -31824,6 +33159,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -32113,7 +33463,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -32124,7 +33474,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -32145,6 +33495,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CreditNotes';
@@ -32441,7 +33806,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -32452,7 +33817,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -32473,6 +33838,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Currencies';
@@ -32753,7 +34133,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -32764,7 +34144,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -32785,6 +34165,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Employees';
@@ -33072,7 +34467,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -33083,7 +34478,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -33104,6 +34499,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Employees';
@@ -33391,7 +34801,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -33402,7 +34812,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -33423,6 +34833,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ExpenseClaims';
@@ -33706,7 +35131,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -33717,7 +35142,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -33738,6 +35163,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -34025,7 +35465,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -34036,7 +35476,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -34057,6 +35497,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ExpenseClaims';
@@ -34344,7 +35799,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -34355,7 +35810,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -34376,6 +35831,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Invoices';
@@ -34661,7 +36131,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -34672,7 +36142,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -34693,6 +36163,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -34993,7 +36478,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -35004,7 +36489,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -35025,6 +36510,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -35342,7 +36842,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -35353,7 +36853,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -35374,6 +36874,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -35687,7 +37202,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -35698,7 +37213,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -35719,6 +37234,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -36002,7 +37532,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -36013,7 +37543,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -36034,6 +37564,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -36315,7 +37860,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -36326,7 +37871,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -36347,6 +37892,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\InvoiceReminders';
@@ -36633,7 +38193,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -36644,7 +38204,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -36665,6 +38225,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Invoices';
@@ -37008,7 +38583,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -37019,7 +38594,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -37040,6 +38615,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Items';
@@ -37323,7 +38913,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -37334,7 +38924,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -37355,6 +38945,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -37644,7 +39249,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -37655,7 +39260,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -37676,6 +39281,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Items';
@@ -37970,7 +39590,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -37981,7 +39601,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -38002,6 +39622,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Journals';
@@ -38289,7 +39924,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -38300,7 +39935,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -38321,6 +39956,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Journals';
@@ -38608,7 +40258,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -38619,7 +40269,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -38640,6 +40290,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\LinkedTransactions';
@@ -38933,7 +40598,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -38944,7 +40609,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -38965,6 +40630,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\LinkedTransactions';
@@ -39273,7 +40953,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -39284,7 +40964,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -39305,6 +40985,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ManualJournals';
@@ -39592,7 +41287,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -39603,7 +41298,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -39624,6 +41319,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -39941,7 +41651,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -39952,7 +41662,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -39973,6 +41683,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -40286,7 +42011,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -40297,7 +42022,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -40318,6 +42043,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -40607,7 +42347,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -40618,7 +42358,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -40639,6 +42379,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ManualJournals';
@@ -40933,7 +42688,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -40944,7 +42699,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -40965,6 +42720,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\OnlineInvoices';
@@ -41248,7 +43018,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -41259,7 +43029,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -41280,6 +43050,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CISOrgSetting';
@@ -41561,7 +43346,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -41572,7 +43357,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -41593,6 +43378,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Organisations';
@@ -41859,7 +43659,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -41870,7 +43670,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -41891,6 +43691,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Overpayments';
@@ -42174,7 +43989,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -42185,7 +44000,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -42206,6 +44021,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -42497,7 +44327,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -42508,7 +44338,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -42529,6 +44359,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Overpayments';
@@ -42830,7 +44675,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -42841,7 +44686,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -42862,6 +44707,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Payments';
@@ -43145,7 +45005,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -43156,7 +45016,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -43177,6 +45037,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -43458,7 +45333,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -43469,7 +45344,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -43490,6 +45365,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PaymentServices';
@@ -43760,7 +45650,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -43771,7 +45661,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -43792,6 +45682,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Payments';
@@ -44079,7 +45984,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -44090,7 +45995,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -44111,6 +46016,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Prepayments';
@@ -44394,7 +46314,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -44405,7 +46325,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -44426,6 +46346,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -44717,7 +46652,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -44728,7 +46663,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -44749,6 +46684,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Prepayments';
@@ -45050,7 +47000,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -45061,7 +47011,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -45082,6 +47032,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PurchaseOrders';
@@ -45365,7 +47330,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -45376,7 +47341,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -45397,6 +47362,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -45690,7 +47670,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -45701,7 +47681,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -45722,6 +47702,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PurchaseOrders';
@@ -46030,7 +48025,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -46041,7 +48036,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -46062,6 +48057,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Receipts';
@@ -46349,7 +48359,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -46360,7 +48370,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -46381,6 +48391,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -46698,7 +48723,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -46709,7 +48734,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -46730,6 +48755,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -47043,7 +49083,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -47054,7 +49094,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -47075,6 +49115,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -47358,7 +49413,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -47369,7 +49424,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -47390,6 +49445,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -47679,7 +49749,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -47690,7 +49760,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -47711,6 +49781,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Receipts';
@@ -48005,7 +50090,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -48016,7 +50101,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -48037,6 +50122,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\RepeatingInvoices';
@@ -48324,7 +50424,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -48335,7 +50435,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -48356,6 +50456,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -48673,7 +50788,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -48684,7 +50799,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -48705,6 +50820,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -49018,7 +51148,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -49029,7 +51159,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -49050,6 +51180,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -49333,7 +51478,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -49344,7 +51489,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -49365,6 +51510,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\HistoryRecords';
@@ -49650,7 +51810,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -49661,7 +51821,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -49682,6 +51842,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\RepeatingInvoices';
@@ -49968,7 +52143,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -49979,7 +52154,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -50000,6 +52175,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -50306,7 +52496,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -50317,7 +52507,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -50338,6 +52528,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -50638,7 +52843,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -50649,7 +52854,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -50670,6 +52875,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -50951,7 +53171,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -50962,7 +53182,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -50983,6 +53203,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -51261,7 +53496,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -51272,7 +53507,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -51293,6 +53528,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -51612,7 +53862,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -51623,7 +53873,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -51644,6 +53894,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -51935,7 +54200,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -51946,7 +54211,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -51967,6 +54232,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -52254,7 +54534,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -52265,7 +54545,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -52286,6 +54566,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -52577,7 +54872,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -52588,7 +54883,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -52609,6 +54904,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -52945,7 +55255,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -52956,7 +55266,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -52977,6 +55287,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Reports';
@@ -53252,7 +55577,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -53263,7 +55588,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -53284,6 +55609,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ReportWithRows';
@@ -53568,7 +55908,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -53579,7 +55919,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -53600,6 +55940,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TaxRates';
@@ -53891,7 +56246,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -53902,7 +56257,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -53923,6 +56278,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingCategories';
@@ -54210,7 +56580,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -54221,7 +56591,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -54242,6 +56612,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingCategories';
@@ -54525,7 +56910,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -54536,7 +56921,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -54557,6 +56942,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Users';
@@ -54844,7 +57244,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -54855,7 +57255,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -54876,6 +57276,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Users';
@@ -55165,7 +57580,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -55176,7 +57591,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -55214,6 +57629,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Accounts';
@@ -55521,7 +57951,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -55532,7 +57962,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -55570,6 +58000,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -55892,7 +58337,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -55903,7 +58348,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -55941,6 +58386,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\BankTransactions';
@@ -56248,7 +58708,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -56259,7 +58719,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -56297,6 +58757,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -56617,7 +59092,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -56628,7 +59103,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -56666,6 +59141,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -56984,7 +59474,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -56995,7 +59485,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -57033,6 +59523,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Contacts';
@@ -57330,7 +59835,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -57341,7 +59846,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -57379,6 +59884,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -57701,7 +60221,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -57712,7 +60232,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -57750,6 +60270,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ContactGroups';
@@ -58049,7 +60584,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -58060,7 +60595,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -58098,6 +60633,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\CreditNotes';
@@ -58399,7 +60949,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -58410,7 +60960,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -58448,6 +60998,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -58770,7 +61335,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -58781,7 +61346,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -58819,6 +61384,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Employees';
@@ -59124,7 +61704,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -59135,7 +61715,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -59173,6 +61753,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ExpenseClaims';
@@ -59478,7 +62073,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -59489,7 +62084,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -59527,6 +62122,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Invoices';
@@ -59834,7 +62444,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -59845,7 +62455,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -59883,6 +62493,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -60205,7 +62830,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -60216,7 +62841,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -60254,6 +62879,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Items';
@@ -60559,7 +63199,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -60570,7 +63210,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -60608,6 +63248,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\LinkedTransactions';
@@ -60913,7 +63568,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -60924,7 +63579,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -60962,6 +63617,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\ManualJournals';
@@ -61269,7 +63939,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -61280,7 +63950,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -61318,6 +63988,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -61640,7 +64325,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -61651,7 +64336,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -61689,6 +64374,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\PurchaseOrders';
@@ -61994,7 +64694,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -62005,7 +64705,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -62043,6 +64743,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Receipts';
@@ -62350,7 +65065,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -62361,7 +65076,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -62399,6 +65114,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -62723,7 +65453,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -62734,7 +65464,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -62772,6 +65502,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Attachments';
@@ -63092,7 +65837,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -63103,7 +65848,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -63141,6 +65886,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TaxRates';
@@ -63429,7 +66189,7 @@ class AccountingApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -63440,7 +66200,7 @@ class AccountingApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -63478,6 +66238,21 @@ class AccountingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\TrackingCategories';

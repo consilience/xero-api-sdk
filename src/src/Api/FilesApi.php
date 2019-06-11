@@ -208,7 +208,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -219,7 +219,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -240,6 +240,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Association';
@@ -529,7 +544,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -540,7 +555,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -561,6 +576,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Folder';
@@ -833,7 +863,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -844,7 +874,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -865,6 +895,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileResponse204';
@@ -1150,7 +1195,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1161,7 +1206,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1182,6 +1227,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileResponse204';
@@ -1482,7 +1542,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1493,7 +1553,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1514,6 +1574,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileResponse204';
@@ -1797,7 +1872,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1808,7 +1883,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1829,6 +1904,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Association[]';
@@ -2112,7 +2202,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2123,7 +2213,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2144,6 +2234,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileObject';
@@ -2427,7 +2532,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2438,7 +2543,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2459,6 +2564,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Association[]';
@@ -2742,7 +2862,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2753,7 +2873,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2774,6 +2894,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\SplFileObject';
@@ -3061,7 +3196,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3072,7 +3207,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3093,6 +3228,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Files';
@@ -3388,7 +3538,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3399,7 +3549,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3420,6 +3570,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Folder';
@@ -3703,7 +3868,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -3714,7 +3879,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -3735,6 +3900,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Folder[]';
@@ -4006,7 +4186,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4017,7 +4197,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4038,6 +4218,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Folder';
@@ -4306,7 +4501,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4317,7 +4512,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4338,6 +4533,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileObject';
@@ -4629,7 +4839,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4640,7 +4850,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4661,6 +4871,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Folder';
@@ -4964,7 +5189,7 @@ class FilesApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -4975,7 +5200,7 @@ class FilesApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -4996,6 +5221,21 @@ class FilesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FileObject';

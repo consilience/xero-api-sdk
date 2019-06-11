@@ -206,7 +206,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -217,7 +217,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -238,6 +238,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Asset';
@@ -516,7 +531,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -527,7 +542,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -548,6 +563,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\AssetType';
@@ -820,7 +850,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -831,7 +861,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -852,6 +882,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Asset';
@@ -1133,7 +1178,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1144,7 +1189,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1165,6 +1210,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Setting';
@@ -1429,7 +1489,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1440,7 +1500,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1461,6 +1521,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\AssetType[]';
@@ -1737,7 +1812,7 @@ class AssetApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1748,7 +1823,7 @@ class AssetApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1769,6 +1844,21 @@ class AssetApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Assets';

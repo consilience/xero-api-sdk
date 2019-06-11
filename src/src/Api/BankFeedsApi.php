@@ -206,7 +206,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -217,7 +217,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -238,6 +238,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FeedConnections';
@@ -512,7 +527,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -523,7 +538,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -646,6 +661,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Statements';
@@ -966,7 +996,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -977,7 +1007,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -998,6 +1028,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FeedConnections';
@@ -1276,7 +1321,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1287,7 +1332,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1308,6 +1353,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FeedConnection';
@@ -1593,7 +1653,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1604,7 +1664,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1625,6 +1685,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\FeedConnections';
@@ -1901,7 +1976,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -1912,7 +1987,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -1933,6 +2008,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Statement';
@@ -2220,7 +2310,7 @@ class BankFeedsApi
             // carry a payload with details of the problem that the application
             // may need to know.
 
-            if ($statusCode < 200 || $statusCode > 299) {
+            /*if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
                     sprintf(
                         '[%d] Error connecting to the API (%s)',
@@ -2231,7 +2321,7 @@ class BankFeedsApi
                     $response->getHeaders(),
                     $response->getBody()
                 );
-            }
+            }*/
 
             $responseBody = $response->getBody();
             switch($statusCode) {
@@ -2269,6 +2359,21 @@ class BankFeedsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+            }
+
+            // CHECKME: does this belong here? Not convinced.
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
             }
 
             $returnType = '\Consilience\XeroAccounting\Sdk\Model\Statements';
