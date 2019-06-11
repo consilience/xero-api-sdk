@@ -14,7 +14,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Consilience\\XeroAccounting\\Sdk\\": "src/src/"
+            "Consilience\\Xero\\AccountingSdk\\": "src/accounting/src/",
+            "Consilience\\Xero\\BankfeedsSdk\\": "src/bankfeeds/src/",
+            "Consilience\\Xero\\AssetsSdk\\": "src/assets/src/",
+            "Consilience\\Xero\\FilesSdk\\": "src/files/src/"
         }
     },
     "repositories" : [
