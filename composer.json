@@ -1,0 +1,42 @@
+{
+    "name": "consilience/xero-api-sdk",
+    "description": "An SDK providing operations for the Xero APIs, using code generated from the OpenAPI specs.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jason Judge",
+            "email": "jason.judge@consil.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Consilience\\XeroAccounting\\Sdk\\": "src/src/"
+        }
+    },
+    "repositories" : [
+        {
+            "type": "vcs",
+            "url": "git@github.com:consilience/openapi-generator-psr18.git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "xeroapi/xero-openapi",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/XeroAPI/Xero-OpenAPI.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        }
+    ],
+    "require-dev": {
+        "consilience/openapi-generator-psr18": "dev-master",
+        "xeroapi/xero-openapi": "dev-master"
+    }
+}

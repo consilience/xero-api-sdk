@@ -1,0 +1,63 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "5f565044f75549e426ec357f869c925b",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "consilience/openapi-generator-psr18",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/consilience/openapi-generator-psr18.git",
+                "reference": "a29605e382d66373ee65dfdc8b1d5fc26fadcead"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/consilience/openapi-generator-psr18/zipball/a29605e382d66373ee65dfdc8b1d5fc26fadcead",
+                "reference": "a29605e382d66373ee65dfdc8b1d5fc26fadcead",
+                "shasum": ""
+            },
+            "type": "tool",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jason Judge",
+                    "email": "jason.judge@consil.co.uk"
+                }
+            ],
+            "description": "Generate PSR-18 client and models for OpenAPI spec",
+            "support": {
+                "source": "https://github.com/consilience/openapi-generator-psr18/tree/master",
+                "issues": "https://github.com/consilience/openapi-generator-psr18/issues"
+            },
+            "time": "2019-06-06T12:49:29+00:00"
+        },
+        {
+            "name": "xeroapi/xero-openapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/XeroAPI/Xero-OpenAPI.git",
+                "reference": "origin/master"
+            },
+            "type": "library",
+            "time": "2019-04-24T18:15:47+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "consilience/openapi-generator-psr18": 20,
+        "xeroapi/xero-openapi": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
