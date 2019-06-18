@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/consilience/openapi-generator-psr18.git",
-                "reference": "a29605e382d66373ee65dfdc8b1d5fc26fadcead"
+                "reference": "387f9e1d7745d01a9752cb0912a84d8b7c667833"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consilience/openapi-generator-psr18/zipball/a29605e382d66373ee65dfdc8b1d5fc26fadcead",
-                "reference": "a29605e382d66373ee65dfdc8b1d5fc26fadcead",
+                "url": "https://api.github.com/repos/consilience/openapi-generator-psr18/zipball/387f9e1d7745d01a9752cb0912a84d8b7c667833",
+                "reference": "387f9e1d7745d01a9752cb0912a84d8b7c667833",
                 "shasum": ""
             },
             "type": "tool",
@@ -36,7 +36,7 @@
                 "source": "https://github.com/consilience/openapi-generator-psr18/tree/master",
                 "issues": "https://github.com/consilience/openapi-generator-psr18/issues"
             },
-            "time": "2019-06-06T12:49:29+00:00"
+            "time": "2019-06-17T09:03:35+00:00"
         },
         {
             "name": "xeroapi/xero-openapi",
