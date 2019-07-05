@@ -166,24 +166,25 @@ class FilesApi
      */
     public function createFileAssociation($fileId, $association = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createFileAssociationWithHttpInfo($fileId, $association);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createFileAssociationWithHttpInfo($fileId, $association);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -208,15 +209,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -346,24 +344,25 @@ class FilesApi
      */
     public function createFolder($folder = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createFolderWithHttpInfo($folder);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createFolderWithHttpInfo($folder);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -387,15 +386,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -507,24 +503,25 @@ class FilesApi
      */
     public function deleteFile($fileId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteFileWithHttpInfo($fileId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteFileWithHttpInfo($fileId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -548,15 +545,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 204:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -683,24 +677,25 @@ class FilesApi
      */
     public function deleteFileAssociation($fileId, $objectId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteFileAssociationWithHttpInfo($fileId, $objectId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteFileAssociationWithHttpInfo($fileId, $objectId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -725,15 +720,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 204:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -877,24 +869,25 @@ class FilesApi
      */
     public function deleteFolder($folderId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteFolderWithHttpInfo($folderId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteFolderWithHttpInfo($folderId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -918,15 +911,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 204:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1052,24 +1042,25 @@ class FilesApi
      */
     public function getAssociationsByObject($objectId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAssociationsByObjectWithHttpInfo($objectId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAssociationsByObjectWithHttpInfo($objectId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1093,15 +1084,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1227,24 +1215,25 @@ class FilesApi
      */
     public function getFile($fileId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFileWithHttpInfo($fileId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFileWithHttpInfo($fileId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1268,15 +1257,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1402,24 +1388,25 @@ class FilesApi
      */
     public function getFileAssociations($fileId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFileAssociationsWithHttpInfo($fileId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFileAssociationsWithHttpInfo($fileId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1443,15 +1430,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1577,24 +1561,25 @@ class FilesApi
      */
     public function getFileContent($fileId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFileContentWithHttpInfo($fileId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFileContentWithHttpInfo($fileId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1618,15 +1603,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1754,24 +1736,25 @@ class FilesApi
      */
     public function getFiles($pagesize = null, $page = null, $sort = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFilesWithHttpInfo($pagesize, $page, $sort);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFilesWithHttpInfo($pagesize, $page, $sort);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1797,15 +1780,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Files'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Files'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1948,24 +1928,25 @@ class FilesApi
      */
     public function getFolder($folderId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFolderWithHttpInfo($folderId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFolderWithHttpInfo($folderId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1989,15 +1970,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2123,24 +2101,25 @@ class FilesApi
      */
     public function getFolders($sort = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFoldersWithHttpInfo($sort);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFoldersWithHttpInfo($sort);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2164,15 +2143,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder[]'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder[]'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2284,24 +2260,25 @@ class FilesApi
      */
     public function getInbox()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInboxWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInboxWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2324,15 +2301,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2441,24 +2415,25 @@ class FilesApi
      */
     public function updateFile($fileId, $fileObject = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateFileWithHttpInfo($fileId, $fileObject);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateFileWithHttpInfo($fileId, $fileObject);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2483,15 +2458,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2622,24 +2594,25 @@ class FilesApi
      */
     public function updateFolder($folderId, $folder)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateFolderWithHttpInfo($folderId, $folder);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateFolderWithHttpInfo($folderId, $folder);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2664,15 +2637,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2815,24 +2785,25 @@ class FilesApi
      */
     public function uploadFile($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->uploadFileWithHttpInfo($folderId, $body, $name, $filename, $mimeType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->uploadFileWithHttpInfo($folderId, $body, $name, $filename, $mimeType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2860,15 +2831,12 @@ class FilesApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 

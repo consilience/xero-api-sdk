@@ -165,24 +165,25 @@ class AssetApi
      */
     public function createAsset($asset)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createAssetWithHttpInfo($asset);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createAssetWithHttpInfo($asset);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -206,15 +207,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -335,24 +333,25 @@ class AssetApi
      */
     public function createAssetType($assetType = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createAssetTypeWithHttpInfo($assetType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createAssetTypeWithHttpInfo($assetType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -376,15 +375,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -496,24 +492,25 @@ class AssetApi
      */
     public function getAssetById($id)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAssetByIdWithHttpInfo($id);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAssetByIdWithHttpInfo($id);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -537,15 +534,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -670,24 +664,25 @@ class AssetApi
      */
     public function getAssetSettings()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAssetSettingsWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAssetSettingsWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -710,15 +705,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Setting'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Setting'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -825,24 +817,25 @@ class AssetApi
      */
     public function getAssetTypes()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAssetTypesWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAssetTypesWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -865,15 +858,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType[]'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType[]'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -986,24 +976,25 @@ class AssetApi
      */
     public function getAssets($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAssetsWithHttpInfo($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAssetsWithHttpInfo($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1032,15 +1023,12 @@ class AssetApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Assets'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Assets'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 

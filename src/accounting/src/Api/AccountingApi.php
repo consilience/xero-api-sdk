@@ -165,24 +165,25 @@ class AccountingApi
      */
     public function createAccount($account)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createAccountWithHttpInfo($account);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createAccountWithHttpInfo($account);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -206,21 +207,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -343,24 +341,25 @@ class AccountingApi
      */
     public function createAccountAttachmentByFileName($accountID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -386,21 +385,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -558,24 +554,25 @@ class AccountingApi
      */
     public function createBankTransaction($bankTransactions, $summarizeErrors = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransactionWithHttpInfo($bankTransactions, $summarizeErrors);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransactionWithHttpInfo($bankTransactions, $summarizeErrors);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -600,21 +597,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -742,24 +736,25 @@ class AccountingApi
      */
     public function createBankTransactionAttachmentByFileName($bankTransactionID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -785,21 +780,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -957,24 +949,25 @@ class AccountingApi
      */
     public function createBankTransactionHistoryRecord($bankTransactionID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransactionHistoryRecordWithHttpInfo($bankTransactionID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransactionHistoryRecordWithHttpInfo($bankTransactionID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -999,21 +992,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1152,24 +1142,25 @@ class AccountingApi
      */
     public function createBankTransfer($bankTransfers)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransferWithHttpInfo($bankTransfers);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransferWithHttpInfo($bankTransfers);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1193,21 +1184,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1328,24 +1316,25 @@ class AccountingApi
      */
     public function createBankTransferAttachmentByFileName($bankTransferID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1369,21 +1358,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1539,24 +1525,25 @@ class AccountingApi
      */
     public function createBankTransferHistoryRecord($bankTransferID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBankTransferHistoryRecordWithHttpInfo($bankTransferID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBankTransferHistoryRecordWithHttpInfo($bankTransferID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1579,21 +1566,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1732,24 +1716,25 @@ class AccountingApi
      */
     public function createBatchPayment($batchPayments)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBatchPaymentWithHttpInfo($batchPayments);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBatchPaymentWithHttpInfo($batchPayments);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1773,21 +1758,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BatchPayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BatchPayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1909,24 +1891,25 @@ class AccountingApi
      */
     public function createBatchPaymentHistoryRecord($batchPaymentID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBatchPaymentHistoryRecordWithHttpInfo($batchPaymentID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBatchPaymentHistoryRecordWithHttpInfo($batchPaymentID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1951,21 +1934,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2105,24 +2085,25 @@ class AccountingApi
      */
     public function createBrandingThemePaymentServices($brandingThemeID, $paymentService)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createBrandingThemePaymentServicesWithHttpInfo($brandingThemeID, $paymentService);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createBrandingThemePaymentServicesWithHttpInfo($brandingThemeID, $paymentService);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2147,21 +2128,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2298,24 +2276,25 @@ class AccountingApi
      */
     public function createContact($contact)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createContactWithHttpInfo($contact);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createContactWithHttpInfo($contact);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2337,21 +2316,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2472,24 +2448,25 @@ class AccountingApi
      */
     public function createContactAttachmentByFileName($contactID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2513,21 +2490,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2684,24 +2658,25 @@ class AccountingApi
      */
     public function createContactGroup($contactGroups = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createContactGroupWithHttpInfo($contactGroups);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createContactGroupWithHttpInfo($contactGroups);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2725,21 +2700,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -2852,24 +2824,25 @@ class AccountingApi
      */
     public function createContactGroupContacts($contactGroupID, $contacts = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createContactGroupContactsWithHttpInfo($contactGroupID, $contacts);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createContactGroupContactsWithHttpInfo($contactGroupID, $contacts);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -2894,21 +2867,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -3039,24 +3009,25 @@ class AccountingApi
      */
     public function createContactHistory($contactID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createContactHistoryWithHttpInfo($contactID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createContactHistoryWithHttpInfo($contactID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -3081,21 +3052,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -3235,24 +3203,25 @@ class AccountingApi
      */
     public function createCreditNote($summarizeErrors = null, $creditNotes = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createCreditNoteWithHttpInfo($summarizeErrors, $creditNotes);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createCreditNoteWithHttpInfo($summarizeErrors, $creditNotes);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -3277,21 +3246,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -3409,24 +3375,25 @@ class AccountingApi
      */
     public function createCreditNoteAllocation($creditNoteID, $allocations = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createCreditNoteAllocationWithHttpInfo($creditNoteID, $allocations);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createCreditNoteAllocationWithHttpInfo($creditNoteID, $allocations);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -3451,21 +3418,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -3597,24 +3561,25 @@ class AccountingApi
      */
     public function createCreditNoteAttachmentByFileName($creditNoteID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -3640,21 +3605,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -3812,24 +3774,25 @@ class AccountingApi
      */
     public function createCreditNoteHistory($creditNoteID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createCreditNoteHistoryWithHttpInfo($creditNoteID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createCreditNoteHistoryWithHttpInfo($creditNoteID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -3854,21 +3817,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4005,24 +3965,25 @@ class AccountingApi
      */
     public function createCurrency($currencies)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createCurrencyWithHttpInfo($currencies);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createCurrencyWithHttpInfo($currencies);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4044,15 +4005,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Currencies'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Currencies'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4173,24 +4131,25 @@ class AccountingApi
      */
     public function createEmployee($employees)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createEmployeeWithHttpInfo($employees);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createEmployeeWithHttpInfo($employees);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4214,21 +4173,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4350,24 +4306,25 @@ class AccountingApi
      */
     public function createExpenseClaim($expenseClaims, $summarizeErrors = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createExpenseClaimWithHttpInfo($expenseClaims, $summarizeErrors);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createExpenseClaimWithHttpInfo($expenseClaims, $summarizeErrors);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4392,21 +4349,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4533,24 +4487,25 @@ class AccountingApi
      */
     public function createExpenseClaimHistory($expenseClaimID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createExpenseClaimHistoryWithHttpInfo($expenseClaimID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createExpenseClaimHistoryWithHttpInfo($expenseClaimID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4575,15 +4530,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4723,24 +4675,25 @@ class AccountingApi
      */
     public function createInvoice($invoices, $summarizeErrors = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createInvoiceWithHttpInfo($invoices, $summarizeErrors);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createInvoiceWithHttpInfo($invoices, $summarizeErrors);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4765,21 +4718,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -4907,24 +4857,25 @@ class AccountingApi
      */
     public function createInvoiceAttachmentByFileName($invoiceID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -4950,21 +4901,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -5122,24 +5070,25 @@ class AccountingApi
      */
     public function createInvoiceHistory($invoiceID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createInvoiceHistoryWithHttpInfo($invoiceID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createInvoiceHistoryWithHttpInfo($invoiceID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -5164,21 +5113,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -5317,24 +5263,25 @@ class AccountingApi
      */
     public function createItem($items)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createItemWithHttpInfo($items);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createItemWithHttpInfo($items);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -5358,21 +5305,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -5494,24 +5438,25 @@ class AccountingApi
      */
     public function createItemHistory($itemID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createItemHistoryWithHttpInfo($itemID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createItemHistoryWithHttpInfo($itemID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -5536,15 +5481,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -5683,24 +5625,25 @@ class AccountingApi
      */
     public function createLinkedTransaction($linkedTransactions)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createLinkedTransactionWithHttpInfo($linkedTransactions);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createLinkedTransactionWithHttpInfo($linkedTransactions);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -5724,21 +5667,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -5859,24 +5799,25 @@ class AccountingApi
      */
     public function createManualJournal($manualJournals)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createManualJournalWithHttpInfo($manualJournals);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createManualJournalWithHttpInfo($manualJournals);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -5900,21 +5841,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -6037,24 +5975,25 @@ class AccountingApi
      */
     public function createManualJournalAttachmentByFileName($manualJournalID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -6080,21 +6019,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -6252,24 +6188,25 @@ class AccountingApi
      */
     public function createOverpaymentAllocation($overpaymentID, $allocations)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createOverpaymentAllocationWithHttpInfo($overpaymentID, $allocations);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createOverpaymentAllocationWithHttpInfo($overpaymentID, $allocations);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -6294,21 +6231,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -6448,24 +6382,25 @@ class AccountingApi
      */
     public function createOverpaymentHistory($overpaymentID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createOverpaymentHistoryWithHttpInfo($overpaymentID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createOverpaymentHistoryWithHttpInfo($overpaymentID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -6490,21 +6425,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -6643,24 +6575,25 @@ class AccountingApi
      */
     public function createPayment($payments)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPaymentWithHttpInfo($payments);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPaymentWithHttpInfo($payments);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -6684,21 +6617,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -6820,24 +6750,25 @@ class AccountingApi
      */
     public function createPaymentHistory($paymentID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPaymentHistoryWithHttpInfo($paymentID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPaymentHistoryWithHttpInfo($paymentID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -6862,21 +6793,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7015,24 +6943,25 @@ class AccountingApi
      */
     public function createPaymentService($paymentServices)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPaymentServiceWithHttpInfo($paymentServices);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPaymentServiceWithHttpInfo($paymentServices);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -7056,21 +6985,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7192,24 +7118,25 @@ class AccountingApi
      */
     public function createPrepaymentAllocation($prepaymentID, $allocations)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPrepaymentAllocationWithHttpInfo($prepaymentID, $allocations);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPrepaymentAllocationWithHttpInfo($prepaymentID, $allocations);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -7234,21 +7161,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Allocations'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7388,24 +7312,25 @@ class AccountingApi
      */
     public function createPrepaymentHistory($prepaymentID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPrepaymentHistoryWithHttpInfo($prepaymentID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPrepaymentHistoryWithHttpInfo($prepaymentID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -7430,21 +7355,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7584,24 +7506,25 @@ class AccountingApi
      */
     public function createPurchaseOrder($purchaseOrders, $summarizeErrors = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPurchaseOrderWithHttpInfo($purchaseOrders, $summarizeErrors);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPurchaseOrderWithHttpInfo($purchaseOrders, $summarizeErrors);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -7626,21 +7549,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7767,24 +7687,25 @@ class AccountingApi
      */
     public function createPurchaseOrderHistory($purchaseOrderID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createPurchaseOrderHistoryWithHttpInfo($purchaseOrderID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createPurchaseOrderHistoryWithHttpInfo($purchaseOrderID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -7809,21 +7730,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -7962,24 +7880,25 @@ class AccountingApi
      */
     public function createReceipt($receipts)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createReceiptWithHttpInfo($receipts);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createReceiptWithHttpInfo($receipts);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -8003,21 +7922,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -8140,24 +8056,25 @@ class AccountingApi
      */
     public function createReceiptAttachmentByFileName($receiptID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -8183,21 +8100,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -8355,24 +8269,25 @@ class AccountingApi
      */
     public function createReceiptHistory($receiptID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createReceiptHistoryWithHttpInfo($receiptID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createReceiptHistoryWithHttpInfo($receiptID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -8397,21 +8312,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -8552,24 +8464,25 @@ class AccountingApi
      */
     public function createRepeatingInvoiceAttachmentByFileName($repeatingInvoiceID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -8595,21 +8508,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -8767,24 +8677,25 @@ class AccountingApi
      */
     public function createRepeatingInvoiceHistory($repeatingInvoiceID, $historyRecords)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createRepeatingInvoiceHistoryWithHttpInfo($repeatingInvoiceID, $historyRecords);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createRepeatingInvoiceHistoryWithHttpInfo($repeatingInvoiceID, $historyRecords);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -8809,21 +8720,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -8962,24 +8870,25 @@ class AccountingApi
      */
     public function createTaxRate($taxRates)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createTaxRateWithHttpInfo($taxRates);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createTaxRateWithHttpInfo($taxRates);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -9003,21 +8912,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -9138,24 +9044,25 @@ class AccountingApi
      */
     public function createTrackingCategory($trackingCategory)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createTrackingCategoryWithHttpInfo($trackingCategory);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createTrackingCategoryWithHttpInfo($trackingCategory);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -9179,21 +9086,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -9315,24 +9219,25 @@ class AccountingApi
      */
     public function createTrackingOptions($trackingCategoryID, $trackingOption)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createTrackingOptionsWithHttpInfo($trackingCategoryID, $trackingOption);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createTrackingOptionsWithHttpInfo($trackingCategoryID, $trackingOption);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -9357,21 +9262,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingOptions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingOptions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -9510,24 +9412,25 @@ class AccountingApi
      */
     public function deleteAccount($accountID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteAccountWithHttpInfo($accountID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteAccountWithHttpInfo($accountID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -9551,21 +9454,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -9716,7 +9616,6 @@ class AccountingApi
         $response = $this->getSyncClient()->sendRequest($request);
 
         $statusCode = (int)$response->getStatusCode();
-
 
         // No expected payload.
 
@@ -9882,7 +9781,6 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
         // No expected payload.
 
         return [
@@ -10028,7 +9926,6 @@ class AccountingApi
         $response = $this->getSyncClient()->sendRequest($request);
 
         $statusCode = (int)$response->getStatusCode();
-
 
         // No expected payload.
 
@@ -10176,7 +10073,6 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
         // No expected payload.
 
         return [
@@ -10300,24 +10196,25 @@ class AccountingApi
      */
     public function deletePayment($paymentID, $payments)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deletePaymentWithHttpInfo($paymentID, $payments);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deletePaymentWithHttpInfo($paymentID, $payments);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -10342,21 +10239,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -10495,24 +10389,25 @@ class AccountingApi
      */
     public function deleteTrackingCategory($trackingCategoryID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteTrackingCategoryWithHttpInfo($trackingCategoryID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteTrackingCategoryWithHttpInfo($trackingCategoryID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -10536,21 +10431,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -10677,24 +10569,25 @@ class AccountingApi
      */
     public function deleteTrackingOptions($trackingCategoryID, $trackingOptionID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteTrackingOptionsWithHttpInfo($trackingCategoryID, $trackingOptionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteTrackingOptionsWithHttpInfo($trackingCategoryID, $trackingOptionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -10719,21 +10612,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingOptions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingOptions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -10903,7 +10793,6 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
         // No expected payload.
 
         return [
@@ -11039,24 +10928,25 @@ class AccountingApi
      */
     public function getAccount($accountID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAccountWithHttpInfo($accountID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAccountWithHttpInfo($accountID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -11080,15 +10970,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -11216,24 +11103,25 @@ class AccountingApi
      */
     public function getAccountAttachmentByFileName($accountID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -11259,15 +11147,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -11427,24 +11312,25 @@ class AccountingApi
      */
     public function getAccountAttachmentById($accountID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAccountAttachmentByIdWithHttpInfo($accountID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAccountAttachmentByIdWithHttpInfo($accountID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -11470,15 +11356,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -11636,24 +11519,25 @@ class AccountingApi
      */
     public function getAccountAttachments($accountID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAccountAttachmentsWithHttpInfo($accountID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAccountAttachmentsWithHttpInfo($accountID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -11677,15 +11561,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -11813,24 +11694,25 @@ class AccountingApi
      */
     public function getAccounts($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getAccountsWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getAccountsWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -11856,15 +11738,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -11987,24 +11866,25 @@ class AccountingApi
      */
     public function getBankTransaction($bankTransactionID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionWithHttpInfo($bankTransactionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionWithHttpInfo($bankTransactionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12028,15 +11908,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -12164,24 +12041,25 @@ class AccountingApi
      */
     public function getBankTransactionAttachmentByFileName($bankTransactionID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12207,15 +12085,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -12375,24 +12250,25 @@ class AccountingApi
      */
     public function getBankTransactionAttachmentById($bankTransactionID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionAttachmentByIdWithHttpInfo($bankTransactionID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionAttachmentByIdWithHttpInfo($bankTransactionID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12418,15 +12294,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -12584,24 +12457,25 @@ class AccountingApi
      */
     public function getBankTransactionAttachments($bankTransactionID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionAttachmentsWithHttpInfo($bankTransactionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionAttachmentsWithHttpInfo($bankTransactionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12625,15 +12499,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -12763,24 +12634,25 @@ class AccountingApi
      */
     public function getBankTransactions($ifModifiedSince = null, $where = null, $order = null, $page = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12808,15 +12680,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -12949,24 +12818,25 @@ class AccountingApi
      */
     public function getBankTransactionsHistory($bankTransactionID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransactionsHistoryWithHttpInfo($bankTransactionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransactionsHistoryWithHttpInfo($bankTransactionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -12990,15 +12860,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -13124,24 +12991,25 @@ class AccountingApi
      */
     public function getBankTransfer($bankTransferID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransferWithHttpInfo($bankTransferID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransferWithHttpInfo($bankTransferID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -13165,15 +13033,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -13301,24 +13166,25 @@ class AccountingApi
      */
     public function getBankTransferAttachmentByFileName($bankTransferID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -13344,15 +13210,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -13512,24 +13375,25 @@ class AccountingApi
      */
     public function getBankTransferAttachmentById($bankTransferID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransferAttachmentByIdWithHttpInfo($bankTransferID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransferAttachmentByIdWithHttpInfo($bankTransferID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -13555,15 +13419,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -13721,24 +13582,25 @@ class AccountingApi
      */
     public function getBankTransferAttachments($bankTransferID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransferAttachmentsWithHttpInfo($bankTransferID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransferAttachmentsWithHttpInfo($bankTransferID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -13762,15 +13624,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -13896,24 +13755,25 @@ class AccountingApi
      */
     public function getBankTransferHistory($bankTransferID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransferHistoryWithHttpInfo($bankTransferID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransferHistoryWithHttpInfo($bankTransferID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -13937,15 +13797,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14073,24 +13930,25 @@ class AccountingApi
      */
     public function getBankTransfers($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBankTransfersWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBankTransfersWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14116,15 +13974,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransfers'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14247,24 +14102,25 @@ class AccountingApi
      */
     public function getBatchPaymentHistory($batchPaymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBatchPaymentHistoryWithHttpInfo($batchPaymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBatchPaymentHistoryWithHttpInfo($batchPaymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14288,15 +14144,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14424,24 +14277,25 @@ class AccountingApi
      */
     public function getBatchPayments($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBatchPaymentsWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBatchPaymentsWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14467,15 +14321,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BatchPayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BatchPayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14598,24 +14449,25 @@ class AccountingApi
      */
     public function getBrandingTheme($brandingThemeID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBrandingThemeWithHttpInfo($brandingThemeID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBrandingThemeWithHttpInfo($brandingThemeID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14639,15 +14491,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BrandingThemes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BrandingThemes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14773,24 +14622,25 @@ class AccountingApi
      */
     public function getBrandingThemePaymentServices($brandingThemeID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBrandingThemePaymentServicesWithHttpInfo($brandingThemeID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBrandingThemePaymentServicesWithHttpInfo($brandingThemeID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14814,15 +14664,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -14947,24 +14794,25 @@ class AccountingApi
      */
     public function getBrandingThemes()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getBrandingThemesWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getBrandingThemesWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -14987,15 +14835,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BrandingThemes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BrandingThemes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -15103,24 +14948,25 @@ class AccountingApi
      */
     public function getContact($contactID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactWithHttpInfo($contactID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactWithHttpInfo($contactID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -15144,15 +14990,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -15280,24 +15123,25 @@ class AccountingApi
      */
     public function getContactAttachmentByFileName($contactID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -15323,15 +15167,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -15491,24 +15332,25 @@ class AccountingApi
      */
     public function getContactAttachmentById($contactID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactAttachmentByIdWithHttpInfo($contactID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactAttachmentByIdWithHttpInfo($contactID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -15534,15 +15376,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -15700,24 +15539,25 @@ class AccountingApi
      */
     public function getContactAttachments($contactID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactAttachmentsWithHttpInfo($contactID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactAttachmentsWithHttpInfo($contactID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -15741,15 +15581,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -15875,24 +15712,25 @@ class AccountingApi
      */
     public function getContactCISSettings($contactID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactCISSettingsWithHttpInfo($contactID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactCISSettingsWithHttpInfo($contactID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -15916,15 +15754,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CISSettings'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CISSettings'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16050,24 +15885,25 @@ class AccountingApi
      */
     public function getContactGroup($contactGroupID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactGroupWithHttpInfo($contactGroupID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactGroupWithHttpInfo($contactGroupID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16091,15 +15927,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16226,24 +16059,25 @@ class AccountingApi
      */
     public function getContactGroups($where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactGroupsWithHttpInfo($where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactGroupsWithHttpInfo($where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16268,15 +16102,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16394,24 +16225,25 @@ class AccountingApi
      */
     public function getContactHistory($contactID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactHistoryWithHttpInfo($contactID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactHistoryWithHttpInfo($contactID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16435,15 +16267,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16574,24 +16403,25 @@ class AccountingApi
      */
     public function getContacts($ifModifiedSince = null, $where = null, $order = null, $iDs = null, $page = null, $includeArchived = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getContactsWithHttpInfo($ifModifiedSince, $where, $order, $iDs, $page, $includeArchived);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getContactsWithHttpInfo($ifModifiedSince, $where, $order, $iDs, $page, $includeArchived);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16620,15 +16450,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16766,24 +16593,25 @@ class AccountingApi
      */
     public function getCreditNote($creditNoteID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteWithHttpInfo($creditNoteID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteWithHttpInfo($creditNoteID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16807,15 +16635,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -16942,24 +16767,25 @@ class AccountingApi
      */
     public function getCreditNoteAsPdf($creditNoteID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteAsPdfWithHttpInfo($creditNoteID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteAsPdfWithHttpInfo($creditNoteID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -16984,15 +16810,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -17134,24 +16957,25 @@ class AccountingApi
      */
     public function getCreditNoteAttachmentByFileName($creditNoteID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -17177,15 +17001,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -17345,24 +17166,25 @@ class AccountingApi
      */
     public function getCreditNoteAttachmentById($creditNoteID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteAttachmentByIdWithHttpInfo($creditNoteID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteAttachmentByIdWithHttpInfo($creditNoteID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -17388,15 +17210,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -17554,24 +17373,25 @@ class AccountingApi
      */
     public function getCreditNoteAttachments($creditNoteID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteAttachmentsWithHttpInfo($creditNoteID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteAttachmentsWithHttpInfo($creditNoteID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -17595,15 +17415,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -17729,24 +17546,25 @@ class AccountingApi
      */
     public function getCreditNoteHistory($creditNoteID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNoteHistoryWithHttpInfo($creditNoteID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNoteHistoryWithHttpInfo($creditNoteID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -17770,15 +17588,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -17907,24 +17722,25 @@ class AccountingApi
      */
     public function getCreditNotes($ifModifiedSince = null, $where = null, $order = null, $page = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCreditNotesWithHttpInfo($ifModifiedSince, $where, $order, $page);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCreditNotesWithHttpInfo($ifModifiedSince, $where, $order, $page);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -17951,15 +17767,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18088,24 +17901,25 @@ class AccountingApi
      */
     public function getCurrencies($where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getCurrenciesWithHttpInfo($where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getCurrenciesWithHttpInfo($where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -18130,15 +17944,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Currencies'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Currencies'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18256,24 +18067,25 @@ class AccountingApi
      */
     public function getEmployee($employeeID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getEmployeeWithHttpInfo($employeeID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getEmployeeWithHttpInfo($employeeID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -18297,15 +18109,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18433,24 +18242,25 @@ class AccountingApi
      */
     public function getEmployees($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getEmployeesWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getEmployeesWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -18476,15 +18286,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18607,24 +18414,25 @@ class AccountingApi
      */
     public function getExpenseClaim($expenseClaimID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getExpenseClaimWithHttpInfo($expenseClaimID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getExpenseClaimWithHttpInfo($expenseClaimID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -18648,15 +18456,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18782,24 +18587,25 @@ class AccountingApi
      */
     public function getExpenseClaimHistory($expenseClaimID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getExpenseClaimHistoryWithHttpInfo($expenseClaimID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getExpenseClaimHistoryWithHttpInfo($expenseClaimID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -18823,15 +18629,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -18959,24 +18762,25 @@ class AccountingApi
      */
     public function getExpenseClaims($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getExpenseClaimsWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getExpenseClaimsWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19002,15 +18806,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -19133,24 +18934,25 @@ class AccountingApi
      */
     public function getInvoice($invoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceWithHttpInfo($invoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceWithHttpInfo($invoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19174,15 +18976,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -19309,24 +19108,25 @@ class AccountingApi
      */
     public function getInvoiceAsPdf($invoiceID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceAsPdfWithHttpInfo($invoiceID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceAsPdfWithHttpInfo($invoiceID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19351,15 +19151,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -19501,24 +19298,25 @@ class AccountingApi
      */
     public function getInvoiceAttachmentByFileName($invoiceID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19544,15 +19342,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -19712,24 +19507,25 @@ class AccountingApi
      */
     public function getInvoiceAttachmentById($invoiceID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceAttachmentByIdWithHttpInfo($invoiceID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceAttachmentByIdWithHttpInfo($invoiceID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19755,15 +19551,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -19921,24 +19714,25 @@ class AccountingApi
      */
     public function getInvoiceAttachments($invoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceAttachmentsWithHttpInfo($invoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceAttachmentsWithHttpInfo($invoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -19962,15 +19756,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -20096,24 +19887,25 @@ class AccountingApi
      */
     public function getInvoiceHistory($invoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceHistoryWithHttpInfo($invoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceHistoryWithHttpInfo($invoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -20137,15 +19929,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -20270,24 +20059,25 @@ class AccountingApi
      */
     public function getInvoiceReminders()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoiceRemindersWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoiceRemindersWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -20310,15 +20100,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\InvoiceReminders'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\InvoiceReminders'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -20436,24 +20223,25 @@ class AccountingApi
      */
     public function getInvoices($ifModifiedSince = null, $where = null, $order = null, $iDs = null, $invoiceNumbers = null, $contactIDs = null, $statuses = null, $page = null, $includeArchived = null, $createdByMyApp = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getInvoicesWithHttpInfo($ifModifiedSince, $where, $order, $iDs, $invoiceNumbers, $contactIDs, $statuses, $page, $includeArchived, $createdByMyApp, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getInvoicesWithHttpInfo($ifModifiedSince, $where, $order, $iDs, $invoiceNumbers, $contactIDs, $statuses, $page, $includeArchived, $createdByMyApp, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -20487,15 +20275,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -20658,24 +20443,25 @@ class AccountingApi
      */
     public function getItem($itemID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getItemWithHttpInfo($itemID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getItemWithHttpInfo($itemID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -20699,15 +20485,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -20833,24 +20616,25 @@ class AccountingApi
      */
     public function getItemHistory($itemID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getItemHistoryWithHttpInfo($itemID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getItemHistoryWithHttpInfo($itemID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -20874,15 +20658,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21011,24 +20792,25 @@ class AccountingApi
      */
     public function getItems($ifModifiedSince = null, $where = null, $order = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getItemsWithHttpInfo($ifModifiedSince, $where, $order, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getItemsWithHttpInfo($ifModifiedSince, $where, $order, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21055,15 +20837,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21191,24 +20970,25 @@ class AccountingApi
      */
     public function getJournal($journalID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getJournalWithHttpInfo($journalID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getJournalWithHttpInfo($journalID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21232,15 +21012,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Journals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Journals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21368,24 +21145,25 @@ class AccountingApi
      */
     public function getJournals($ifModifiedSince = null, $offset = null, $paymentsOnly = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getJournalsWithHttpInfo($ifModifiedSince, $offset, $paymentsOnly);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getJournalsWithHttpInfo($ifModifiedSince, $offset, $paymentsOnly);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21411,15 +21189,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Journals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Journals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21542,24 +21317,25 @@ class AccountingApi
      */
     public function getLinkedTransaction($linkedTransactionID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getLinkedTransactionWithHttpInfo($linkedTransactionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getLinkedTransactionWithHttpInfo($linkedTransactionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21583,15 +21359,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21722,24 +21495,25 @@ class AccountingApi
      */
     public function getLinkedTransactions($page = null, $linkedTransactionID = null, $sourceTransactionID = null, $contactID = null, $status = null, $targetTransactionID = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getLinkedTransactionsWithHttpInfo($page, $linkedTransactionID, $sourceTransactionID, $contactID, $status, $targetTransactionID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getLinkedTransactionsWithHttpInfo($page, $linkedTransactionID, $sourceTransactionID, $contactID, $status, $targetTransactionID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21768,15 +21542,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -21914,24 +21685,25 @@ class AccountingApi
      */
     public function getManualJournal($manualJournalID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getManualJournalWithHttpInfo($manualJournalID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getManualJournalWithHttpInfo($manualJournalID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -21955,15 +21727,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -22091,24 +21860,25 @@ class AccountingApi
      */
     public function getManualJournalAttachmentByFileName($manualJournalID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -22134,15 +21904,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -22302,24 +22069,25 @@ class AccountingApi
      */
     public function getManualJournalAttachmentById($manualJournalID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getManualJournalAttachmentByIdWithHttpInfo($manualJournalID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getManualJournalAttachmentByIdWithHttpInfo($manualJournalID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -22345,15 +22113,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -22511,24 +22276,25 @@ class AccountingApi
      */
     public function getManualJournalAttachments($manualJournalID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getManualJournalAttachmentsWithHttpInfo($manualJournalID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getManualJournalAttachmentsWithHttpInfo($manualJournalID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -22552,15 +22318,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -22689,24 +22452,25 @@ class AccountingApi
      */
     public function getManualJournals($ifModifiedSince = null, $where = null, $order = null, $page = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getManualJournalsWithHttpInfo($ifModifiedSince, $where, $order, $page);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getManualJournalsWithHttpInfo($ifModifiedSince, $where, $order, $page);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -22733,15 +22497,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -22869,24 +22630,25 @@ class AccountingApi
      */
     public function getOnlineInvoice($invoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOnlineInvoiceWithHttpInfo($invoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOnlineInvoiceWithHttpInfo($invoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -22910,15 +22672,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\OnlineInvoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\OnlineInvoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23044,24 +22803,25 @@ class AccountingApi
      */
     public function getOrganisationCISSettings($organisationID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOrganisationCISSettingsWithHttpInfo($organisationID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOrganisationCISSettingsWithHttpInfo($organisationID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23085,15 +22845,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CISOrgSetting'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CISOrgSetting'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23218,24 +22975,25 @@ class AccountingApi
      */
     public function getOrganisations()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOrganisationsWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOrganisationsWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23258,15 +23016,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Organisations'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Organisations'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23374,24 +23129,25 @@ class AccountingApi
      */
     public function getOverpayment($overpaymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOverpaymentWithHttpInfo($overpaymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOverpaymentWithHttpInfo($overpaymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23415,15 +23171,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Overpayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Overpayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23549,24 +23302,25 @@ class AccountingApi
      */
     public function getOverpaymentHistory($overpaymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOverpaymentHistoryWithHttpInfo($overpaymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOverpaymentHistoryWithHttpInfo($overpaymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23590,15 +23344,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23728,24 +23479,25 @@ class AccountingApi
      */
     public function getOverpayments($ifModifiedSince = null, $where = null, $order = null, $page = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getOverpaymentsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getOverpaymentsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23773,15 +23525,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Overpayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Overpayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -23914,24 +23663,25 @@ class AccountingApi
      */
     public function getPayment($paymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPaymentWithHttpInfo($paymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPaymentWithHttpInfo($paymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -23955,15 +23705,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24089,24 +23836,25 @@ class AccountingApi
      */
     public function getPaymentHistory($paymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPaymentHistoryWithHttpInfo($paymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPaymentHistoryWithHttpInfo($paymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24130,15 +23878,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24263,24 +24008,25 @@ class AccountingApi
      */
     public function getPaymentServices()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPaymentServicesWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPaymentServicesWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24303,15 +24049,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PaymentServices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24421,24 +24164,25 @@ class AccountingApi
      */
     public function getPayments($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPaymentsWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPaymentsWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24464,15 +24208,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Payments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24595,24 +24336,25 @@ class AccountingApi
      */
     public function getPrepayment($prepaymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPrepaymentWithHttpInfo($prepaymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPrepaymentWithHttpInfo($prepaymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24636,15 +24378,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Prepayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Prepayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24770,24 +24509,25 @@ class AccountingApi
      */
     public function getPrepaymentHistory($prepaymentID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPrepaymentHistoryWithHttpInfo($prepaymentID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPrepaymentHistoryWithHttpInfo($prepaymentID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24811,15 +24551,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -24949,24 +24686,25 @@ class AccountingApi
      */
     public function getPrepayments($ifModifiedSince = null, $where = null, $order = null, $page = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPrepaymentsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPrepaymentsWithHttpInfo($ifModifiedSince, $where, $order, $page, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -24994,15 +24732,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Prepayments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Prepayments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -25135,24 +24870,25 @@ class AccountingApi
      */
     public function getPurchaseOrder($purchaseOrderID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPurchaseOrderWithHttpInfo($purchaseOrderID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPurchaseOrderWithHttpInfo($purchaseOrderID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -25176,15 +24912,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -25310,24 +25043,25 @@ class AccountingApi
      */
     public function getPurchaseOrderHistory($purchaseOrderID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPurchaseOrderHistoryWithHttpInfo($purchaseOrderID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPurchaseOrderHistoryWithHttpInfo($purchaseOrderID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -25351,15 +25085,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -25490,24 +25221,25 @@ class AccountingApi
      */
     public function getPurchaseOrders($ifModifiedSince = null, $status = null, $dateFrom = null, $dateTo = null, $order = null, $page = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getPurchaseOrdersWithHttpInfo($ifModifiedSince, $status, $dateFrom, $dateTo, $order, $page);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getPurchaseOrdersWithHttpInfo($ifModifiedSince, $status, $dateFrom, $dateTo, $order, $page);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -25536,15 +25268,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -25682,24 +25411,25 @@ class AccountingApi
      */
     public function getReceipt($receiptID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptWithHttpInfo($receiptID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptWithHttpInfo($receiptID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -25723,15 +25453,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -25859,24 +25586,25 @@ class AccountingApi
      */
     public function getReceiptAttachmentByFileName($receiptID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -25902,15 +25630,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26070,24 +25795,25 @@ class AccountingApi
      */
     public function getReceiptAttachmentById($receiptID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptAttachmentByIdWithHttpInfo($receiptID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptAttachmentByIdWithHttpInfo($receiptID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -26113,15 +25839,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26279,24 +26002,25 @@ class AccountingApi
      */
     public function getReceiptAttachments($receiptID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptAttachmentsWithHttpInfo($receiptID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptAttachmentsWithHttpInfo($receiptID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -26320,15 +26044,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26454,24 +26175,25 @@ class AccountingApi
      */
     public function getReceiptHistory($receiptID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptHistoryWithHttpInfo($receiptID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptHistoryWithHttpInfo($receiptID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -26495,15 +26217,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26632,24 +26351,25 @@ class AccountingApi
      */
     public function getReceipts($ifModifiedSince = null, $where = null, $order = null, $unitdp = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReceiptsWithHttpInfo($ifModifiedSince, $where, $order, $unitdp);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReceiptsWithHttpInfo($ifModifiedSince, $where, $order, $unitdp);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -26676,15 +26396,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26812,24 +26529,25 @@ class AccountingApi
      */
     public function getRepeatingInvoice($repeatingInvoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoiceWithHttpInfo($repeatingInvoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoiceWithHttpInfo($repeatingInvoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -26853,15 +26571,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -26989,24 +26704,25 @@ class AccountingApi
      */
     public function getRepeatingInvoiceAttachmentByFileName($repeatingInvoiceID, $fileName, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27032,15 +26748,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -27200,24 +26913,25 @@ class AccountingApi
      */
     public function getRepeatingInvoiceAttachmentById($repeatingInvoiceID, $attachmentID, $contentType)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoiceAttachmentByIdWithHttpInfo($repeatingInvoiceID, $attachmentID, $contentType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoiceAttachmentByIdWithHttpInfo($repeatingInvoiceID, $attachmentID, $contentType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27243,15 +26957,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\SplFileObject'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -27409,24 +27120,25 @@ class AccountingApi
      */
     public function getRepeatingInvoiceAttachments($repeatingInvoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoiceAttachmentsWithHttpInfo($repeatingInvoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoiceAttachmentsWithHttpInfo($repeatingInvoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27450,15 +27162,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -27584,24 +27293,25 @@ class AccountingApi
      */
     public function getRepeatingInvoiceHistory($repeatingInvoiceID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoiceHistoryWithHttpInfo($repeatingInvoiceID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoiceHistoryWithHttpInfo($repeatingInvoiceID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27625,15 +27335,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\HistoryRecords'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -27760,24 +27467,25 @@ class AccountingApi
      */
     public function getRepeatingInvoices($where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getRepeatingInvoicesWithHttpInfo($where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getRepeatingInvoicesWithHttpInfo($where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27802,15 +27510,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -27931,24 +27636,25 @@ class AccountingApi
      */
     public function getReportAgedPayablesByContact($contactId, $date = null, $fromDate = null, $toDate = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportAgedPayablesByContactWithHttpInfo($contactId, $date, $fromDate, $toDate);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportAgedPayablesByContactWithHttpInfo($contactId, $date, $fromDate, $toDate);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -27975,15 +27681,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -28123,24 +27826,25 @@ class AccountingApi
      */
     public function getReportAgedReceivablesByContact($contactId, $date = null, $fromDate = null, $toDate = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportAgedReceivablesByContactWithHttpInfo($contactId, $date, $fromDate, $toDate);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportAgedReceivablesByContactWithHttpInfo($contactId, $date, $fromDate, $toDate);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -28167,15 +27871,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -28312,24 +28013,25 @@ class AccountingApi
      */
     public function getReportBASorGST($reportID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportBASorGSTWithHttpInfo($reportID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportBASorGSTWithHttpInfo($reportID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -28353,15 +28055,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -28486,24 +28185,25 @@ class AccountingApi
      */
     public function getReportBASorGSTList()
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportBASorGSTListWithHttpInfo();
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportBASorGSTListWithHttpInfo();
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -28526,15 +28226,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -28648,24 +28345,25 @@ class AccountingApi
      */
     public function getReportBalanceSheet($date = null, $periods = null, $timeframe = null, $trackingOptionID1 = null, $trackingOptionID2 = null, $standardLayout = null, $paymentsOnly = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportBalanceSheetWithHttpInfo($date, $periods, $timeframe, $trackingOptionID1, $trackingOptionID2, $standardLayout, $paymentsOnly);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportBalanceSheetWithHttpInfo($date, $periods, $timeframe, $trackingOptionID1, $trackingOptionID2, $standardLayout, $paymentsOnly);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -28695,15 +28393,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -28848,24 +28543,25 @@ class AccountingApi
      */
     public function getReportBankSummary($date = null, $period = null, $timeframe = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportBankSummaryWithHttpInfo($date, $period, $timeframe);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportBankSummaryWithHttpInfo($date, $period, $timeframe);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -28891,15 +28587,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29024,24 +28717,25 @@ class AccountingApi
      */
     public function getReportBudgetSummary($date = null, $period = null, $timeframe = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportBudgetSummaryWithHttpInfo($date, $period, $timeframe);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportBudgetSummaryWithHttpInfo($date, $period, $timeframe);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29067,15 +28761,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29198,24 +28889,25 @@ class AccountingApi
      */
     public function getReportExecutiveSummary($date = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportExecutiveSummaryWithHttpInfo($date);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportExecutiveSummaryWithHttpInfo($date);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29239,15 +28931,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29369,24 +29058,25 @@ class AccountingApi
      */
     public function getReportProfitAndLoss($fromDate = null, $toDate = null, $periods = null, $timeframe = null, $trackingCategoryID = null, $trackingCategoryID2 = null, $trackingOptionID = null, $trackingOptionID2 = null, $standardLayout = null, $paymentsOnly = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportProfitAndLossWithHttpInfo($fromDate, $toDate, $periods, $timeframe, $trackingCategoryID, $trackingCategoryID2, $trackingOptionID, $trackingOptionID2, $standardLayout, $paymentsOnly);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportProfitAndLossWithHttpInfo($fromDate, $toDate, $periods, $timeframe, $trackingCategoryID, $trackingCategoryID2, $trackingOptionID, $trackingOptionID2, $standardLayout, $paymentsOnly);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29419,15 +29109,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29585,24 +29272,25 @@ class AccountingApi
      */
     public function getReportTenNinetyNine($reportYear = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportTenNinetyNineWithHttpInfo($reportYear);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportTenNinetyNineWithHttpInfo($reportYear);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29626,15 +29314,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Reports'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Reports'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29748,24 +29433,25 @@ class AccountingApi
      */
     public function getReportTrialBalance($date = null, $paymentsOnly = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getReportTrialBalanceWithHttpInfo($date, $paymentsOnly);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getReportTrialBalanceWithHttpInfo($date, $paymentsOnly);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29790,15 +29476,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ReportWithRows'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -29918,24 +29601,25 @@ class AccountingApi
      */
     public function getTaxRates($where = null, $order = null, $taxType = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getTaxRatesWithHttpInfo($where, $order, $taxType);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getTaxRatesWithHttpInfo($where, $order, $taxType);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -29961,15 +29645,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30094,24 +29775,25 @@ class AccountingApi
      */
     public function getTrackingCategories($where = null, $order = null, $includeArchived = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getTrackingCategoriesWithHttpInfo($where, $order, $includeArchived);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getTrackingCategoriesWithHttpInfo($where, $order, $includeArchived);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -30137,15 +29819,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30268,24 +29947,25 @@ class AccountingApi
      */
     public function getTrackingCategory($trackingCategoryID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getTrackingCategoryWithHttpInfo($trackingCategoryID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getTrackingCategoryWithHttpInfo($trackingCategoryID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -30309,15 +29989,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30443,24 +30120,25 @@ class AccountingApi
      */
     public function getUser($userID)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getUserWithHttpInfo($userID);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getUserWithHttpInfo($userID);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -30484,15 +30162,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Users'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Users'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30620,24 +30295,25 @@ class AccountingApi
      */
     public function getUsers($ifModifiedSince = null, $where = null, $order = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getUsersWithHttpInfo($ifModifiedSince, $where, $order);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getUsersWithHttpInfo($ifModifiedSince, $where, $order);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -30663,15 +30339,12 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Users'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Users'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30795,24 +30468,25 @@ class AccountingApi
      */
     public function updateAccount($accountID, $accounts)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateAccountWithHttpInfo($accountID, $accounts);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateAccountWithHttpInfo($accountID, $accounts);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -30837,21 +30511,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Accounts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -30992,24 +30663,25 @@ class AccountingApi
      */
     public function updateAccountAttachmentByFileName($accountID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateAccountAttachmentByFileNameWithHttpInfo($accountID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -31035,21 +30707,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -31207,24 +30876,25 @@ class AccountingApi
      */
     public function updateBankTransaction($bankTransactionID, $bankTransactions)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateBankTransactionWithHttpInfo($bankTransactionID, $bankTransactions);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateBankTransactionWithHttpInfo($bankTransactionID, $bankTransactions);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -31249,21 +30919,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\BankTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -31404,24 +31071,25 @@ class AccountingApi
      */
     public function updateBankTransactionAttachmentByFileName($bankTransactionID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateBankTransactionAttachmentByFileNameWithHttpInfo($bankTransactionID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -31447,21 +31115,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -31618,24 +31283,25 @@ class AccountingApi
      */
     public function updateBankTransferAttachmentByFileName($bankTransferID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateBankTransferAttachmentByFileNameWithHttpInfo($bankTransferID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -31659,21 +31325,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -31829,24 +31492,25 @@ class AccountingApi
      */
     public function updateContact($contactID, $contacts = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateContactWithHttpInfo($contactID, $contacts);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateContactWithHttpInfo($contactID, $contacts);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -31869,21 +31533,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Contacts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -32013,24 +31674,25 @@ class AccountingApi
      */
     public function updateContactAttachmentByFileName($contactID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateContactAttachmentByFileNameWithHttpInfo($contactID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -32054,21 +31716,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -32226,24 +31885,25 @@ class AccountingApi
      */
     public function updateContactGroup($contactGroupID, $contactGroups = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateContactGroupWithHttpInfo($contactGroupID, $contactGroups);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateContactGroupWithHttpInfo($contactGroupID, $contactGroups);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -32268,21 +31928,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ContactGroups'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -32413,24 +32070,25 @@ class AccountingApi
      */
     public function updateCreditNote($creditNoteID, $creditNotes = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateCreditNoteWithHttpInfo($creditNoteID, $creditNotes);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateCreditNoteWithHttpInfo($creditNoteID, $creditNotes);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -32455,21 +32113,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\CreditNotes'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -32601,24 +32256,25 @@ class AccountingApi
      */
     public function updateCreditNoteAttachmentByFileName($creditNoteID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateCreditNoteAttachmentByFileNameWithHttpInfo($creditNoteID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -32644,21 +32300,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -32816,24 +32469,25 @@ class AccountingApi
      */
     public function updateEmployee($employeeID, $employees)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateEmployeeWithHttpInfo($employeeID, $employees);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateEmployeeWithHttpInfo($employeeID, $employees);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -32858,21 +32512,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Employees'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -33012,24 +32663,25 @@ class AccountingApi
      */
     public function updateExpenseClaim($expenseClaimID, $expenseClaims)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateExpenseClaimWithHttpInfo($expenseClaimID, $expenseClaims);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateExpenseClaimWithHttpInfo($expenseClaimID, $expenseClaims);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -33054,21 +32706,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -33208,24 +32857,25 @@ class AccountingApi
      */
     public function updateInvoice($invoiceID, $invoices)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateInvoiceWithHttpInfo($invoiceID, $invoices);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateInvoiceWithHttpInfo($invoiceID, $invoices);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -33250,21 +32900,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Invoices'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -33405,24 +33052,25 @@ class AccountingApi
      */
     public function updateInvoiceAttachmentByFileName($invoiceID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateInvoiceAttachmentByFileNameWithHttpInfo($invoiceID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -33448,21 +33096,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -33620,24 +33265,25 @@ class AccountingApi
      */
     public function updateItem($itemID, $items)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateItemWithHttpInfo($itemID, $items);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateItemWithHttpInfo($itemID, $items);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -33662,21 +33308,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Items'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -33816,24 +33459,25 @@ class AccountingApi
      */
     public function updateLinkedTransaction($linkedTransactionID, $linkedTransactions)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateLinkedTransactionWithHttpInfo($linkedTransactionID, $linkedTransactions);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateLinkedTransactionWithHttpInfo($linkedTransactionID, $linkedTransactions);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -33858,21 +33502,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -34012,24 +33653,25 @@ class AccountingApi
      */
     public function updateManualJournal($manualJournalID, $manualJournals)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateManualJournalWithHttpInfo($manualJournalID, $manualJournals);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateManualJournalWithHttpInfo($manualJournalID, $manualJournals);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -34054,21 +33696,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\ManualJournals'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -34209,24 +33848,25 @@ class AccountingApi
      */
     public function updateManualJournalAttachmentByFileName($manualJournalID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateManualJournalAttachmentByFileNameWithHttpInfo($manualJournalID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -34252,21 +33892,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -34424,24 +34061,25 @@ class AccountingApi
      */
     public function updatePurchaseOrder($purchaseOrderID, $purchaseOrders)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updatePurchaseOrderWithHttpInfo($purchaseOrderID, $purchaseOrders);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updatePurchaseOrderWithHttpInfo($purchaseOrderID, $purchaseOrders);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -34466,21 +34104,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -34620,24 +34255,25 @@ class AccountingApi
      */
     public function updateReceipt($receiptID, $receipts)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateReceiptWithHttpInfo($receiptID, $receipts);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateReceiptWithHttpInfo($receiptID, $receipts);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -34662,21 +34298,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Receipts'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -34817,24 +34450,25 @@ class AccountingApi
      */
     public function updateReceiptAttachmentByFileName($receiptID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateReceiptAttachmentByFileNameWithHttpInfo($receiptID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -34860,21 +34494,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -35033,24 +34664,25 @@ class AccountingApi
      */
     public function updateRepeatingInvoiceAttachmentByFileName($repeatingInvoiceID, $fileName, $body)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $body);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateRepeatingInvoiceAttachmentByFileNameWithHttpInfo($repeatingInvoiceID, $fileName, $body);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -35076,21 +34708,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Attachments'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -35247,24 +34876,25 @@ class AccountingApi
      */
     public function updateTaxRate($taxRates)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateTaxRateWithHttpInfo($taxRates);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateTaxRateWithHttpInfo($taxRates);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -35288,21 +34918,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TaxRates'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -35424,24 +35051,25 @@ class AccountingApi
      */
     public function updateTrackingCategory($trackingCategoryID, $trackingCategory)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->updateTrackingCategoryWithHttpInfo($trackingCategoryID, $trackingCategory);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->updateTrackingCategoryWithHttpInfo($trackingCategoryID, $trackingCategory);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -35466,21 +35094,18 @@ class AccountingApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\TrackingCategories'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\AccountingSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 

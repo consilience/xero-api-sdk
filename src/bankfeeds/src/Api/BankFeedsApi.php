@@ -165,24 +165,25 @@ class BankFeedsApi
      */
     public function createFeedConnections($feedConnections)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createFeedConnectionsWithHttpInfo($feedConnections);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createFeedConnectionsWithHttpInfo($feedConnections);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -206,15 +207,12 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 201:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -338,24 +336,25 @@ class BankFeedsApi
      */
     public function createStatements($statements = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->createStatementsWithHttpInfo($statements);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->createStatementsWithHttpInfo($statements);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -377,51 +376,48 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 202:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 403:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Error'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Error'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 409:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 413:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 422:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 500:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -533,24 +529,25 @@ class BankFeedsApi
      */
     public function deleteFeedConnections($feedConnections)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->deleteFeedConnectionsWithHttpInfo($feedConnections);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->deleteFeedConnectionsWithHttpInfo($feedConnections);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -574,15 +571,12 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 202:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -708,24 +702,25 @@ class BankFeedsApi
      */
     public function getFeedConnection($id)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFeedConnectionWithHttpInfo($id);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFeedConnectionWithHttpInfo($id);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -749,15 +744,12 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -889,24 +881,25 @@ class BankFeedsApi
      */
     public function getFeedConnections($page = null, $pageSize = null)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getFeedConnectionsWithHttpInfo($page, $pageSize);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getFeedConnectionsWithHttpInfo($page, $pageSize);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -931,15 +924,12 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 201:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1060,24 +1050,25 @@ class BankFeedsApi
      */
     public function getStatement($statementId)
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getStatementWithHttpInfo($statementId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getStatementWithHttpInfo($statementId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1099,15 +1090,12 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statement'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statement'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
@@ -1235,24 +1223,25 @@ class BankFeedsApi
      */
     public function getStatements($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
     {
-        list($responseData, $requestMessage, $responseMessage) = $this->getStatementsWithHttpInfo($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
+        ['model' => $model, 'request' => $request, 'response' => $response]
+            = $this->getStatementsWithHttpInfo($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
 
-        $statusCode = (int)$responseMessage->getStatusCode();
+        $statusCode = (int)$response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
             throw new ApiException(
                 sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
-                    $requestMessage->getUri()
+                    $request->getUri()
                 ),
                 $statusCode,
-                $requestMessage,
-                $responseMessage
+                $request,
+                $response
             );
         }
 
-        return $responseData;
+        return $model;
     }
 
     /**
@@ -1278,21 +1267,18 @@ class BankFeedsApi
 
         $statusCode = (int)$response->getStatusCode();
 
-
-        $responseBody = $response->getBody();
-
         switch($statusCode) {
             case 200:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
             case 400:
                 return [
-                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
-                    $request,
-                    $response
+                    'model' => ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    'request' => $request,
+                    'response' => $response
                 ];
         }
 
