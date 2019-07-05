@@ -440,35 +440,45 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'type');
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'type',
+                implode('", "', $allowedValues)
             );
         }
 
         if ($this->container['contact'] === null) {
-            $invalidProperties[] = "'contact' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'contact');
         }
         if ($this->container['lineItems'] === null) {
-            $invalidProperties[] = "'lineItems' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'lineItems');
         }
-        if (!is_null($this->container['invoiceNumber']) && (mb_strlen($this->container['invoiceNumber']) > 255)) {
-            $invalidProperties[] = "invalid value for 'invoiceNumber', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['invoiceNumber']) && (mb_strlen($this->container['invoiceNumber']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'invoiceNumber',
+                255
+            );
         }
 
-        if (!is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 255)) {
-            $invalidProperties[] = "invalid value for 'reference', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'reference',
+                255
+            );
         }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -510,8 +520,9 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
         if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'type', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'type',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -659,7 +670,7 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setInvoiceNumber($invoiceNumber)
     {
-        if (!is_null($invoiceNumber) && (mb_strlen($invoiceNumber) > 255)) {
+        if (! is_null($invoiceNumber) && (mb_strlen($invoiceNumber) > 255)) {
             throw new \InvalidArgumentException('invalid length for $invoiceNumber when calling Invoice., must be smaller than or equal to 255.');
         }
 
@@ -687,7 +698,7 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setReference($reference)
     {
-        if (!is_null($reference) && (mb_strlen($reference) > 255)) {
+        if (! is_null($reference) && (mb_strlen($reference) > 255)) {
             throw new \InvalidArgumentException('invalid length for $reference when calling Invoice., must be smaller than or equal to 255.');
         }
 
@@ -812,11 +823,12 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1437,6 +1449,15 @@ class Invoice implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

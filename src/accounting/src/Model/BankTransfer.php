@@ -252,13 +252,13 @@ class BankTransfer implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['fromBankAccount'] === null) {
-            $invalidProperties[] = "'fromBankAccount' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'fromBankAccount');
         }
         if ($this->container['toBankAccount'] === null) {
-            $invalidProperties[] = "'toBankAccount' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'toBankAccount');
         }
         if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'amount');
         }
         return $invalidProperties;
     }
@@ -599,6 +599,15 @@ class BankTransfer implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

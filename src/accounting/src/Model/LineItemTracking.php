@@ -203,8 +203,12 @@ class LineItemTracking implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
+        if (! is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'name',
+                100
+            );
         }
 
         return $invalidProperties;
@@ -265,7 +269,7 @@ class LineItemTracking implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setName($name)
     {
-        if (!is_null($name) && (mb_strlen($name) > 100)) {
+        if (! is_null($name) && (mb_strlen($name) > 100)) {
             throw new \InvalidArgumentException('invalid length for $name when calling LineItemTracking., must be smaller than or equal to 100.');
         }
 
@@ -358,6 +362,15 @@ class LineItemTracking implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

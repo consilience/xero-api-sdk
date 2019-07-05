@@ -251,16 +251,17 @@ class User implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['firstName'] === null) {
-            $invalidProperties[] = "'firstName' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'firstName');
         }
         if ($this->container['lastName'] === null) {
-            $invalidProperties[] = "'lastName' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'lastName');
         }
         $allowedValues = $this->getOrganisationRoleAllowableValues();
         if (!is_null($this->container['organisationRole']) && !in_array($this->container['organisationRole'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'organisationRole', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'organisationRole',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -443,11 +444,12 @@ class User implements ModelInterface, ArrayAccess, JsonSerializable
     public function setOrganisationRole($organisationRole)
     {
         $allowedValues = $this->getOrganisationRoleAllowableValues();
-        if (!is_null($organisationRole) && !in_array($organisationRole, $allowedValues, true)) {
+        if (! is_null($organisationRole) && !in_array($organisationRole, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'organisationRole', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'organisationRole',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -516,6 +518,15 @@ class User implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

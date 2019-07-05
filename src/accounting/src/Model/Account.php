@@ -395,43 +395,55 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 10)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 10.";
+        if (! is_null($this->container['code']) && (mb_strlen($this->container['code']) > 10)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'code',
+                10
+            );
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 150)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 150.";
+        if (! is_null($this->container['name']) && (mb_strlen($this->container['name']) > 150)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'name',
+                150
+            );
         }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getBankAccountTypeAllowableValues();
         if (!is_null($this->container['bankAccountType']) && !in_array($this->container['bankAccountType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'bankAccountType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'bankAccountType',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getClassAllowableValues();
         if (!is_null($this->container['class']) && !in_array($this->container['class'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'class', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'class',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getSystemAccountAllowableValues();
         if (!is_null($this->container['systemAccount']) && !in_array($this->container['systemAccount'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'systemAccount', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'systemAccount',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -469,7 +481,7 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setCode($code)
     {
-        if (!is_null($code) && (mb_strlen($code) > 10)) {
+        if (! is_null($code) && (mb_strlen($code) > 10)) {
             throw new \InvalidArgumentException('invalid length for $code when calling Account., must be smaller than or equal to 10.');
         }
 
@@ -497,7 +509,7 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setName($name)
     {
-        if (!is_null($name) && (mb_strlen($name) > 150)) {
+        if (! is_null($name) && (mb_strlen($name) > 150)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Account., must be smaller than or equal to 150.');
         }
 
@@ -598,11 +610,12 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -655,11 +668,12 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     public function setBankAccountType($bankAccountType)
     {
         $allowedValues = $this->getBankAccountTypeAllowableValues();
-        if (!is_null($bankAccountType) && !in_array($bankAccountType, $allowedValues, true)) {
+        if (! is_null($bankAccountType) && !in_array($bankAccountType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'bankAccountType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'bankAccountType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -784,11 +798,12 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     public function setClass($class)
     {
         $allowedValues = $this->getClassAllowableValues();
-        if (!is_null($class) && !in_array($class, $allowedValues, true)) {
+        if (! is_null($class) && !in_array($class, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'class', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'class',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -817,11 +832,12 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     public function setSystemAccount($systemAccount)
     {
         $allowedValues = $this->getSystemAccountAllowableValues();
-        if (!is_null($systemAccount) && !in_array($systemAccount, $allowedValues, true)) {
+        if (! is_null($systemAccount) && !in_array($systemAccount, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'systemAccount', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'systemAccount',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1010,6 +1026,15 @@ class Account implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

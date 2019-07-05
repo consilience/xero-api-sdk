@@ -243,8 +243,9 @@ class Report implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getReportTypeAllowableValues();
         if (!is_null($this->container['reportType']) && !in_array($this->container['reportType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'reportType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'reportType',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -331,11 +332,12 @@ class Report implements ModelInterface, ArrayAccess, JsonSerializable
     public function setReportType($reportType)
     {
         $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($reportType) && !in_array($reportType, $allowedValues, true)) {
+        if (! is_null($reportType) && !in_array($reportType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'reportType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'reportType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -500,6 +502,15 @@ class Report implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

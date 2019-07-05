@@ -430,40 +430,69 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['contactNumber']) && (mb_strlen($this->container['contactNumber']) > 50)) {
-            $invalidProperties[] = "invalid value for 'contactNumber', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['contactNumber']) && (mb_strlen($this->container['contactNumber']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'contactNumber',
+                50
+            );
         }
 
-        if (!is_null($this->container['accountNumber']) && (mb_strlen($this->container['accountNumber']) > 50)) {
-            $invalidProperties[] = "invalid value for 'accountNumber', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['accountNumber']) && (mb_strlen($this->container['accountNumber']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'accountNumber',
+                50
+            );
         }
 
         $allowedValues = $this->getContactStatusAllowableValues();
         if (!is_null($this->container['contactStatus']) && !in_array($this->container['contactStatus'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'contactStatus', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'contactStatus',
+                implode('", "', $allowedValues)
             );
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'name',
+                255
+            );
         }
 
-        if (!is_null($this->container['firstName']) && (mb_strlen($this->container['firstName']) > 255)) {
-            $invalidProperties[] = "invalid value for 'firstName', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['firstName']) && (mb_strlen($this->container['firstName']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'firstName',
+                255
+            );
         }
 
-        if (!is_null($this->container['lastName']) && (mb_strlen($this->container['lastName']) > 255)) {
-            $invalidProperties[] = "invalid value for 'lastName', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['lastName']) && (mb_strlen($this->container['lastName']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'lastName',
+                255
+            );
         }
 
-        if (!is_null($this->container['emailAddress']) && (mb_strlen($this->container['emailAddress']) > 255)) {
-            $invalidProperties[] = "invalid value for 'emailAddress', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['emailAddress']) && (mb_strlen($this->container['emailAddress']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'emailAddress',
+                255
+            );
         }
 
-        if (!is_null($this->container['taxNumber']) && (mb_strlen($this->container['taxNumber']) > 50)) {
-            $invalidProperties[] = "invalid value for 'taxNumber', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['taxNumber']) && (mb_strlen($this->container['taxNumber']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'taxNumber',
+                50
+            );
         }
 
         return $invalidProperties;
@@ -524,7 +553,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setContactNumber($contactNumber)
     {
-        if (!is_null($contactNumber) && (mb_strlen($contactNumber) > 50)) {
+        if (! is_null($contactNumber) && (mb_strlen($contactNumber) > 50)) {
             throw new \InvalidArgumentException('invalid length for $contactNumber when calling Contact., must be smaller than or equal to 50.');
         }
 
@@ -552,7 +581,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAccountNumber($accountNumber)
     {
-        if (!is_null($accountNumber) && (mb_strlen($accountNumber) > 50)) {
+        if (! is_null($accountNumber) && (mb_strlen($accountNumber) > 50)) {
             throw new \InvalidArgumentException('invalid length for $accountNumber when calling Contact., must be smaller than or equal to 50.');
         }
 
@@ -581,11 +610,12 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     public function setContactStatus($contactStatus)
     {
         $allowedValues = $this->getContactStatusAllowableValues();
-        if (!is_null($contactStatus) && !in_array($contactStatus, $allowedValues, true)) {
+        if (! is_null($contactStatus) && !in_array($contactStatus, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'contactStatus', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'contactStatus',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -613,7 +643,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setName($name)
     {
-        if (!is_null($name) && (mb_strlen($name) > 255)) {
+        if (! is_null($name) && (mb_strlen($name) > 255)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Contact., must be smaller than or equal to 255.');
         }
 
@@ -641,7 +671,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setFirstName($firstName)
     {
-        if (!is_null($firstName) && (mb_strlen($firstName) > 255)) {
+        if (! is_null($firstName) && (mb_strlen($firstName) > 255)) {
             throw new \InvalidArgumentException('invalid length for $firstName when calling Contact., must be smaller than or equal to 255.');
         }
 
@@ -669,7 +699,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setLastName($lastName)
     {
-        if (!is_null($lastName) && (mb_strlen($lastName) > 255)) {
+        if (! is_null($lastName) && (mb_strlen($lastName) > 255)) {
             throw new \InvalidArgumentException('invalid length for $lastName when calling Contact., must be smaller than or equal to 255.');
         }
 
@@ -697,7 +727,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setEmailAddress($emailAddress)
     {
-        if (!is_null($emailAddress) && (mb_strlen($emailAddress) > 255)) {
+        if (! is_null($emailAddress) && (mb_strlen($emailAddress) > 255)) {
             throw new \InvalidArgumentException('invalid length for $emailAddress when calling Contact., must be smaller than or equal to 255.');
         }
 
@@ -797,7 +827,7 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setTaxNumber($taxNumber)
     {
-        if (!is_null($taxNumber) && (mb_strlen($taxNumber) > 50)) {
+        if (! is_null($taxNumber) && (mb_strlen($taxNumber) > 50)) {
             throw new \InvalidArgumentException('invalid length for $taxNumber when calling Contact., must be smaller than or equal to 50.');
         }
 
@@ -1490,6 +1520,15 @@ class Contact implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

@@ -32,6 +32,7 @@ namespace Consilience\Xero\FilesSdk\Api;
 // PSR-18
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Client\RequestExceptionInterface;
+use Psr\Http\Client\NetworkExceptionInterface;
 
 // PSR-7
 use Psr\Http\Message\RequestInterface;
@@ -50,6 +51,8 @@ use Consilience\Xero\FilesSdk\ApiException;
 use Consilience\Xero\FilesSdk\Configuration;
 use Consilience\Xero\FilesSdk\HeaderSelector;
 use Consilience\Xero\FilesSdk\ObjectSerializer;
+
+use InvalidArgumentException;
 
 /**
  * FilesApi Class Doc Comment
@@ -158,13 +161,29 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Association $association association (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Association
      */
     public function createFileAssociation($fileId, $association = null)
     {
-        list($response) = $this->createFileAssociationWithHttpInfo($fileId, $association);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createFileAssociationWithHttpInfo($fileId, $association);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -176,191 +195,40 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Association $association (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Association, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFileAssociationWithHttpInfo($fileId, $association = null)
     {
         $request = $this->createFileAssociationRequest($fileId, $association);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Association' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Association', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Association';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Association',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createFileAssociationAsync
-     *
-     * create a new association
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\Association $association (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFileAssociationAsync($fileId, $association = null)
-    {
-        return $this->createFileAssociationAsyncWithHttpInfo($fileId, $association)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createFileAssociationAsyncWithHttpInfo
-     *
-     * create a new association
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\Association $association (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFileAssociationAsyncWithHttpInfo($fileId, $association = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association';
-        $request = $this->createFileAssociationRequest($fileId, $association);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createFileAssociation'
@@ -368,16 +236,19 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      * @param  \Consilience\Xero\FilesSdk\Model\Association $association (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createFileAssociationRequest($fileId, $association = null)
+    public function createFileAssociationRequest($fileId, $association = null)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling createFileAssociation'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'createFileAssociation'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}/Associations';
@@ -452,6 +323,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -495,13 +381,29 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder folder (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Folder
      */
     public function createFolder($folder = null)
     {
-        list($response) = $this->createFolderWithHttpInfo($folder);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createFolderWithHttpInfo($folder);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -512,199 +414,50 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Folder, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFolderWithHttpInfo($folder = null)
     {
         $request = $this->createFolderRequest($folder);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Folder' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Folder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Folder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createFolderAsync
-     *
-     * create a new folder
-     *
-     * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFolderAsync($folder = null)
-    {
-        return $this->createFolderAsyncWithHttpInfo($folder)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createFolderAsyncWithHttpInfo
-     *
-     * create a new folder
-     *
-     * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFolderAsyncWithHttpInfo($folder = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-        $request = $this->createFolderRequest($folder);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createFolder'
      *
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createFolderRequest($folder = null)
+    public function createFolderRequest($folder = null)
     {
 
         $resourcePath = '/Folders';
@@ -771,6 +524,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -814,13 +582,29 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileResponse204
      */
     public function deleteFile($fileId)
     {
-        list($response) = $this->deleteFileWithHttpInfo($fileId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->deleteFileWithHttpInfo($fileId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -831,205 +615,59 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileResponse204, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFileWithHttpInfo($fileId)
     {
         $request = $this->deleteFileRequest($fileId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 204:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileResponse204' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileResponse204', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileResponse204',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 204:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation deleteFileAsync
-     *
-     * delete a file
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFileAsync($fileId)
-    {
-        return $this->deleteFileAsyncWithHttpInfo($fileId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteFileAsyncWithHttpInfo
-     *
-     * delete a file
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFileAsyncWithHttpInfo($fileId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-        $request = $this->deleteFileRequest($fileId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'deleteFile'
      *
      * @param  string $fileId File id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function deleteFileRequest($fileId)
+    public function deleteFileRequest($fileId)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling deleteFile'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'deleteFile'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}';
@@ -1101,6 +739,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'DELETE'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1145,13 +798,29 @@ class FilesApi
      * @param  string $objectId Object id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileResponse204
      */
     public function deleteFileAssociation($fileId, $objectId)
     {
-        list($response) = $this->deleteFileAssociationWithHttpInfo($fileId, $objectId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->deleteFileAssociationWithHttpInfo($fileId, $objectId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1163,191 +832,40 @@ class FilesApi
      * @param  string $objectId Object id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileResponse204, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFileAssociationWithHttpInfo($fileId, $objectId)
     {
         $request = $this->deleteFileAssociationRequest($fileId, $objectId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 204:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileResponse204' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileResponse204', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileResponse204',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 204:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation deleteFileAssociationAsync
-     *
-     * create a new association
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  string $objectId Object id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFileAssociationAsync($fileId, $objectId)
-    {
-        return $this->deleteFileAssociationAsyncWithHttpInfo($fileId, $objectId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteFileAssociationAsyncWithHttpInfo
-     *
-     * create a new association
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  string $objectId Object id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFileAssociationAsyncWithHttpInfo($fileId, $objectId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-        $request = $this->deleteFileAssociationRequest($fileId, $objectId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'deleteFileAssociation'
@@ -1355,22 +873,28 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      * @param  string $objectId Object id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function deleteFileAssociationRequest($fileId, $objectId)
+    public function deleteFileAssociationRequest($fileId, $objectId)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling deleteFileAssociation'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'deleteFileAssociation'
+            ));
         }
-        // verify the required parameter 'objectId' is set
+        // Verify the required parameter 'objectId' is set
+
         if ($objectId === null || (is_array($objectId) && count($objectId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $objectId when calling deleteFileAssociation'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'objectId',
+                'deleteFileAssociation'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}/Associations/{ObjectId}';
@@ -1450,6 +974,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'DELETE'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1493,13 +1032,29 @@ class FilesApi
      * @param  string $folderId Folder id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileResponse204
      */
     public function deleteFolder($folderId)
     {
-        list($response) = $this->deleteFolderWithHttpInfo($folderId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->deleteFolderWithHttpInfo($folderId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1510,205 +1065,59 @@ class FilesApi
      * @param  string $folderId Folder id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileResponse204, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFolderWithHttpInfo($folderId)
     {
         $request = $this->deleteFolderRequest($folderId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 204:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileResponse204' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileResponse204', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileResponse204',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 204:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileResponse204'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation deleteFolderAsync
-     *
-     * delete a folder
-     *
-     * @param  string $folderId Folder id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFolderAsync($folderId)
-    {
-        return $this->deleteFolderAsyncWithHttpInfo($folderId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteFolderAsyncWithHttpInfo
-     *
-     * delete a folder
-     *
-     * @param  string $folderId Folder id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFolderAsyncWithHttpInfo($folderId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
-        $request = $this->deleteFolderRequest($folderId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'deleteFolder'
      *
      * @param  string $folderId Folder id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function deleteFolderRequest($folderId)
+    public function deleteFolderRequest($folderId)
     {
-        // verify the required parameter 'folderId' is set
+        // Verify the required parameter 'folderId' is set
+
         if ($folderId === null || (is_array($folderId) && count($folderId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folderId when calling deleteFolder'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'folderId',
+                'deleteFolder'
+            ));
         }
 
         $resourcePath = '/Folders/{FolderId}';
@@ -1780,6 +1189,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'DELETE'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1823,13 +1247,29 @@ class FilesApi
      * @param  string $objectId Object id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Association[]
      */
     public function getAssociationsByObject($objectId)
     {
-        list($response) = $this->getAssociationsByObjectWithHttpInfo($objectId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getAssociationsByObjectWithHttpInfo($objectId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1840,205 +1280,59 @@ class FilesApi
      * @param  string $objectId Object id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Association[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssociationsByObjectWithHttpInfo($objectId)
     {
         $request = $this->getAssociationsByObjectRequest($objectId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Association[]' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Association[]', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Association[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getAssociationsByObjectAsync
-     *
-     * searches files
-     *
-     * @param  string $objectId Object id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssociationsByObjectAsync($objectId)
-    {
-        return $this->getAssociationsByObjectAsyncWithHttpInfo($objectId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAssociationsByObjectAsyncWithHttpInfo
-     *
-     * searches files
-     *
-     * @param  string $objectId Object id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssociationsByObjectAsyncWithHttpInfo($objectId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
-        $request = $this->getAssociationsByObjectRequest($objectId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getAssociationsByObject'
      *
      * @param  string $objectId Object id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getAssociationsByObjectRequest($objectId)
+    public function getAssociationsByObjectRequest($objectId)
     {
-        // verify the required parameter 'objectId' is set
+        // Verify the required parameter 'objectId' is set
+
         if ($objectId === null || (is_array($objectId) && count($objectId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $objectId when calling getAssociationsByObject'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'objectId',
+                'getAssociationsByObject'
+            ));
         }
 
         $resourcePath = '/Associations/{ObjectId}';
@@ -2110,6 +1404,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -2153,13 +1462,29 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileObject
      */
     public function getFile($fileId)
     {
-        list($response) = $this->getFileWithHttpInfo($fileId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFileWithHttpInfo($fileId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -2170,205 +1495,59 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileWithHttpInfo($fileId)
     {
         $request = $this->getFileRequest($fileId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileObject' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFileAsync
-     *
-     * searches for file by unique id
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileAsync($fileId)
-    {
-        return $this->getFileAsyncWithHttpInfo($fileId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFileAsyncWithHttpInfo
-     *
-     * searches for file by unique id
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileAsyncWithHttpInfo($fileId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-        $request = $this->getFileRequest($fileId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFile'
      *
      * @param  string $fileId File id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFileRequest($fileId)
+    public function getFileRequest($fileId)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling getFile'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'getFile'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}';
@@ -2440,6 +1619,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -2483,13 +1677,29 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Association[]
      */
     public function getFileAssociations($fileId)
     {
-        list($response) = $this->getFileAssociationsWithHttpInfo($fileId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFileAssociationsWithHttpInfo($fileId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -2500,205 +1710,59 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Association[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileAssociationsWithHttpInfo($fileId)
     {
         $request = $this->getFileAssociationsRequest($fileId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Association[]' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Association[]', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Association[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Association[]'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFileAssociationsAsync
-     *
-     * searches files
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileAssociationsAsync($fileId)
-    {
-        return $this->getFileAssociationsAsyncWithHttpInfo($fileId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFileAssociationsAsyncWithHttpInfo
-     *
-     * searches files
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileAssociationsAsyncWithHttpInfo($fileId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
-        $request = $this->getFileAssociationsRequest($fileId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFileAssociations'
      *
      * @param  string $fileId File id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFileAssociationsRequest($fileId)
+    public function getFileAssociationsRequest($fileId)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling getFileAssociations'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'getFileAssociations'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}/Associations';
@@ -2770,6 +1834,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -2813,13 +1892,29 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \SplFileObject
      */
     public function getFileContent($fileId)
     {
-        list($response) = $this->getFileContentWithHttpInfo($fileId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFileContentWithHttpInfo($fileId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -2830,205 +1925,59 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileContentWithHttpInfo($fileId)
     {
         $request = $this->getFileContentRequest($fileId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\SplFileObject' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\SplFileObject';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SplFileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\SplFileObject'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFileContentAsync
-     *
-     * searches files to retrieve the data
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileContentAsync($fileId)
-    {
-        return $this->getFileContentAsyncWithHttpInfo($fileId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFileContentAsyncWithHttpInfo
-     *
-     * searches files to retrieve the data
-     *
-     * @param  string $fileId File id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFileContentAsyncWithHttpInfo($fileId)
-    {
         $returnType = '\SplFileObject';
-        $request = $this->getFileContentRequest($fileId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFileContent'
      *
      * @param  string $fileId File id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFileContentRequest($fileId)
+    public function getFileContentRequest($fileId)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling getFileContent'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'getFileContent'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}/Content';
@@ -3100,6 +2049,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -3145,13 +2109,29 @@ class FilesApi
      * @param  string $sort values to sort by (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Files
      */
     public function getFiles($pagesize = null, $page = null, $sort = null)
     {
-        list($response) = $this->getFilesWithHttpInfo($pagesize, $page, $sort);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFilesWithHttpInfo($pagesize, $page, $sort);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -3164,193 +2144,40 @@ class FilesApi
      * @param  string $sort values to sort by (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Files, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFilesWithHttpInfo($pagesize = null, $page = null, $sort = null)
     {
         $request = $this->getFilesRequest($pagesize, $page, $sort);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Files' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Files', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Files';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Files',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Files'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFilesAsync
-     *
-     * searches files
-     *
-     * @param  int $pagesize pass an optional page size value (optional)
-     * @param  int $page number of records to skip for pagination (optional)
-     * @param  string $sort values to sort by (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFilesAsync($pagesize = null, $page = null, $sort = null)
-    {
-        return $this->getFilesAsyncWithHttpInfo($pagesize, $page, $sort)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFilesAsyncWithHttpInfo
-     *
-     * searches files
-     *
-     * @param  int $pagesize pass an optional page size value (optional)
-     * @param  int $page number of records to skip for pagination (optional)
-     * @param  string $sort values to sort by (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFilesAsyncWithHttpInfo($pagesize = null, $page = null, $sort = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Files';
-        $request = $this->getFilesRequest($pagesize, $page, $sort);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFiles'
@@ -3359,17 +2186,29 @@ class FilesApi
      * @param  int $page number of records to skip for pagination (optional)
      * @param  string $sort values to sort by (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFilesRequest($pagesize = null, $page = null, $sort = null)
+    public function getFilesRequest($pagesize = null, $page = null, $sort = null)
     {
         if ($pagesize !== null && $pagesize > 100) {
-            throw new \InvalidArgumentException('invalid value for "$pagesize" when calling FilesApi.getFiles, must be smaller than or equal to 100.');
+            throw new InvalidArgumentException(sprintf(
+                'invalid value for "$%s" when calling %s.%s, must be smaller than or equal to %d.',
+                'pagesize',
+                'FilesApi',
+                'getFiles',
+                100
+            ));
         }
 
         if ($page !== null && $page < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page" when calling FilesApi.getFiles, must be bigger than or equal to 1.');
+            throw new InvalidArgumentException(sprintf(
+                'invalid value for "$%s" when calling %s.%s, must be bigger than or equal to %d.',
+                'page',
+                'FilesApi',
+                'getFiles',
+                1
+            ));
         }
 
 
@@ -3446,6 +2285,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -3489,13 +2343,29 @@ class FilesApi
      * @param  string $folderId Folder id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Folder
      */
     public function getFolder($folderId)
     {
-        list($response) = $this->getFolderWithHttpInfo($folderId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFolderWithHttpInfo($folderId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -3506,205 +2376,59 @@ class FilesApi
      * @param  string $folderId Folder id for single object (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Folder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderWithHttpInfo($folderId)
     {
         $request = $this->getFolderRequest($folderId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Folder' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Folder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Folder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFolderAsync
-     *
-     * searches specific folder by id
-     *
-     * @param  string $folderId Folder id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFolderAsync($folderId)
-    {
-        return $this->getFolderAsyncWithHttpInfo($folderId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFolderAsyncWithHttpInfo
-     *
-     * searches specific folder by id
-     *
-     * @param  string $folderId Folder id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFolderAsyncWithHttpInfo($folderId)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-        $request = $this->getFolderRequest($folderId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFolder'
      *
      * @param  string $folderId Folder id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFolderRequest($folderId)
+    public function getFolderRequest($folderId)
     {
-        // verify the required parameter 'folderId' is set
+        // Verify the required parameter 'folderId' is set
+
         if ($folderId === null || (is_array($folderId) && count($folderId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folderId when calling getFolder'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'folderId',
+                'getFolder'
+            ));
         }
 
         $resourcePath = '/Folders/{FolderId}';
@@ -3776,6 +2500,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -3819,13 +2558,29 @@ class FilesApi
      * @param  string $sort values to sort by (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Folder[]
      */
     public function getFolders($sort = null)
     {
-        list($response) = $this->getFoldersWithHttpInfo($sort);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFoldersWithHttpInfo($sort);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -3836,199 +2591,50 @@ class FilesApi
      * @param  string $sort values to sort by (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Folder[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getFoldersWithHttpInfo($sort = null)
     {
         $request = $this->getFoldersRequest($sort);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Folder[]' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Folder[]', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Folder[]';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Folder[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder[]'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFoldersAsync
-     *
-     * searches folder
-     *
-     * @param  string $sort values to sort by (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFoldersAsync($sort = null)
-    {
-        return $this->getFoldersAsyncWithHttpInfo($sort)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFoldersAsyncWithHttpInfo
-     *
-     * searches folder
-     *
-     * @param  string $sort values to sort by (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFoldersAsyncWithHttpInfo($sort = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder[]';
-        $request = $this->getFoldersRequest($sort);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFolders'
      *
      * @param  string $sort values to sort by (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFoldersRequest($sort = null)
+    public function getFoldersRequest($sort = null)
     {
 
         $resourcePath = '/Folders';
@@ -4096,6 +2702,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -4138,13 +2759,29 @@ class FilesApi
      *
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Folder
      */
     public function getInbox()
     {
-        list($response) = $this->getInboxWithHttpInfo();
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getInboxWithHttpInfo();
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -4154,196 +2791,49 @@ class FilesApi
      *
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Folder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxWithHttpInfo()
     {
         $request = $this->getInboxRequest();
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Folder' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Folder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Folder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getInboxAsync
-     *
-     * searches inbox folder
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getInboxAsync()
-    {
-        return $this->getInboxAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getInboxAsyncWithHttpInfo
-     *
-     * searches inbox folder
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getInboxAsyncWithHttpInfo()
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-        $request = $this->getInboxRequest();
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getInbox'
      *
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getInboxRequest()
+    public function getInboxRequest()
     {
 
         $resourcePath = '/Inbox';
@@ -4407,6 +2897,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -4451,13 +2956,29 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\FileObject $fileObject fileObject (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileObject
      */
     public function updateFile($fileId, $fileObject = null)
     {
-        list($response) = $this->updateFileWithHttpInfo($fileId, $fileObject);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->updateFileWithHttpInfo($fileId, $fileObject);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -4469,191 +2990,40 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\FileObject $fileObject (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFileWithHttpInfo($fileId, $fileObject = null)
     {
         $request = $this->updateFileRequest($fileId, $fileObject);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileObject' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation updateFileAsync
-     *
-     * Update a file
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\FileObject $fileObject (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateFileAsync($fileId, $fileObject = null)
-    {
-        return $this->updateFileAsyncWithHttpInfo($fileId, $fileObject)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateFileAsyncWithHttpInfo
-     *
-     * Update a file
-     *
-     * @param  string $fileId File id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\FileObject $fileObject (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateFileAsyncWithHttpInfo($fileId, $fileObject = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-        $request = $this->updateFileRequest($fileId, $fileObject);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'updateFile'
@@ -4661,16 +3031,19 @@ class FilesApi
      * @param  string $fileId File id for single object (required)
      * @param  \Consilience\Xero\FilesSdk\Model\FileObject $fileObject (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function updateFileRequest($fileId, $fileObject = null)
+    public function updateFileRequest($fileId, $fileObject = null)
     {
-        // verify the required parameter 'fileId' is set
+        // Verify the required parameter 'fileId' is set
+
         if ($fileId === null || (is_array($fileId) && count($fileId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $fileId when calling updateFile'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'fileId',
+                'updateFile'
+            ));
         }
 
         $resourcePath = '/Files/{FileId}';
@@ -4745,6 +3118,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'PUT'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -4789,13 +3177,29 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder folder (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\Folder
      */
     public function updateFolder($folderId, $folder)
     {
-        list($response) = $this->updateFolderWithHttpInfo($folderId, $folder);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->updateFolderWithHttpInfo($folderId, $folder);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -4807,191 +3211,40 @@ class FilesApi
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (required)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\Folder, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFolderWithHttpInfo($folderId, $folder)
     {
         $request = $this->updateFolderRequest($folderId, $folder);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\Folder' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\Folder', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\Folder',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\Folder'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation updateFolderAsync
-     *
-     * update folder
-     *
-     * @param  string $folderId Folder id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateFolderAsync($folderId, $folder)
-    {
-        return $this->updateFolderAsyncWithHttpInfo($folderId, $folder)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateFolderAsyncWithHttpInfo
-     *
-     * update folder
-     *
-     * @param  string $folderId Folder id for single object (required)
-     * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateFolderAsyncWithHttpInfo($folderId, $folder)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
-        $request = $this->updateFolderRequest($folderId, $folder);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'updateFolder'
@@ -4999,22 +3252,28 @@ class FilesApi
      * @param  string $folderId Folder id for single object (required)
      * @param  \Consilience\Xero\FilesSdk\Model\Folder $folder (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function updateFolderRequest($folderId, $folder)
+    public function updateFolderRequest($folderId, $folder)
     {
-        // verify the required parameter 'folderId' is set
+        // Verify the required parameter 'folderId' is set
+
         if ($folderId === null || (is_array($folderId) && count($folderId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folderId when calling updateFolder'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'folderId',
+                'updateFolder'
+            ));
         }
-        // verify the required parameter 'folder' is set
+        // Verify the required parameter 'folder' is set
+
         if ($folder === null || (is_array($folder) && count($folder) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folder when calling updateFolder'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'folder',
+                'updateFolder'
+            ));
         }
 
         $resourcePath = '/Folders/{FolderId}';
@@ -5089,6 +3348,21 @@ class FilesApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'PUT'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -5136,13 +3410,29 @@ class FilesApi
      * @param  string $mimeType mimeType (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\FilesSdk\Model\FileObject
      */
     public function uploadFile($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
     {
-        list($response) = $this->uploadFileWithHttpInfo($folderId, $body, $name, $filename, $mimeType);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->uploadFileWithHttpInfo($folderId, $body, $name, $filename, $mimeType);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -5157,197 +3447,40 @@ class FilesApi
      * @param  string $mimeType (optional)
      *
      * @throws \Consilience\Xero\FilesSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\FilesSdk\Model\FileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileWithHttpInfo($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
     {
         $request = $this->uploadFileRequest($folderId, $body, $name, $filename, $mimeType);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\FilesSdk\Model\FileObject' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\FilesSdk\Model\FileObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\FilesSdk\Model\FileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\FilesSdk\Model\FileObject'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation uploadFileAsync
-     *
-     * upload an File
-     *
-     * @param  string $folderId pass an optional folder id to save file to specific folder (optional)
-     * @param  string $body (optional)
-     * @param  string $name exact name of the file you are uploading (optional)
-     * @param  string $filename (optional)
-     * @param  string $mimeType (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function uploadFileAsync($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
-    {
-        return $this->uploadFileAsyncWithHttpInfo($folderId, $body, $name, $filename, $mimeType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation uploadFileAsyncWithHttpInfo
-     *
-     * upload an File
-     *
-     * @param  string $folderId pass an optional folder id to save file to specific folder (optional)
-     * @param  string $body (optional)
-     * @param  string $name exact name of the file you are uploading (optional)
-     * @param  string $filename (optional)
-     * @param  string $mimeType (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function uploadFileAsyncWithHttpInfo($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
-    {
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
-        $request = $this->uploadFileRequest($folderId, $body, $name, $filename, $mimeType);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'uploadFile'
@@ -5358,10 +3491,10 @@ class FilesApi
      * @param  string $filename (optional)
      * @param  string $mimeType (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function uploadFileRequest($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
+    public function uploadFileRequest($folderId = null, $body = null, $name = null, $filename = null, $mimeType = null)
     {
 
         $resourcePath = '/Files';
@@ -5443,6 +3576,21 @@ class FilesApi
                 $httpBody = $this->createStream($this->buildQuery($formParams));
             }
         }
+
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
 
 
         $defaultHeaders = [];
@@ -5644,5 +3792,48 @@ class FilesApi
             }
         }
         return $qs ? (string) substr($qs, 0, -1) : '';
+    }
+
+    function buildHttpRequest(
+        array $headerParams,
+        array $headers,
+        array $queryParams,
+        $httpBody,
+        string $method
+    ) {
+        $defaultHeaders = [];
+
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+
+        $url = $this->createUri($this->config->getHost() . $resourcePath);
+
+        if ($queryParams) {
+            $url = $url->withQuery($this->buildQuery($queryParams));
+        }
+
+        $request = $this->createRequest($method, $url);
+
+        if ($headers) {
+            foreach ($headers as $name => $value) {
+                $request = $request->withHeader($name, $value);
+            }
+        }
+
+        // Add the body if set.
+
+        if ($httpBody) {
+            $request = $request->withBody($httpBody);
+        }
+
+        return $request;
     }
 }

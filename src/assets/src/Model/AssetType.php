@@ -228,13 +228,13 @@ class AssetType implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['assetTypeId'] === null) {
-            $invalidProperties[] = "'assetTypeId' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'assetTypeId');
         }
         if ($this->container['assetTypeName'] === null) {
-            $invalidProperties[] = "'assetTypeName' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'assetTypeName');
         }
         if ($this->container['bookDepreciationSetting'] === null) {
-            $invalidProperties[] = "'bookDepreciationSetting' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'bookDepreciationSetting');
         }
         return $invalidProperties;
     }
@@ -479,6 +479,15 @@ class AssetType implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

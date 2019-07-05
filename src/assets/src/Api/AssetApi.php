@@ -32,6 +32,7 @@ namespace Consilience\Xero\AssetsSdk\Api;
 // PSR-18
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Client\RequestExceptionInterface;
+use Psr\Http\Client\NetworkExceptionInterface;
 
 // PSR-7
 use Psr\Http\Message\RequestInterface;
@@ -50,6 +51,8 @@ use Consilience\Xero\AssetsSdk\ApiException;
 use Consilience\Xero\AssetsSdk\Configuration;
 use Consilience\Xero\AssetsSdk\HeaderSelector;
 use Consilience\Xero\AssetsSdk\ObjectSerializer;
+
+use InvalidArgumentException;
 
 /**
  * AssetApi Class Doc Comment
@@ -157,13 +160,29 @@ class AssetApi
      * @param  \Consilience\Xero\AssetsSdk\Model\Asset $asset Fixed asset to add (required)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\Asset
      */
     public function createAsset($asset)
     {
-        list($response) = $this->createAssetWithHttpInfo($asset);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createAssetWithHttpInfo($asset);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -174,205 +193,59 @@ class AssetApi
      * @param  \Consilience\Xero\AssetsSdk\Model\Asset $asset Fixed asset to add (required)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\Asset, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAssetWithHttpInfo($asset)
     {
         $request = $this->createAssetRequest($asset);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\Asset' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\Asset', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\Asset',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createAssetAsync
-     *
-     * adds a fixed asset
-     *
-     * @param  \Consilience\Xero\AssetsSdk\Model\Asset $asset Fixed asset to add (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAssetAsync($asset)
-    {
-        return $this->createAssetAsyncWithHttpInfo($asset)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAssetAsyncWithHttpInfo
-     *
-     * adds a fixed asset
-     *
-     * @param  \Consilience\Xero\AssetsSdk\Model\Asset $asset Fixed asset to add (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAssetAsyncWithHttpInfo($asset)
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
-        $request = $this->createAssetRequest($asset);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createAsset'
      *
      * @param  \Consilience\Xero\AssetsSdk\Model\Asset $asset Fixed asset to add (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createAssetRequest($asset)
+    public function createAssetRequest($asset)
     {
-        // verify the required parameter 'asset' is set
+        // Verify the required parameter 'asset' is set
+
         if ($asset === null || (is_array($asset) && count($asset) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $asset when calling createAsset'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'asset',
+                'createAsset'
+            ));
         }
 
         $resourcePath = '/Assets';
@@ -439,6 +312,21 @@ class AssetApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -482,13 +370,29 @@ class AssetApi
      * @param  \Consilience\Xero\AssetsSdk\Model\AssetType $assetType Asset type to add (optional)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\AssetType
      */
     public function createAssetType($assetType = null)
     {
-        list($response) = $this->createAssetTypeWithHttpInfo($assetType);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createAssetTypeWithHttpInfo($assetType);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -499,199 +403,50 @@ class AssetApi
      * @param  \Consilience\Xero\AssetsSdk\Model\AssetType $assetType Asset type to add (optional)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\AssetType, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAssetTypeWithHttpInfo($assetType = null)
     {
         $request = $this->createAssetTypeRequest($assetType);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\AssetType' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\AssetType', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\AssetType',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createAssetTypeAsync
-     *
-     * adds a fixed asset type
-     *
-     * @param  \Consilience\Xero\AssetsSdk\Model\AssetType $assetType Asset type to add (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAssetTypeAsync($assetType = null)
-    {
-        return $this->createAssetTypeAsyncWithHttpInfo($assetType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAssetTypeAsyncWithHttpInfo
-     *
-     * adds a fixed asset type
-     *
-     * @param  \Consilience\Xero\AssetsSdk\Model\AssetType $assetType Asset type to add (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAssetTypeAsyncWithHttpInfo($assetType = null)
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType';
-        $request = $this->createAssetTypeRequest($assetType);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createAssetType'
      *
      * @param  \Consilience\Xero\AssetsSdk\Model\AssetType $assetType Asset type to add (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createAssetTypeRequest($assetType = null)
+    public function createAssetTypeRequest($assetType = null)
     {
 
         $resourcePath = '/AssetTypes';
@@ -758,6 +513,21 @@ class AssetApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -801,13 +571,29 @@ class AssetApi
      * @param  string $id fixed asset id for single object (required)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\Asset
      */
     public function getAssetById($id)
     {
-        list($response) = $this->getAssetByIdWithHttpInfo($id);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getAssetByIdWithHttpInfo($id);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -818,205 +604,59 @@ class AssetApi
      * @param  string $id fixed asset id for single object (required)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\Asset, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetByIdWithHttpInfo($id)
     {
         $request = $this->getAssetByIdRequest($id);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\Asset' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\Asset', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\Asset',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Asset'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getAssetByIdAsync
-     *
-     * retrieves fixed asset by id
-     *
-     * @param  string $id fixed asset id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetByIdAsync($id)
-    {
-        return $this->getAssetByIdAsyncWithHttpInfo($id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAssetByIdAsyncWithHttpInfo
-     *
-     * retrieves fixed asset by id
-     *
-     * @param  string $id fixed asset id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetByIdAsyncWithHttpInfo($id)
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
-        $request = $this->getAssetByIdRequest($id);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getAssetById'
      *
      * @param  string $id fixed asset id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getAssetByIdRequest($id)
+    public function getAssetByIdRequest($id)
     {
-        // verify the required parameter 'id' is set
+        // Verify the required parameter 'id' is set
+
         if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getAssetById'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'id',
+                'getAssetById'
+            ));
         }
 
         $resourcePath = '/Assets/{id}';
@@ -1088,6 +728,21 @@ class AssetApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1130,13 +785,29 @@ class AssetApi
      *
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\Setting
      */
     public function getAssetSettings()
     {
-        list($response) = $this->getAssetSettingsWithHttpInfo();
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getAssetSettingsWithHttpInfo();
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1146,196 +817,49 @@ class AssetApi
      *
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\Setting, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetSettingsWithHttpInfo()
     {
         $request = $this->getAssetSettingsRequest();
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\Setting' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\Setting', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\Setting';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\Setting',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Setting'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getAssetSettingsAsync
-     *
-     * searches fixed asset settings
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetSettingsAsync()
-    {
-        return $this->getAssetSettingsAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAssetSettingsAsyncWithHttpInfo
-     *
-     * searches fixed asset settings
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetSettingsAsyncWithHttpInfo()
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Setting';
-        $request = $this->getAssetSettingsRequest();
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getAssetSettings'
      *
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getAssetSettingsRequest()
+    public function getAssetSettingsRequest()
     {
 
         $resourcePath = '/Settings';
@@ -1399,6 +923,21 @@ class AssetApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1441,13 +980,29 @@ class AssetApi
      *
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\AssetType[]
      */
     public function getAssetTypes()
     {
-        list($response) = $this->getAssetTypesWithHttpInfo();
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getAssetTypesWithHttpInfo();
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1457,196 +1012,49 @@ class AssetApi
      *
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\AssetType[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetTypesWithHttpInfo()
     {
         $request = $this->getAssetTypesRequest();
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\AssetType[]' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\AssetType[]', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType[]';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\AssetType[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\AssetType[]'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getAssetTypesAsync
-     *
-     * searches fixed asset types
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetTypesAsync()
-    {
-        return $this->getAssetTypesAsyncWithHttpInfo()
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAssetTypesAsyncWithHttpInfo
-     *
-     * searches fixed asset types
-     *
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetTypesAsyncWithHttpInfo()
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType[]';
-        $request = $this->getAssetTypesRequest();
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getAssetTypes'
      *
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getAssetTypesRequest()
+    public function getAssetTypesRequest()
     {
 
         $resourcePath = '/AssetTypes';
@@ -1710,6 +1118,21 @@ class AssetApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -1758,13 +1181,29 @@ class AssetApi
      * @param  string $filterBy A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields. (optional)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\AssetsSdk\Model\Assets
      */
     public function getAssets($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
     {
-        list($response) = $this->getAssetsWithHttpInfo($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getAssetsWithHttpInfo($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1780,199 +1219,40 @@ class AssetApi
      * @param  string $filterBy A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields. (optional)
      *
      * @throws \Consilience\Xero\AssetsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\AssetsSdk\Model\Assets, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAssetsWithHttpInfo($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
     {
         $request = $this->getAssetsRequest($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\AssetsSdk\Model\Assets' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\AssetsSdk\Model\Assets', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\AssetsSdk\Model\Assets';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\AssetsSdk\Model\Assets',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\AssetsSdk\Model\Assets'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getAssetsAsync
-     *
-     * searches fixed asset
-     *
-     * @param  string $status Required when retrieving a collection of assets. See Asset Status Codes (required)
-     * @param  int $page Results are paged. This specifies which page of the results to return. The default page is 1. (optional)
-     * @param  int $pageSize The number of records returned per page. By default the number of records returned is 10. (optional)
-     * @param  string $orderBy Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice. (optional)
-     * @param  string $sortDirection ASC or DESC (optional)
-     * @param  string $filterBy A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetsAsync($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
-    {
-        return $this->getAssetsAsyncWithHttpInfo($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getAssetsAsyncWithHttpInfo
-     *
-     * searches fixed asset
-     *
-     * @param  string $status Required when retrieving a collection of assets. See Asset Status Codes (required)
-     * @param  int $page Results are paged. This specifies which page of the results to return. The default page is 1. (optional)
-     * @param  int $pageSize The number of records returned per page. By default the number of records returned is 10. (optional)
-     * @param  string $orderBy Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice. (optional)
-     * @param  string $sortDirection ASC or DESC (optional)
-     * @param  string $filterBy A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getAssetsAsyncWithHttpInfo($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
-    {
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Assets';
-        $request = $this->getAssetsRequest($status, $page, $pageSize, $orderBy, $sortDirection, $filterBy);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getAssets'
@@ -1984,16 +1264,19 @@ class AssetApi
      * @param  string $sortDirection ASC or DESC (optional)
      * @param  string $filterBy A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getAssetsRequest($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
+    public function getAssetsRequest($status, $page = null, $pageSize = null, $orderBy = null, $sortDirection = null, $filterBy = null)
     {
-        // verify the required parameter 'status' is set
+        // Verify the required parameter 'status' is set
+
         if ($status === null || (is_array($status) && count($status) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $status when calling getAssets'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'status',
+                'getAssets'
+            ));
         }
 
         $resourcePath = '/Assets';
@@ -2079,6 +1362,21 @@ class AssetApi
                 $httpBody = $this->createStream($this->buildQuery($formParams));
             }
         }
+
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
 
 
         $defaultHeaders = [];
@@ -2280,5 +1578,48 @@ class AssetApi
             }
         }
         return $qs ? (string) substr($qs, 0, -1) : '';
+    }
+
+    function buildHttpRequest(
+        array $headerParams,
+        array $headers,
+        array $queryParams,
+        $httpBody,
+        string $method
+    ) {
+        $defaultHeaders = [];
+
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+
+        $url = $this->createUri($this->config->getHost() . $resourcePath);
+
+        if ($queryParams) {
+            $url = $url->withQuery($this->buildQuery($queryParams));
+        }
+
+        $request = $this->createRequest($method, $url);
+
+        if ($headers) {
+            foreach ($headers as $name => $value) {
+                $request = $request->withHeader($name, $value);
+            }
+        }
+
+        // Add the body if set.
+
+        if ($httpBody) {
+            $request = $request->withBody($httpBody);
+        }
+
+        return $request;
     }
 }

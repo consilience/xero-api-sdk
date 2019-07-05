@@ -32,6 +32,7 @@ namespace Consilience\Xero\BankfeedsSdk\Api;
 // PSR-18
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Client\RequestExceptionInterface;
+use Psr\Http\Client\NetworkExceptionInterface;
 
 // PSR-7
 use Psr\Http\Message\RequestInterface;
@@ -50,6 +51,8 @@ use Consilience\Xero\BankfeedsSdk\ApiException;
 use Consilience\Xero\BankfeedsSdk\Configuration;
 use Consilience\Xero\BankfeedsSdk\HeaderSelector;
 use Consilience\Xero\BankfeedsSdk\ObjectSerializer;
+
+use InvalidArgumentException;
 
 /**
  * BankFeedsApi Class Doc Comment
@@ -157,13 +160,29 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connection(s) to add (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\FeedConnections
      */
     public function createFeedConnections($feedConnections)
     {
-        list($response) = $this->createFeedConnectionsWithHttpInfo($feedConnections);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createFeedConnectionsWithHttpInfo($feedConnections);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -174,205 +193,59 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connection(s) to add (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\FeedConnections, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFeedConnectionsWithHttpInfo($feedConnections)
     {
         $request = $this->createFeedConnectionsRequest($feedConnections);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\FeedConnections' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 201:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createFeedConnectionsAsync
-     *
-     * create one or more new feed connection
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connection(s) to add (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFeedConnectionsAsync($feedConnections)
-    {
-        return $this->createFeedConnectionsAsyncWithHttpInfo($feedConnections)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createFeedConnectionsAsyncWithHttpInfo
-     *
-     * create one or more new feed connection
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connection(s) to add (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createFeedConnectionsAsyncWithHttpInfo($feedConnections)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-        $request = $this->createFeedConnectionsRequest($feedConnections);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createFeedConnections'
      *
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connection(s) to add (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createFeedConnectionsRequest($feedConnections)
+    public function createFeedConnectionsRequest($feedConnections)
     {
-        // verify the required parameter 'feedConnections' is set
+        // Verify the required parameter 'feedConnections' is set
+
         if ($feedConnections === null || (is_array($feedConnections) && count($feedConnections) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $feedConnections when calling createFeedConnections'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'feedConnections',
+                'createFeedConnections'
+            ));
         }
 
         $resourcePath = '/FeedConnections';
@@ -438,6 +311,26 @@ class BankFeedsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -480,13 +373,29 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\Statements $statements Feed Connection(s) to add (optional)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Error|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements
      */
     public function createStatements($statements = null)
     {
-        list($response) = $this->createStatementsWithHttpInfo($statements);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->createStatementsWithHttpInfo($statements);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -495,345 +404,86 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\Statements $statements Feed Connection(s) to add (optional)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Error|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements, HTTP status code, HTTP response headers (array of strings)
      */
     public function createStatementsWithHttpInfo($statements = null)
     {
         $request = $this->createStatementsRequest($statements);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 202:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Error' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 409:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 413:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statements';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 413:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 202:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 400:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 403:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Error'),
+                    $request,
+                    $response
+                ];
+            case 409:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 413:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 422:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 500:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation createStatementsAsync
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\Statements $statements Feed Connection(s) to add (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createStatementsAsync($statements = null)
-    {
-        return $this->createStatementsAsyncWithHttpInfo($statements)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createStatementsAsyncWithHttpInfo
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\Statements $statements Feed Connection(s) to add (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createStatementsAsyncWithHttpInfo($statements = null)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statements';
-        $request = $this->createStatementsRequest($statements);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'createStatements'
      *
      * @param  \Consilience\Xero\BankfeedsSdk\Model\Statements $statements Feed Connection(s) to add (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function createStatementsRequest($statements = null)
+    public function createStatementsRequest($statements = null)
     {
 
         $resourcePath = '/Statements';
@@ -900,6 +550,21 @@ class BankFeedsApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -943,13 +608,29 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connections to delete (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\FeedConnections
      */
     public function deleteFeedConnections($feedConnections)
     {
-        list($response) = $this->deleteFeedConnectionsWithHttpInfo($feedConnections);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->deleteFeedConnectionsWithHttpInfo($feedConnections);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -960,205 +641,59 @@ class BankFeedsApi
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connections to delete (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\FeedConnections, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFeedConnectionsWithHttpInfo($feedConnections)
     {
         $request = $this->deleteFeedConnectionsRequest($feedConnections);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 202:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\FeedConnections' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 202:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation deleteFeedConnectionsAsync
-     *
-     * delete an exsiting feed connection
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connections to delete (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFeedConnectionsAsync($feedConnections)
-    {
-        return $this->deleteFeedConnectionsAsyncWithHttpInfo($feedConnections)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deleteFeedConnectionsAsyncWithHttpInfo
-     *
-     * delete an exsiting feed connection
-     *
-     * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connections to delete (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deleteFeedConnectionsAsyncWithHttpInfo($feedConnections)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-        $request = $this->deleteFeedConnectionsRequest($feedConnections);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'deleteFeedConnections'
      *
      * @param  \Consilience\Xero\BankfeedsSdk\Model\FeedConnections $feedConnections Feed Connections to delete (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function deleteFeedConnectionsRequest($feedConnections)
+    public function deleteFeedConnectionsRequest($feedConnections)
     {
-        // verify the required parameter 'feedConnections' is set
+        // Verify the required parameter 'feedConnections' is set
+
         if ($feedConnections === null || (is_array($feedConnections) && count($feedConnections) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $feedConnections when calling deleteFeedConnections'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'feedConnections',
+                'deleteFeedConnections'
+            ));
         }
 
         $resourcePath = '/FeedConnections/DeleteRequests';
@@ -1224,6 +759,26 @@ class BankFeedsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'POST'
+        );
+
+
+
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1268,13 +823,29 @@ class BankFeedsApi
      * @param  string $id feed connection id for single object (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\FeedConnection
      */
     public function getFeedConnection($id)
     {
-        list($response) = $this->getFeedConnectionWithHttpInfo($id);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFeedConnectionWithHttpInfo($id);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1285,205 +856,59 @@ class BankFeedsApi
      * @param  string $id feed connection id for single object (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\FeedConnection, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFeedConnectionWithHttpInfo($id)
     {
         $request = $this->getFeedConnectionRequest($id);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\FeedConnection' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFeedConnectionAsync
-     *
-     * get single feed connection by id
-     *
-     * @param  string $id feed connection id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFeedConnectionAsync($id)
-    {
-        return $this->getFeedConnectionAsyncWithHttpInfo($id)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFeedConnectionAsyncWithHttpInfo
-     *
-     * get single feed connection by id
-     *
-     * @param  string $id feed connection id for single object (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFeedConnectionAsyncWithHttpInfo($id)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnection';
-        $request = $this->getFeedConnectionRequest($id);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFeedConnection'
      *
      * @param  string $id feed connection id for single object (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFeedConnectionRequest($id)
+    public function getFeedConnectionRequest($id)
     {
-        // verify the required parameter 'id' is set
+        // Verify the required parameter 'id' is set
+
         if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getFeedConnection'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'id',
+                'getFeedConnection'
+            ));
         }
 
         $resourcePath = '/FeedConnections/{id}';
@@ -1554,6 +979,26 @@ class BankFeedsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1599,13 +1044,29 @@ class BankFeedsApi
      * @param  int $pageSize Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize&#x3D;100 to specify page size of 100. (optional)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\FeedConnections
      */
     public function getFeedConnections($page = null, $pageSize = null)
     {
-        list($response) = $this->getFeedConnectionsWithHttpInfo($page, $pageSize);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getFeedConnectionsWithHttpInfo($page, $pageSize);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1617,191 +1078,40 @@ class BankFeedsApi
      * @param  int $pageSize Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize&#x3D;100 to specify page size of 100. (optional)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\FeedConnections, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFeedConnectionsWithHttpInfo($page = null, $pageSize = null)
     {
         $request = $this->getFeedConnectionsRequest($page, $pageSize);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 201:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\FeedConnections' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 201:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getFeedConnectionsAsync
-     *
-     * searches feed connections
-     *
-     * @param  int $page Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page&#x3D;1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned. (optional)
-     * @param  int $pageSize Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize&#x3D;100 to specify page size of 100. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFeedConnectionsAsync($page = null, $pageSize = null)
-    {
-        return $this->getFeedConnectionsAsyncWithHttpInfo($page, $pageSize)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getFeedConnectionsAsyncWithHttpInfo
-     *
-     * searches feed connections
-     *
-     * @param  int $page Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page&#x3D;1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned. (optional)
-     * @param  int $pageSize Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize&#x3D;100 to specify page size of 100. (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getFeedConnectionsAsyncWithHttpInfo($page = null, $pageSize = null)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\FeedConnections';
-        $request = $this->getFeedConnectionsRequest($page, $pageSize);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getFeedConnections'
@@ -1809,10 +1119,10 @@ class BankFeedsApi
      * @param  int $page Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page&#x3D;1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned. (optional)
      * @param  int $pageSize Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize&#x3D;100 to specify page size of 100. (optional)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getFeedConnectionsRequest($page = null, $pageSize = null)
+    public function getFeedConnectionsRequest($page = null, $pageSize = null)
     {
 
         $resourcePath = '/FeedConnections';
@@ -1883,6 +1193,26 @@ class BankFeedsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-API-Key');
+        if ($apiKey !== null) {
+            $headers['X-API-Key'] = $apiKey;
+        }
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1925,13 +1255,29 @@ class BankFeedsApi
      * @param  string $statementId statementId (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\Statement
      */
     public function getStatement($statementId)
     {
-        list($response) = $this->getStatementWithHttpInfo($statementId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getStatementWithHttpInfo($statementId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -1940,201 +1286,59 @@ class BankFeedsApi
      * @param  string $statementId (required)
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\Statement, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatementWithHttpInfo($statementId)
     {
         $request = $this->getStatementRequest($statementId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statement' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statement', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statement';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statement',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statement'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getStatementAsync
-     *
-     * @param  string $statementId (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getStatementAsync($statementId)
-    {
-        return $this->getStatementAsyncWithHttpInfo($statementId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getStatementAsyncWithHttpInfo
-     *
-     * @param  string $statementId (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getStatementAsyncWithHttpInfo($statementId)
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statement';
-        $request = $this->getStatementRequest($statementId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getStatement'
      *
      * @param  string $statementId (required)
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getStatementRequest($statementId)
+    public function getStatementRequest($statementId)
     {
-        // verify the required parameter 'statementId' is set
+        // Verify the required parameter 'statementId' is set
+
         if ($statementId === null || (is_array($statementId) && count($statementId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $statementId when calling getStatement'
-            );
+            throw new InvalidArgumentException(sprintf(
+                'Missing the required parameter $%s when calling %s',
+                'statementId',
+                'getStatement'
+            ));
         }
 
         $resourcePath = '/Statements/{statementId}';
@@ -2206,6 +1410,21 @@ class BankFeedsApi
         }
 
 
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
+
+
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
@@ -2251,13 +1470,29 @@ class BankFeedsApi
      * @param  string $xeroUserId xeroUserId (optional, default to '00000000-0000-0000-0000-0000030000000')
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return \Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements
      */
     public function getStatements($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
     {
-        list($response) = $this->getStatementsWithHttpInfo($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
-        return $response;
+        list($responseData, $requestMessage, $responseMessage) = $this->getStatementsWithHttpInfo($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
+
+        $statusCode = (int)$responseMessage->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $requestMessage->getUri()
+                ),
+                $statusCode,
+                $requestMessage,
+                $responseMessage
+            );
+        }
+
+        return $responseData;
     }
 
     /**
@@ -2270,218 +1505,46 @@ class BankFeedsApi
      * @param  string $xeroUserId (optional, default to '00000000-0000-0000-0000-0000030000000')
      *
      * @throws \Consilience\Xero\BankfeedsSdk\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
+     * @throws RequestExceptionInterface if the request is malformed
+     * @throws NetworkExceptionInterface if the network is down
      * @return array of \Consilience\Xero\BankfeedsSdk\Model\Statements|\Consilience\Xero\BankfeedsSdk\Model\Statements, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatementsWithHttpInfo($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
     {
         $request = $this->getStatementsRequest($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
 
-        try {
-            try {
-                // Get a PSR-18 synchronous client.
+        $response = $this->getSyncClient()->sendRequest($request);
 
-                $client = $this->getSyncClient();
+        $statusCode = (int)$response->getStatusCode();
 
-                $response = $client->sendRequest($request);
-            } catch (RequestExceptionInterface $e) {
-                // CHECKME: is this what the Guzzle client would throw too?
-                // This $e->getResponse() - is that PSR-7 or just what the Guzzle exception provides?
 
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+        $responseBody = $response->getBody();
 
-            $statusCode = $response->getStatusCode();
-
-            // FIXME: this behavious is not desired, since even 4xx errors may
-            // carry a payload with details of the problem that the application
-            // may need to know.
-
-            /*if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }*/
-
-            $responseBody = $response->getBody();
-            switch($statusCode) {
-                case 200:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    // The response body will always be Psr\Http\Message\StreamInterface
-
-                    if ('\Consilience\Xero\BankfeedsSdk\Model\Statements' === '\SplFileObject') {
-                        // Data type maps to "file" in the spec.
-                        $content = $responseBody;
-                    } else {
-                        $content = (string)$responseBody;
-                    }
-
-                    // FIXME: we should pass in $response->getHeaders() instead of []
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Consilience\Xero\BankfeedsSdk\Model\Statements', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            // CHECKME: does this belong here? Not convinced.
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statements';
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                // Stream goes to deserializer
-                $content = $responseBody;
-            } else {
-                $content = (string)$responseBody;
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Consilience\Xero\BankfeedsSdk\Model\Statements',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
+        switch($statusCode) {
+            case 200:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
+            case 400:
+                return [
+                    ObjectSerializer::deserialize($response, '\Consilience\Xero\BankfeedsSdk\Model\Statements'),
+                    $request,
+                    $response
+                ];
         }
-    }
 
-    /**
-     * Operation getStatementsAsync
-     *
-     * @param  int $page (optional)
-     * @param  int $pageSize (optional)
-     * @param  string $xeroApplicationId (optional, default to '00000000-0000-0000-0000-0000000010000')
-     * @param  string $xeroTenantId (optional, default to '00000000-0000-0000-0000-0000020000000')
-     * @param  string $xeroUserId (optional, default to '00000000-0000-0000-0000-0000030000000')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getStatementsAsync($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
-    {
-        return $this->getStatementsAsyncWithHttpInfo($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getStatementsAsyncWithHttpInfo
-     *
-     * @param  int $page (optional)
-     * @param  int $pageSize (optional)
-     * @param  string $xeroApplicationId (optional, default to '00000000-0000-0000-0000-0000000010000')
-     * @param  string $xeroTenantId (optional, default to '00000000-0000-0000-0000-0000020000000')
-     * @param  string $xeroUserId (optional, default to '00000000-0000-0000-0000-0000030000000')
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getStatementsAsyncWithHttpInfo($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
-    {
         $returnType = '\Consilience\Xero\BankfeedsSdk\Model\Statements';
-        $request = $this->getStatementsRequest($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId);
 
-        if (! $this->client instanceof  GuzzleClient) {
-            // TODO: Not a suitable client; throw excpetion.
-        }
-
-        return $this->client
-            ->sendAsync($request)
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return [
+            ObjectSerializer::deserialize($response, $returnType),
+            $request,
+            $response
+        ];
     }
+
 
     /**
      * Create request for operation 'getStatements'
@@ -2492,10 +1555,10 @@ class BankFeedsApi
      * @param  string $xeroTenantId (optional, default to '00000000-0000-0000-0000-0000020000000')
      * @param  string $xeroUserId (optional, default to '00000000-0000-0000-0000-0000030000000')
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return RequestInterface
      */
-    protected function getStatementsRequest($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
+    public function getStatementsRequest($page = null, $pageSize = null, $xeroApplicationId = '00000000-0000-0000-0000-0000000010000', $xeroTenantId = '00000000-0000-0000-0000-0000020000000', $xeroUserId = '00000000-0000-0000-0000-0000030000000')
     {
 
         $resourcePath = '/Statements';
@@ -2577,6 +1640,21 @@ class BankFeedsApi
                 $httpBody = $this->createStream($this->buildQuery($formParams));
             }
         }
+
+
+
+
+
+        return $this->buildHttpRequest(
+            $headerParams,
+            $headers,
+            $queryParams,
+            $httpBody,
+            'GET'
+        );
+
+
+
 
 
         $defaultHeaders = [];
@@ -2778,5 +1856,48 @@ class BankFeedsApi
             }
         }
         return $qs ? (string) substr($qs, 0, -1) : '';
+    }
+
+    function buildHttpRequest(
+        array $headerParams,
+        array $headers,
+        array $queryParams,
+        $httpBody,
+        string $method
+    ) {
+        $defaultHeaders = [];
+
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+
+        $url = $this->createUri($this->config->getHost() . $resourcePath);
+
+        if ($queryParams) {
+            $url = $url->withQuery($this->buildQuery($queryParams));
+        }
+
+        $request = $this->createRequest($method, $url);
+
+        if ($headers) {
+            foreach ($headers as $name => $value) {
+                $request = $request->withHeader($name, $value);
+            }
+        }
+
+        // Add the body if set.
+
+        if ($httpBody) {
+            $request = $request->withBody($httpBody);
+        }
+
+        return $request;
     }
 }

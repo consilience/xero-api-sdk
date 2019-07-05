@@ -375,16 +375,17 @@ class PurchaseOrder implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['contact'] === null) {
-            $invalidProperties[] = "'contact' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'contact');
         }
         if ($this->container['lineItems'] === null) {
-            $invalidProperties[] = "'lineItems' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'lineItems');
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -639,11 +640,12 @@ class PurchaseOrder implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1144,6 +1146,15 @@ class PurchaseOrder implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

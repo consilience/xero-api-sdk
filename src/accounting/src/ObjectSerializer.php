@@ -30,6 +30,7 @@ namespace Consilience\Xero\AccountingSdk;
  * Do not edit the class manually.
  */
 
+use Psr\Http\Message\MessageInterface;
 use Consilience\Xero\AccountingSdk\Model\ModelInterface;
 
 /**
@@ -256,39 +257,67 @@ class ObjectSerializer
      */
     public static function deserialize($data, $class, $httpHeaders = null)
     {
-        if (null === $data) {
+        if ($data === null) {
             return null;
-        } elseif (substr($class, 0, 4) === 'map[') {
-            // for associative array e.g. map[string,int]
+        }
+
+        if ($data instanceof MessageInterface) {
+            // If a PSR-7 message, then unwrap the message.
+
+            // FIXME: can we decode the JSON at this point?
+
+            return static::deserialize($data->getBody(), $class, $data->getHeaders());
+        }
+
+        if ($class !== '\SplFileObject' && $data instanceof StreamInterface) {
+            // A PSR-7 stream provided, but the datatype is not expected to be a
+            // stream, so solidify it to a string.
+
+            $data = (string)$data;
+        }
+
+        if (substr($class, 0, 4) === 'map[') {
+            // For associative array e.g. map[string,int]
+
             $data = is_string($data) ? json_decode($data) : $data;
 
             settype($data, 'array');
+
             $inner = substr($class, 4, -1);
             $deserialized = [];
 
             if (strrpos($inner, ',') !== false) {
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
+
                 foreach ($data as $key => $value) {
-                    $deserialized[$key] = static::deserialize($value, $subClass, null);
+                    $deserialized[$key] = static::deserialize($value, $subClass);
                 }
             }
+
             return $deserialized;
-        } elseif (strcasecmp(substr($class, -2), '[]') === 0) {
+        }
+
+        if (strcasecmp(substr($class, -2), '[]') === 0) {
             $data = is_string($data) ? json_decode($data) : $data;
 
             $subClass = substr($class, 0, -2);
             $values = [];
 
             foreach ($data as $key => $value) {
-                $values[] = static::deserialize($value, $subClass, null);
+                $values[] = static::deserialize($value, $subClass);
             }
 
             return $values;
-        } elseif ($class === 'object') {
+        }
+
+        if ($class === 'object') {
             settype($data, 'array');
+
             return $data;
-        } elseif ($class === '\DateTime') {
+        }
+
+        if ($class === '\DateTime') {
             // Some API's return an invalid, empty string as a
             // date-time property. DateTime::__construct() will return
             // the current time for empty input which is probably not
@@ -319,10 +348,14 @@ class ObjectSerializer
             } else {
                 return null;
             }
-        } elseif (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+        }
+
+        if (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
             settype($data, $class);
             return $data;
-        } elseif ($class === '\SplFileObject') {
+        }
+
+        if ($class === '\SplFileObject') {
             /** @var \Psr\Http\Message\StreamInterface $data */
 
             // determine file name
@@ -344,53 +377,53 @@ class ObjectSerializer
             fclose($file);
 
             return new \SplFileObject($filename, 'r');
-        } elseif (method_exists($class, 'getAllowableEnumValues')) {
-            if (! in_array($data, $class::getAllowableEnumValues(), true)) {
-                $imploded = implode("', '", $class::getAllowableEnumValues());
+        }
 
+        if (method_exists($class, 'getAllowableEnumValues')) {
+            if (! in_array($data, $class::getAllowableEnumValues(), true)) {
                 throw new \InvalidArgumentException(sprintf(
                     'Invalid value for enum "%s", must be one of: "%s"',
                     $class,
-                    $imploded
+                    implode('", "', $class::getAllowableEnumValues())
                 ));
             }
 
             return $data;
-        } else {
-            $data = is_string($data) ? json_decode($data) : $data;
-
-            // If a discriminator is defined and points to a valid subclass, use it.
-
-            if (! empty($class::DISCRIMINATOR)) {
-                $discriminatorName = static::dataElement($data, $class::DISCRIMINATOR);
-
-                if (is_string($discriminatorName)) {
-                    $subclass = '\Consilience\Xero\AccountingSdk\Model\\' . $discriminatorName;
-
-                    if (is_subclass_of($subclass, $class)) {
-                        $class = $subclass;
-                    }
-                }
-            }
-
-            $instance = new $class();
-
-            foreach ($instance::openAPITypes() as $property => $type) {
-                $propertySetter = $instance::setters()[$property];
-
-                $propertyValue = static::dataElement($data, $instance::attributeMap()[$property]);
-
-                if (!isset($propertySetter) || !isset($propertyValue)) {
-                    continue;
-                }
-
-                if (isset($propertyValue)) {
-                    $instance->$propertySetter(static::deserialize($propertyValue, $type, null));
-                }
-            }
-
-            return $instance;
         }
+
+        $data = is_string($data) ? json_decode($data) : $data;
+
+        // If a discriminator is defined and points to a valid subclass, use it.
+
+        if (! empty($class::DISCRIMINATOR)) {
+            $discriminatorName = static::dataElement($data, $class::DISCRIMINATOR);
+
+            if (is_string($discriminatorName)) {
+                $subclass = '\Consilience\Xero\AccountingSdk\Model\\' . $discriminatorName;
+
+                if (is_subclass_of($subclass, $class)) {
+                    $class = $subclass;
+                }
+            }
+        }
+
+        $instance = new $class();
+
+        foreach ($instance::openAPITypes() as $property => $type) {
+            $propertySetter = $instance::setters()[$property];
+
+            $propertyValue = static::dataElement($data, $instance::attributeMap()[$property]);
+
+            if (! isset($propertySetter) || !isset($propertyValue)) {
+                continue;
+            }
+
+            if (isset($propertyValue)) {
+                $instance->$propertySetter(static::deserialize($propertyValue, $type));
+            }
+        }
+
+        return $instance;
     }
 
     /**

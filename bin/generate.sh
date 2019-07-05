@@ -27,6 +27,6 @@ ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
     --generated=${DIR}/../src/assets/
 
 ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
-    --spec=${DIR}/../vendor/xeroapi/xero-openapi/files-json/Xero_files_1.0.0_swagger.json \
+    --spec=${DIR}/../vendor/xeroapi/xero-openapi/files-yaml/Xero_files_1.0.0_swagger.yaml \
     --namespace=Consilience\\Xero\\FilesSdk \
     --generated=${DIR}/../src/files/

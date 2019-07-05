@@ -301,29 +301,32 @@ class LinkedTransaction implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['sourceLineItemID'] === null) {
-            $invalidProperties[] = "'sourceLineItemID' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'sourceLineItemID');
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'type',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getSourceTransactionTypeCodeAllowableValues();
         if (!is_null($this->container['sourceTransactionTypeCode']) && !in_array($this->container['sourceTransactionTypeCode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'sourceTransactionTypeCode', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'sourceTransactionTypeCode',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -506,11 +509,12 @@ class LinkedTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -539,11 +543,12 @@ class LinkedTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function setType($type)
     {
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+        if (! is_null($type) && !in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'type', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'type',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -596,11 +601,12 @@ class LinkedTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function setSourceTransactionTypeCode($sourceTransactionTypeCode)
     {
         $allowedValues = $this->getSourceTransactionTypeCodeAllowableValues();
-        if (!is_null($sourceTransactionTypeCode) && !in_array($sourceTransactionTypeCode, $allowedValues, true)) {
+        if (! is_null($sourceTransactionTypeCode) && !in_array($sourceTransactionTypeCode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'sourceTransactionTypeCode', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'sourceTransactionTypeCode',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -693,6 +699,15 @@ class LinkedTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

@@ -276,25 +276,41 @@ class Item implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'code');
         }
         if ((mb_strlen($this->container['code']) > 30)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 30.";
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'code',
+                30
+            );
         }
 
         if ($this->container['inventoryAssetAccountCode'] === null) {
-            $invalidProperties[] = "'inventoryAssetAccountCode' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'inventoryAssetAccountCode');
         }
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'name',
+                50
+            );
         }
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4000)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 4000.";
+        if (! is_null($this->container['description']) && (mb_strlen($this->container['description']) > 4000)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'description',
+                4000
+            );
         }
 
-        if (!is_null($this->container['purchaseDescription']) && (mb_strlen($this->container['purchaseDescription']) > 4000)) {
-            $invalidProperties[] = "invalid value for 'purchaseDescription', the character length must be smaller than or equal to 4000.";
+        if (! is_null($this->container['purchaseDescription']) && (mb_strlen($this->container['purchaseDescription']) > 4000)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'purchaseDescription',
+                4000
+            );
         }
 
         return $invalidProperties;
@@ -383,7 +399,7 @@ class Item implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setName($name)
     {
-        if (!is_null($name) && (mb_strlen($name) > 50)) {
+        if (! is_null($name) && (mb_strlen($name) > 50)) {
             throw new \InvalidArgumentException('invalid length for $name when calling Item., must be smaller than or equal to 50.');
         }
 
@@ -459,7 +475,7 @@ class Item implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setDescription($description)
     {
-        if (!is_null($description) && (mb_strlen($description) > 4000)) {
+        if (! is_null($description) && (mb_strlen($description) > 4000)) {
             throw new \InvalidArgumentException('invalid length for $description when calling Item., must be smaller than or equal to 4000.');
         }
 
@@ -487,7 +503,7 @@ class Item implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setPurchaseDescription($purchaseDescription)
     {
-        if (!is_null($purchaseDescription) && (mb_strlen($purchaseDescription) > 4000)) {
+        if (! is_null($purchaseDescription) && (mb_strlen($purchaseDescription) > 4000)) {
             throw new \InvalidArgumentException('invalid length for $purchaseDescription when calling Item., must be smaller than or equal to 4000.');
         }
 
@@ -748,6 +764,15 @@ class Item implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

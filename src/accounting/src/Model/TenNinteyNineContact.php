@@ -923,6 +923,15 @@ class TenNinteyNineContact implements ModelInterface, ArrayAccess, JsonSerializa
     }
 
     /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
+    }
+
+    /**
      * Return the JSON serialisable data for this model.
      *
      * @return string|object

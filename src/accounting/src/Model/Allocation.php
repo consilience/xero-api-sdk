@@ -204,13 +204,13 @@ class Allocation implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['invoice'] === null) {
-            $invalidProperties[] = "'invoice' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'invoice');
         }
         if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'amount');
         }
         if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'date');
         }
         return $invalidProperties;
     }
@@ -359,6 +359,15 @@ class Allocation implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

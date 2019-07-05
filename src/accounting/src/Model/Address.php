@@ -265,45 +265,82 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getAddressTypeAllowableValues();
         if (!is_null($this->container['addressType']) && !in_array($this->container['addressType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'addressType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'addressType',
+                implode('", "', $allowedValues)
             );
         }
 
-        if (!is_null($this->container['addressLine1']) && (mb_strlen($this->container['addressLine1']) > 500)) {
-            $invalidProperties[] = "invalid value for 'addressLine1', the character length must be smaller than or equal to 500.";
+        if (! is_null($this->container['addressLine1']) && (mb_strlen($this->container['addressLine1']) > 500)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'addressLine1',
+                500
+            );
         }
 
-        if (!is_null($this->container['addressLine2']) && (mb_strlen($this->container['addressLine2']) > 500)) {
-            $invalidProperties[] = "invalid value for 'addressLine2', the character length must be smaller than or equal to 500.";
+        if (! is_null($this->container['addressLine2']) && (mb_strlen($this->container['addressLine2']) > 500)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'addressLine2',
+                500
+            );
         }
 
-        if (!is_null($this->container['addressLine3']) && (mb_strlen($this->container['addressLine3']) > 500)) {
-            $invalidProperties[] = "invalid value for 'addressLine3', the character length must be smaller than or equal to 500.";
+        if (! is_null($this->container['addressLine3']) && (mb_strlen($this->container['addressLine3']) > 500)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'addressLine3',
+                500
+            );
         }
 
-        if (!is_null($this->container['addressLine4']) && (mb_strlen($this->container['addressLine4']) > 500)) {
-            $invalidProperties[] = "invalid value for 'addressLine4', the character length must be smaller than or equal to 500.";
+        if (! is_null($this->container['addressLine4']) && (mb_strlen($this->container['addressLine4']) > 500)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'addressLine4',
+                500
+            );
         }
 
-        if (!is_null($this->container['city']) && (mb_strlen($this->container['city']) > 255)) {
-            $invalidProperties[] = "invalid value for 'city', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['city']) && (mb_strlen($this->container['city']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'city',
+                255
+            );
         }
 
-        if (!is_null($this->container['region']) && (mb_strlen($this->container['region']) > 255)) {
-            $invalidProperties[] = "invalid value for 'region', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['region']) && (mb_strlen($this->container['region']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'region',
+                255
+            );
         }
 
-        if (!is_null($this->container['postalCode']) && (mb_strlen($this->container['postalCode']) > 50)) {
-            $invalidProperties[] = "invalid value for 'postalCode', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['postalCode']) && (mb_strlen($this->container['postalCode']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'postalCode',
+                50
+            );
         }
 
-        if (!is_null($this->container['country']) && (mb_strlen($this->container['country']) > 50)) {
-            $invalidProperties[] = "invalid value for 'country', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['country']) && (mb_strlen($this->container['country']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'country',
+                50
+            );
         }
 
-        if (!is_null($this->container['attentionTo']) && (mb_strlen($this->container['attentionTo']) > 255)) {
-            $invalidProperties[] = "invalid value for 'attentionTo', the character length must be smaller than or equal to 255.";
+        if (! is_null($this->container['attentionTo']) && (mb_strlen($this->container['attentionTo']) > 255)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'attentionTo',
+                255
+            );
         }
 
         return $invalidProperties;
@@ -341,11 +378,12 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
     public function setAddressType($addressType)
     {
         $allowedValues = $this->getAddressTypeAllowableValues();
-        if (!is_null($addressType) && !in_array($addressType, $allowedValues, true)) {
+        if (! is_null($addressType) && !in_array($addressType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'addressType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'addressType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -373,7 +411,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAddressLine1($addressLine1)
     {
-        if (!is_null($addressLine1) && (mb_strlen($addressLine1) > 500)) {
+        if (! is_null($addressLine1) && (mb_strlen($addressLine1) > 500)) {
             throw new \InvalidArgumentException('invalid length for $addressLine1 when calling Address., must be smaller than or equal to 500.');
         }
 
@@ -401,7 +439,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAddressLine2($addressLine2)
     {
-        if (!is_null($addressLine2) && (mb_strlen($addressLine2) > 500)) {
+        if (! is_null($addressLine2) && (mb_strlen($addressLine2) > 500)) {
             throw new \InvalidArgumentException('invalid length for $addressLine2 when calling Address., must be smaller than or equal to 500.');
         }
 
@@ -429,7 +467,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAddressLine3($addressLine3)
     {
-        if (!is_null($addressLine3) && (mb_strlen($addressLine3) > 500)) {
+        if (! is_null($addressLine3) && (mb_strlen($addressLine3) > 500)) {
             throw new \InvalidArgumentException('invalid length for $addressLine3 when calling Address., must be smaller than or equal to 500.');
         }
 
@@ -457,7 +495,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAddressLine4($addressLine4)
     {
-        if (!is_null($addressLine4) && (mb_strlen($addressLine4) > 500)) {
+        if (! is_null($addressLine4) && (mb_strlen($addressLine4) > 500)) {
             throw new \InvalidArgumentException('invalid length for $addressLine4 when calling Address., must be smaller than or equal to 500.');
         }
 
@@ -485,7 +523,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setCity($city)
     {
-        if (!is_null($city) && (mb_strlen($city) > 255)) {
+        if (! is_null($city) && (mb_strlen($city) > 255)) {
             throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 255.');
         }
 
@@ -513,7 +551,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setRegion($region)
     {
-        if (!is_null($region) && (mb_strlen($region) > 255)) {
+        if (! is_null($region) && (mb_strlen($region) > 255)) {
             throw new \InvalidArgumentException('invalid length for $region when calling Address., must be smaller than or equal to 255.');
         }
 
@@ -541,7 +579,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setPostalCode($postalCode)
     {
-        if (!is_null($postalCode) && (mb_strlen($postalCode) > 50)) {
+        if (! is_null($postalCode) && (mb_strlen($postalCode) > 50)) {
             throw new \InvalidArgumentException('invalid length for $postalCode when calling Address., must be smaller than or equal to 50.');
         }
 
@@ -569,7 +607,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setCountry($country)
     {
-        if (!is_null($country) && (mb_strlen($country) > 50)) {
+        if (! is_null($country) && (mb_strlen($country) > 50)) {
             throw new \InvalidArgumentException('invalid length for $country when calling Address., must be smaller than or equal to 50.');
         }
 
@@ -597,7 +635,7 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setAttentionTo($attentionTo)
     {
-        if (!is_null($attentionTo) && (mb_strlen($attentionTo) > 255)) {
+        if (! is_null($attentionTo) && (mb_strlen($attentionTo) > 255)) {
             throw new \InvalidArgumentException('invalid length for $attentionTo when calling Address., must be smaller than or equal to 255.');
         }
 
@@ -666,6 +704,15 @@ class Address implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

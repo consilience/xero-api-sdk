@@ -273,24 +273,27 @@ class BookDepreciationSetting implements ModelInterface, ArrayAccess, JsonSerial
         $allowedValues = $this->getDepreciationMethodAllowableValues();
         if (!is_null($this->container['depreciationMethod']) && !in_array($this->container['depreciationMethod'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'depreciationMethod', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'depreciationMethod',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getAveragingMethodAllowableValues();
         if (!is_null($this->container['averagingMethod']) && !in_array($this->container['averagingMethod'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'averagingMethod', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'averagingMethod',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getDepreciationCalculationMethodAllowableValues();
         if (!is_null($this->container['depreciationCalculationMethod']) && !in_array($this->container['depreciationCalculationMethod'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'depreciationCalculationMethod', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'depreciationCalculationMethod',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -329,11 +332,12 @@ class BookDepreciationSetting implements ModelInterface, ArrayAccess, JsonSerial
     public function setDepreciationMethod($depreciationMethod)
     {
         $allowedValues = $this->getDepreciationMethodAllowableValues();
-        if (!is_null($depreciationMethod) && !in_array($depreciationMethod, $allowedValues, true)) {
+        if (! is_null($depreciationMethod) && !in_array($depreciationMethod, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'depreciationMethod', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'depreciationMethod',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -362,11 +366,12 @@ class BookDepreciationSetting implements ModelInterface, ArrayAccess, JsonSerial
     public function setAveragingMethod($averagingMethod)
     {
         $allowedValues = $this->getAveragingMethodAllowableValues();
-        if (!is_null($averagingMethod) && !in_array($averagingMethod, $allowedValues, true)) {
+        if (! is_null($averagingMethod) && !in_array($averagingMethod, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'averagingMethod', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'averagingMethod',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -443,11 +448,12 @@ class BookDepreciationSetting implements ModelInterface, ArrayAccess, JsonSerial
     public function setDepreciationCalculationMethod($depreciationCalculationMethod)
     {
         $allowedValues = $this->getDepreciationCalculationMethodAllowableValues();
-        if (!is_null($depreciationCalculationMethod) && !in_array($depreciationCalculationMethod, $allowedValues, true)) {
+        if (! is_null($depreciationCalculationMethod) && !in_array($depreciationCalculationMethod, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'depreciationCalculationMethod', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'depreciationCalculationMethod',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -516,6 +522,15 @@ class BookDepreciationSetting implements ModelInterface, ArrayAccess, JsonSerial
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

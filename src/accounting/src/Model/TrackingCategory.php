@@ -238,19 +238,28 @@ class TrackingCategory implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
+        if (! is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'name',
+                100
+            );
         }
 
-        if (!is_null($this->container['option']) && (mb_strlen($this->container['option']) > 100)) {
-            $invalidProperties[] = "invalid value for 'option', the character length must be smaller than or equal to 100.";
+        if (! is_null($this->container['option']) && (mb_strlen($this->container['option']) > 100)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'option',
+                100
+            );
         }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -336,7 +345,7 @@ class TrackingCategory implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setName($name)
     {
-        if (!is_null($name) && (mb_strlen($name) > 100)) {
+        if (! is_null($name) && (mb_strlen($name) > 100)) {
             throw new \InvalidArgumentException('invalid length for $name when calling TrackingCategory., must be smaller than or equal to 100.');
         }
 
@@ -364,7 +373,7 @@ class TrackingCategory implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setOption($option)
     {
-        if (!is_null($option) && (mb_strlen($option) > 100)) {
+        if (! is_null($option) && (mb_strlen($option) > 100)) {
             throw new \InvalidArgumentException('invalid length for $option when calling TrackingCategory., must be smaller than or equal to 100.');
         }
 
@@ -393,11 +402,12 @@ class TrackingCategory implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -490,6 +500,15 @@ class TrackingCategory implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

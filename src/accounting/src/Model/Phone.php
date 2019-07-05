@@ -233,21 +233,34 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getPhoneTypeAllowableValues();
         if (!is_null($this->container['phoneType']) && !in_array($this->container['phoneType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'phoneType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'phoneType',
+                implode('", "', $allowedValues)
             );
         }
 
-        if (!is_null($this->container['phoneNumber']) && (mb_strlen($this->container['phoneNumber']) > 50)) {
-            $invalidProperties[] = "invalid value for 'phoneNumber', the character length must be smaller than or equal to 50.";
+        if (! is_null($this->container['phoneNumber']) && (mb_strlen($this->container['phoneNumber']) > 50)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'phoneNumber',
+                50
+            );
         }
 
-        if (!is_null($this->container['phoneAreaCode']) && (mb_strlen($this->container['phoneAreaCode']) > 10)) {
-            $invalidProperties[] = "invalid value for 'phoneAreaCode', the character length must be smaller than or equal to 10.";
+        if (! is_null($this->container['phoneAreaCode']) && (mb_strlen($this->container['phoneAreaCode']) > 10)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'phoneAreaCode',
+                10
+            );
         }
 
-        if (!is_null($this->container['phoneCountryCode']) && (mb_strlen($this->container['phoneCountryCode']) > 20)) {
-            $invalidProperties[] = "invalid value for 'phoneCountryCode', the character length must be smaller than or equal to 20.";
+        if (! is_null($this->container['phoneCountryCode']) && (mb_strlen($this->container['phoneCountryCode']) > 20)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'phoneCountryCode',
+                20
+            );
         }
 
         return $invalidProperties;
@@ -285,11 +298,12 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
     public function setPhoneType($phoneType)
     {
         $allowedValues = $this->getPhoneTypeAllowableValues();
-        if (!is_null($phoneType) && !in_array($phoneType, $allowedValues, true)) {
+        if (! is_null($phoneType) && !in_array($phoneType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'phoneType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'phoneType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -317,7 +331,7 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setPhoneNumber($phoneNumber)
     {
-        if (!is_null($phoneNumber) && (mb_strlen($phoneNumber) > 50)) {
+        if (! is_null($phoneNumber) && (mb_strlen($phoneNumber) > 50)) {
             throw new \InvalidArgumentException('invalid length for $phoneNumber when calling Phone., must be smaller than or equal to 50.');
         }
 
@@ -345,7 +359,7 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setPhoneAreaCode($phoneAreaCode)
     {
-        if (!is_null($phoneAreaCode) && (mb_strlen($phoneAreaCode) > 10)) {
+        if (! is_null($phoneAreaCode) && (mb_strlen($phoneAreaCode) > 10)) {
             throw new \InvalidArgumentException('invalid length for $phoneAreaCode when calling Phone., must be smaller than or equal to 10.');
         }
 
@@ -373,7 +387,7 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setPhoneCountryCode($phoneCountryCode)
     {
-        if (!is_null($phoneCountryCode) && (mb_strlen($phoneCountryCode) > 20)) {
+        if (! is_null($phoneCountryCode) && (mb_strlen($phoneCountryCode) > 20)) {
             throw new \InvalidArgumentException('invalid length for $phoneCountryCode when calling Phone., must be smaller than or equal to 20.');
         }
 
@@ -442,6 +456,15 @@ class Phone implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

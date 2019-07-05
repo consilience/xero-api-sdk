@@ -281,24 +281,44 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 12)) {
-            $invalidProperties[] = "invalid value for 'reference', the character length must be smaller than or equal to 12.";
+        if (! is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 12)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'reference',
+                12
+            );
         }
 
-        if (!is_null($this->container['particulars']) && (mb_strlen($this->container['particulars']) > 12)) {
-            $invalidProperties[] = "invalid value for 'particulars', the character length must be smaller than or equal to 12.";
+        if (! is_null($this->container['particulars']) && (mb_strlen($this->container['particulars']) > 12)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'particulars',
+                12
+            );
         }
 
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) > 12)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be smaller than or equal to 12.";
+        if (! is_null($this->container['code']) && (mb_strlen($this->container['code']) > 12)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'code',
+                12
+            );
         }
 
-        if (!is_null($this->container['details']) && (mb_strlen($this->container['details']) > 18)) {
-            $invalidProperties[] = "invalid value for 'details', the character length must be smaller than or equal to 18.";
+        if (! is_null($this->container['details']) && (mb_strlen($this->container['details']) > 18)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'details',
+                18
+            );
         }
 
-        if (!is_null($this->container['narrative']) && (mb_strlen($this->container['narrative']) > 18)) {
-            $invalidProperties[] = "invalid value for 'narrative', the character length must be smaller than or equal to 18.";
+        if (! is_null($this->container['narrative']) && (mb_strlen($this->container['narrative']) > 18)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", the character length must be smaller than or equal to %d.',
+                'narrative',
+                18
+            );
         }
 
         return $invalidProperties;
@@ -359,7 +379,7 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setReference($reference)
     {
-        if (!is_null($reference) && (mb_strlen($reference) > 12)) {
+        if (! is_null($reference) && (mb_strlen($reference) > 12)) {
             throw new \InvalidArgumentException('invalid length for $reference when calling BatchPayment., must be smaller than or equal to 12.');
         }
 
@@ -387,7 +407,7 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setParticulars($particulars)
     {
-        if (!is_null($particulars) && (mb_strlen($particulars) > 12)) {
+        if (! is_null($particulars) && (mb_strlen($particulars) > 12)) {
             throw new \InvalidArgumentException('invalid length for $particulars when calling BatchPayment., must be smaller than or equal to 12.');
         }
 
@@ -415,7 +435,7 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setCode($code)
     {
-        if (!is_null($code) && (mb_strlen($code) > 12)) {
+        if (! is_null($code) && (mb_strlen($code) > 12)) {
             throw new \InvalidArgumentException('invalid length for $code when calling BatchPayment., must be smaller than or equal to 12.');
         }
 
@@ -443,7 +463,7 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setDetails($details)
     {
-        if (!is_null($details) && (mb_strlen($details) > 18)) {
+        if (! is_null($details) && (mb_strlen($details) > 18)) {
             throw new \InvalidArgumentException('invalid length for $details when calling BatchPayment., must be smaller than or equal to 18.');
         }
 
@@ -471,7 +491,7 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setNarrative($narrative)
     {
-        if (!is_null($narrative) && (mb_strlen($narrative) > 18)) {
+        if (! is_null($narrative) && (mb_strlen($narrative) > 18)) {
             throw new \InvalidArgumentException('invalid length for $narrative when calling BatchPayment., must be smaller than or equal to 18.');
         }
 
@@ -780,6 +800,15 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

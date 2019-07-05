@@ -360,30 +360,32 @@ class BankTransaction implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'type');
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'type',
+                implode('", "', $allowedValues)
             );
         }
 
         if ($this->container['contact'] === null) {
-            $invalidProperties[] = "'contact' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'contact');
         }
         if ($this->container['lineitems'] === null) {
-            $invalidProperties[] = "'lineitems' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'lineitems');
         }
         if ($this->container['bankAccount'] === null) {
-            $invalidProperties[] = "'bankAccount' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'bankAccount');
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -425,8 +427,9 @@ class BankTransaction implements ModelInterface, ArrayAccess, JsonSerializable
         if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'type', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'type',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -671,11 +674,12 @@ class BankTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1008,6 +1012,15 @@ class BankTransaction implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

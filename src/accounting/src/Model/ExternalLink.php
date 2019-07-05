@@ -227,8 +227,9 @@ class ExternalLink implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getLinkTypeAllowableValues();
         if (!is_null($this->container['linkType']) && !in_array($this->container['linkType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'linkType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'linkType',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -267,11 +268,12 @@ class ExternalLink implements ModelInterface, ArrayAccess, JsonSerializable
     public function setLinkType($linkType)
     {
         $allowedValues = $this->getLinkTypeAllowableValues();
-        if (!is_null($linkType) && !in_array($linkType, $allowedValues, true)) {
+        if (! is_null($linkType) && !in_array($linkType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'linkType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'linkType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -388,6 +390,15 @@ class ExternalLink implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

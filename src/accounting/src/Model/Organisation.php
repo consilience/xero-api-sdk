@@ -579,56 +579,63 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getVersionAllowableValues();
         if (!is_null($this->container['version']) && !in_array($this->container['version'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'version', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'version',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getOrganisationTypeAllowableValues();
         if (!is_null($this->container['organisationType']) && !in_array($this->container['organisationType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'organisationType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'organisationType',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getSalesTaxBasisAllowableValues();
         if (!is_null($this->container['salesTaxBasis']) && !in_array($this->container['salesTaxBasis'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'salesTaxBasis', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'salesTaxBasis',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getSalesTaxPeriodAllowableValues();
         if (!is_null($this->container['salesTaxPeriod']) && !in_array($this->container['salesTaxPeriod'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'salesTaxPeriod', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'salesTaxPeriod',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getOrganisationEntityTypeAllowableValues();
         if (!is_null($this->container['organisationEntityType']) && !in_array($this->container['organisationEntityType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'organisationEntityType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'organisationEntityType',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getClassAllowableValues();
         if (!is_null($this->container['class']) && !in_array($this->container['class'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'class', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'class',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getEditionAllowableValues();
         if (!is_null($this->container['edition']) && !in_array($this->container['edition'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'edition', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'edition',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -787,11 +794,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setVersion($version)
     {
         $allowedValues = $this->getVersionAllowableValues();
-        if (!is_null($version) && !in_array($version, $allowedValues, true)) {
+        if (! is_null($version) && !in_array($version, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'version', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'version',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -820,11 +828,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setOrganisationType($organisationType)
     {
         $allowedValues = $this->getOrganisationTypeAllowableValues();
-        if (!is_null($organisationType) && !in_array($organisationType, $allowedValues, true)) {
+        if (! is_null($organisationType) && !in_array($organisationType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'organisationType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'organisationType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1045,11 +1054,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setSalesTaxBasis($salesTaxBasis)
     {
         $allowedValues = $this->getSalesTaxBasisAllowableValues();
-        if (!is_null($salesTaxBasis) && !in_array($salesTaxBasis, $allowedValues, true)) {
+        if (! is_null($salesTaxBasis) && !in_array($salesTaxBasis, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'salesTaxBasis', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'salesTaxBasis',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1078,11 +1088,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setSalesTaxPeriod($salesTaxPeriod)
     {
         $allowedValues = $this->getSalesTaxPeriodAllowableValues();
-        if (!is_null($salesTaxPeriod) && !in_array($salesTaxPeriod, $allowedValues, true)) {
+        if (! is_null($salesTaxPeriod) && !in_array($salesTaxPeriod, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'salesTaxPeriod', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'salesTaxPeriod',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1255,11 +1266,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setOrganisationEntityType($organisationEntityType)
     {
         $allowedValues = $this->getOrganisationEntityTypeAllowableValues();
-        if (!is_null($organisationEntityType) && !in_array($organisationEntityType, $allowedValues, true)) {
+        if (! is_null($organisationEntityType) && !in_array($organisationEntityType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'organisationEntityType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'organisationEntityType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1312,11 +1324,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setClass($class)
     {
         $allowedValues = $this->getClassAllowableValues();
-        if (!is_null($class) && !in_array($class, $allowedValues, true)) {
+        if (! is_null($class) && !in_array($class, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'class', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'class',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1345,11 +1358,12 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function setEdition($edition)
     {
         $allowedValues = $this->getEditionAllowableValues();
-        if (!is_null($edition) && !in_array($edition, $allowedValues, true)) {
+        if (! is_null($edition) && !in_array($edition, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'edition', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'edition',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -1538,6 +1552,15 @@ class Organisation implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

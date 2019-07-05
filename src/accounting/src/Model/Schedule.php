@@ -264,16 +264,18 @@ class Schedule implements ModelInterface, ArrayAccess, JsonSerializable
         $allowedValues = $this->getUnitAllowableValues();
         if (!is_null($this->container['unit']) && !in_array($this->container['unit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'unit', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'unit',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getDueDateTypeAllowableValues();
         if (!is_null($this->container['dueDateType']) && !in_array($this->container['dueDateType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'dueDateType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'dueDateType',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -336,11 +338,12 @@ class Schedule implements ModelInterface, ArrayAccess, JsonSerializable
     public function setUnit($unit)
     {
         $allowedValues = $this->getUnitAllowableValues();
-        if (!is_null($unit) && !in_array($unit, $allowedValues, true)) {
+        if (! is_null($unit) && !in_array($unit, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'unit', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'unit',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -393,11 +396,12 @@ class Schedule implements ModelInterface, ArrayAccess, JsonSerializable
     public function setDueDateType($dueDateType)
     {
         $allowedValues = $this->getDueDateTypeAllowableValues();
-        if (!is_null($dueDateType) && !in_array($dueDateType, $allowedValues, true)) {
+        if (! is_null($dueDateType) && !in_array($dueDateType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'dueDateType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'dueDateType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -538,6 +542,15 @@ class Schedule implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**

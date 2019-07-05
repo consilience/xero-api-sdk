@@ -276,21 +276,23 @@ class FeedConnection implements ModelInterface, ArrayAccess, JsonSerializable
         $invalidProperties = [];
 
         if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+            $invalidProperties[] = sprintf('"%s" can\'t be null', 'id');
         }
         $allowedValues = $this->getAccountTypeAllowableValues();
         if (!is_null($this->container['accountType']) && !in_array($this->container['accountType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'accountType', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'accountType',
+                implode('", "', $allowedValues)
             );
         }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -449,11 +451,12 @@ class FeedConnection implements ModelInterface, ArrayAccess, JsonSerializable
     public function setAccountType($accountType)
     {
         $allowedValues = $this->getAccountTypeAllowableValues();
-        if (!is_null($accountType) && !in_array($accountType, $allowedValues, true)) {
+        if (! is_null($accountType) && !in_array($accountType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'accountType', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'accountType',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -530,11 +533,12 @@ class FeedConnection implements ModelInterface, ArrayAccess, JsonSerializable
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
                 )
             );
         }
@@ -627,6 +631,15 @@ class FeedConnection implements ModelInterface, ArrayAccess, JsonSerializable
     public function __toString()
     {
         return json_encode($this, JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * Convert to a nested array.
+     * This is not an ideal method, and needs to be revisited.
+     */
+    public function toArray()
+    {
+        return json_decode(json_encode($this), true);
     }
 
     /**
