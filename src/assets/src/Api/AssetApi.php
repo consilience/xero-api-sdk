@@ -221,9 +221,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -312,54 +312,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -431,9 +391,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -513,54 +473,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -632,9 +552,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Asset';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -728,54 +648,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -845,9 +725,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Setting';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -923,54 +803,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1040,9 +880,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\AssetType[]';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1118,54 +958,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1247,9 +1047,9 @@ class AssetApi
         $returnType = '\Consilience\Xero\AssetsSdk\Model\Assets';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1364,54 +1164,14 @@ class AssetApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
 
@@ -1585,7 +1345,8 @@ class AssetApi
         array $headers,
         array $queryParams,
         $httpBody,
-        string $method
+        string $method,
+        string $resourcePath
     ) {
         $defaultHeaders = [];
 

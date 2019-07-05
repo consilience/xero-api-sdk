@@ -227,9 +227,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Accounts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -318,54 +318,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -447,9 +407,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -574,54 +534,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -701,9 +621,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -797,54 +717,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -926,9 +806,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1053,54 +933,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1180,9 +1020,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1289,54 +1129,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1414,9 +1214,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransfers';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1505,54 +1305,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1630,9 +1390,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1757,54 +1517,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1880,9 +1600,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1989,54 +1709,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2114,9 +1794,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BatchPayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2205,54 +1885,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2332,9 +1972,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2441,54 +2081,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2568,9 +2168,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PaymentServices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2677,54 +2277,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2798,9 +2358,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Contacts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2889,54 +2449,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3014,9 +2534,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3141,54 +2661,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3266,9 +2746,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ContactGroups';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3348,54 +2828,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3475,9 +2915,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Contacts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3575,54 +3015,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3702,9 +3102,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3811,54 +3211,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3938,9 +3298,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CreditNotes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -4025,54 +3385,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -4152,9 +3472,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Allocations';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -4252,54 +3572,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -4381,9 +3661,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -4508,54 +3788,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -4635,9 +3875,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -4744,54 +3984,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -4859,9 +4059,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Currencies';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -4950,54 +4150,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -5075,9 +4235,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Employees';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -5166,54 +4326,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -5293,9 +4413,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -5389,54 +4509,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -5510,9 +4590,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -5619,54 +4699,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -5746,9 +4786,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Invoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -5842,54 +4882,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -5971,9 +4971,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -6098,54 +5098,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -6225,9 +5185,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -6334,54 +5294,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -6459,9 +5379,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Items';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -6550,54 +5470,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -6671,9 +5551,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -6780,54 +5660,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -6905,9 +5745,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -6996,54 +5836,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -7121,9 +5921,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ManualJournals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -7212,54 +6012,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -7341,9 +6101,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -7468,54 +6228,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -7595,9 +6315,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Allocations';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -7704,54 +6424,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -7831,9 +6511,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -7940,54 +6620,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -8065,9 +6705,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Payments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -8156,54 +6796,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -8283,9 +6883,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -8392,54 +6992,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -8517,9 +7077,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PaymentServices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -8608,54 +7168,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -8735,9 +7255,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Allocations';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -8844,54 +7364,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -8971,9 +7451,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -9080,54 +7560,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -9207,9 +7647,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -9303,54 +7743,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -9430,9 +7830,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -9539,54 +7939,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -9664,9 +8024,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Receipts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -9755,54 +8115,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -9884,9 +8204,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -10011,54 +8331,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -10138,9 +8418,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -10247,54 +8527,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -10376,9 +8616,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -10503,54 +8743,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -10630,9 +8830,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -10739,54 +8939,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -10864,9 +9024,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TaxRates';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -10955,54 +9115,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -11080,9 +9200,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingCategories';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -11171,54 +9291,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -11298,9 +9378,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingOptions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -11407,54 +9487,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -11532,9 +9572,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Accounts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -11628,54 +9668,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -11720,7 +9720,11 @@ class AccountingApi
 
         // No expected payload.
 
-        return [null, $request, $response];
+        return [
+            'model' => null,
+            'request' => $request,
+            'response' => $response
+        ];
     }
 
 
@@ -11831,54 +9835,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -11921,7 +9885,11 @@ class AccountingApi
 
         // No expected payload.
 
-        return [null, $request, $response];
+        return [
+            'model' => null,
+            'request' => $request,
+            'response' => $response
+        ];
     }
 
 
@@ -12014,54 +9982,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -12104,7 +10032,11 @@ class AccountingApi
 
         // No expected payload.
 
-        return [null, $request, $response];
+        return [
+            'model' => null,
+            'request' => $request,
+            'response' => $response
+        ];
     }
 
 
@@ -12197,54 +10129,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -12287,7 +10179,11 @@ class AccountingApi
 
         // No expected payload.
 
-        return [null, $request, $response];
+        return [
+            'model' => null,
+            'request' => $request,
+            'response' => $response
+        ];
     }
 
 
@@ -12380,54 +10276,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -12507,9 +10363,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Payments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -12616,54 +10472,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -12741,9 +10557,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingCategories';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -12837,54 +10653,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -12964,9 +10740,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingOptions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -13078,54 +10854,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -13170,7 +10906,11 @@ class AccountingApi
 
         // No expected payload.
 
-        return [null, $request, $response];
+        return [
+            'model' => null,
+            'request' => $request,
+            'response' => $response
+        ];
     }
 
 
@@ -13276,54 +11016,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -13395,9 +11095,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Accounts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -13491,54 +11191,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -13614,9 +11274,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -13742,54 +11402,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -13865,9 +11485,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -13993,54 +11613,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -14112,9 +11692,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -14208,54 +11788,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -14331,9 +11871,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Accounts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -14424,54 +11964,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -14543,9 +12043,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -14639,54 +12139,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -14762,9 +12222,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -14890,54 +12350,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -15013,9 +12433,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -15141,54 +12561,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -15260,9 +12640,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -15356,54 +12736,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -15483,9 +12823,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -15586,54 +12926,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -15705,9 +13005,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -15801,54 +13101,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -15920,9 +13180,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransfers';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -16016,54 +13276,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -16139,9 +13359,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -16267,54 +13487,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -16390,9 +13570,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -16518,54 +13698,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -16637,9 +13777,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -16733,54 +13873,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -16852,9 +13952,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -16948,54 +14048,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -17071,9 +14131,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransfers';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -17164,54 +14224,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -17283,9 +14303,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -17379,54 +14399,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -17502,9 +14482,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BatchPayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -17595,54 +14575,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -17714,9 +14654,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BrandingThemes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -17810,54 +14750,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -17929,9 +14829,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PaymentServices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -18025,54 +14925,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -18142,9 +15002,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BrandingThemes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -18220,54 +15080,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -18339,9 +15159,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Contacts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -18435,54 +15255,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -18558,9 +15338,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -18686,54 +15466,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -18809,9 +15549,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -18937,54 +15677,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -19056,9 +15756,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -19152,54 +15852,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -19271,9 +15931,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CISSettings';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -19367,54 +16027,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -19486,9 +16106,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ContactGroups';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -19582,54 +16202,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -19703,9 +16283,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ContactGroups';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -19791,54 +16371,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -19910,9 +16450,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -20006,54 +16546,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -20135,9 +16635,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Contacts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -20243,54 +16743,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -20362,9 +16822,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CreditNotes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -20458,54 +16918,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -20579,9 +16999,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -20689,54 +17109,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -20812,9 +17192,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -20940,54 +17320,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -21063,9 +17403,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -21191,54 +17531,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -21310,9 +17610,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -21406,54 +17706,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -21525,9 +17785,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -21621,54 +17881,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -21746,9 +17966,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CreditNotes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -21844,54 +18064,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -21965,9 +18145,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Currencies';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -22053,54 +18233,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -22172,9 +18312,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Employees';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -22268,54 +18408,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -22391,9 +18491,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Employees';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -22484,54 +18584,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -22603,9 +18663,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -22699,54 +18759,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -22818,9 +18838,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -22914,54 +18934,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -23037,9 +19017,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -23130,54 +19110,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -23249,9 +19189,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Invoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -23345,54 +19285,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -23466,9 +19366,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -23576,54 +19476,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -23699,9 +19559,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -23827,54 +19687,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -23950,9 +19770,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -24078,54 +19898,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -24197,9 +19977,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -24293,54 +20073,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -24412,9 +20152,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -24508,54 +20248,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -24625,9 +20325,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\InvoiceReminders';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -24703,54 +20403,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -24842,9 +20502,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Invoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -24975,54 +20635,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -25094,9 +20714,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Items';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -25190,54 +20810,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -25309,9 +20889,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -25405,54 +20985,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -25530,9 +21070,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Items';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -25628,54 +21168,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -25747,9 +21247,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Journals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -25843,54 +21343,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -25966,9 +21426,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Journals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -26059,54 +21519,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -26178,9 +21598,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -26274,54 +21694,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -26403,9 +21783,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -26511,54 +21891,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -26630,9 +21970,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ManualJournals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -26726,54 +22066,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -26849,9 +22149,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -26977,54 +22277,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -27100,9 +22360,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -27228,54 +22488,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -27347,9 +22567,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -27443,54 +22663,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -27568,9 +22748,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ManualJournals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -27666,54 +22846,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -27785,9 +22925,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\OnlineInvoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -27881,54 +23021,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -28000,9 +23100,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CISOrgSetting';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -28096,54 +23196,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -28213,9 +23273,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Organisations';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -28291,54 +23351,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -28410,9 +23430,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Overpayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -28506,54 +23526,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -28625,9 +23605,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -28721,54 +23701,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -28848,9 +23788,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Overpayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -28951,54 +23891,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -29070,9 +23970,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Payments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -29166,54 +24066,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -29285,9 +24145,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -29381,54 +24241,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -29498,9 +24318,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PaymentServices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -29576,54 +24396,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -29699,9 +24479,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Payments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -29792,54 +24572,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -29911,9 +24651,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Prepayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -30007,54 +24747,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -30126,9 +24826,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -30222,54 +24922,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -30349,9 +25009,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Prepayments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -30452,54 +25112,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -30571,9 +25191,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -30667,54 +25287,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -30786,9 +25366,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -30882,54 +25462,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -31011,9 +25551,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -31119,54 +25659,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -31238,9 +25738,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Receipts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -31334,54 +25834,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -31457,9 +25917,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -31585,54 +26045,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -31708,9 +26128,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -31836,54 +26256,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -31955,9 +26335,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -32051,54 +26431,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -32170,9 +26510,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -32266,54 +26606,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -32391,9 +26691,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Receipts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -32489,54 +26789,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -32608,9 +26868,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -32704,54 +26964,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -32827,9 +27047,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -32955,54 +27175,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -33078,9 +27258,9 @@ class AccountingApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -33206,54 +27386,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -33325,9 +27465,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -33421,54 +27561,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -33540,9 +27640,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\HistoryRecords';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -33636,54 +27736,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -33757,9 +27817,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\RepeatingInvoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -33845,54 +27905,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -33970,9 +27990,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -34077,54 +28097,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -34202,9 +28182,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -34309,54 +28289,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -34428,9 +28368,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -34524,54 +28464,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -34641,9 +28541,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -34719,54 +28619,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -34850,9 +28710,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -34963,54 +28823,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -35086,9 +28906,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -35179,54 +28999,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -35302,9 +29082,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -35395,54 +29175,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -35514,9 +29254,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -35597,54 +29337,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -35734,9 +29434,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -35862,54 +29562,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -35981,9 +29641,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Reports';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -36064,54 +29724,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -36185,9 +29805,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ReportWithRows';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -36273,54 +29893,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -36396,9 +29976,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TaxRates';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -36489,54 +30069,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -36612,9 +30152,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingCategories';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -36705,54 +30245,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -36824,9 +30324,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingCategories';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -36920,54 +30420,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -37039,9 +30499,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Users';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -37135,54 +30595,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -37258,9 +30678,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Users';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -37351,54 +30771,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -37478,9 +30858,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Accounts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -37587,54 +30967,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -37716,9 +31056,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -37843,54 +31183,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -37970,9 +31270,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\BankTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -38079,54 +31379,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -38208,9 +31468,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -38335,54 +31595,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -38460,9 +31680,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -38587,54 +31807,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -38710,9 +31890,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Contacts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -38810,54 +31990,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -38935,9 +32075,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -39062,54 +32202,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -39189,9 +32289,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ContactGroups';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -39289,54 +32389,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -39416,9 +32476,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\CreditNotes';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -39516,54 +32576,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -39645,9 +32665,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -39772,54 +32792,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -39899,9 +32879,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Employees';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -40008,54 +32988,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -40135,9 +33075,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ExpenseClaims';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -40244,54 +33184,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -40371,9 +33271,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Invoices';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -40480,54 +33380,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -40609,9 +33469,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -40736,54 +33596,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -40863,9 +33683,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Items';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -40972,54 +33792,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -41099,9 +33879,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\LinkedTransactions';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -41208,54 +33988,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -41335,9 +34075,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\ManualJournals';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -41444,54 +34184,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -41573,9 +34273,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -41700,54 +34400,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -41827,9 +34487,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\PurchaseOrders';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -41936,54 +34596,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -42063,9 +34683,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Receipts';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -42172,54 +34792,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -42301,9 +34881,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -42428,54 +35008,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -42557,9 +35097,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\Attachments';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -42684,54 +35224,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -42809,9 +35309,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TaxRates';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -42900,54 +35400,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -43027,9 +35487,9 @@ class AccountingApi
         $returnType = '\Consilience\Xero\AccountingSdk\Model\TrackingCategories';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -43136,54 +35596,14 @@ class AccountingApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
 
@@ -43357,7 +35777,8 @@ class AccountingApi
         array $headers,
         array $queryParams,
         $httpBody,
-        string $method
+        string $method,
+        string $resourcePath
     ) {
         $defaultHeaders = [];
 

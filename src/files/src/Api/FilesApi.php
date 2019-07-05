@@ -223,9 +223,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -323,54 +323,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -442,9 +402,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -524,54 +484,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -643,9 +563,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -739,54 +659,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -860,9 +740,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -974,54 +854,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1093,9 +933,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileResponse204';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1189,54 +1029,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'DELETE'
+            'DELETE',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('DELETE', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1308,9 +1108,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1404,54 +1204,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1523,9 +1283,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1619,54 +1379,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1738,9 +1458,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Association[]';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -1834,54 +1554,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -1953,9 +1633,9 @@ class FilesApi
         $returnType = '\SplFileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2049,54 +1729,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2172,9 +1812,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Files';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2285,54 +1925,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2404,9 +2004,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2500,54 +2100,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2619,9 +2179,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder[]';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2702,54 +2262,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -2819,9 +2339,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -2897,54 +2417,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'GET'
+            'GET',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('GET', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3018,9 +2498,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3118,54 +2598,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3239,9 +2679,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\Folder';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3348,54 +2788,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'PUT'
+            'PUT',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('PUT', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
     /**
@@ -3475,9 +2875,9 @@ class FilesApi
         $returnType = '\Consilience\Xero\FilesSdk\Model\FileObject';
 
         return [
-            ObjectSerializer::deserialize($response, $returnType),
-            $request,
-            $response
+            'model' => ObjectSerializer::deserialize($response, $returnType),
+            'request' => $request,
+            'response' => $response
         ];
     }
 
@@ -3578,54 +2978,14 @@ class FilesApi
         }
 
 
-
-
-
         return $this->buildHttpRequest(
             $headerParams,
             $headers,
             $queryParams,
             $httpBody,
-            'POST'
+            'POST',
+            $resourcePath
         );
-
-
-
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-
-        $url = $this->createUri($this->config->getHost() . $resourcePath);
-
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
-        }
-
-        $request = $this->createRequest('POST', $url);
-
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
-        }
-
-        // Add the body if set.
-
-        if ($httpBody) {
-            $request = $request->withBody($httpBody);
-        }
-
-        return $request;
     }
 
 
@@ -3799,7 +3159,8 @@ class FilesApi
         array $headers,
         array $queryParams,
         $httpBody,
-        string $method
+        string $method,
+        string $resourcePath
     ) {
         $defaultHeaders = [];
 
