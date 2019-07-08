@@ -255,7 +255,6 @@ class AccountingApi
         $resourcePath = '/Accounts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -320,7 +319,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -456,7 +454,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -537,7 +534,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -652,7 +648,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -720,7 +715,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -856,7 +850,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -937,7 +930,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1061,7 +1053,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1134,7 +1125,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1246,7 +1236,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1311,7 +1300,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1443,7 +1431,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1524,7 +1511,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1644,7 +1630,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1717,7 +1702,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1829,7 +1813,6 @@ class AccountingApi
         $resourcePath = '/BatchPayments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1894,7 +1877,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2018,7 +2000,6 @@ class AccountingApi
         $resourcePath = '/BatchPayments/{BatchPaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2091,7 +2072,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2215,7 +2195,6 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2288,7 +2267,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2396,7 +2374,6 @@ class AccountingApi
         $resourcePath = '/Contacts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2461,7 +2438,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2593,7 +2569,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2674,7 +2649,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2777,7 +2751,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2842,7 +2815,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2957,7 +2929,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3030,7 +3001,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3154,7 +3124,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3227,7 +3196,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3333,7 +3301,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3401,7 +3368,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3516,7 +3482,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3589,7 +3554,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3725,7 +3689,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -3806,7 +3769,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3930,7 +3892,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4003,7 +3964,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -4105,7 +4065,6 @@ class AccountingApi
         $resourcePath = '/Currencies';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4170,7 +4129,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -4282,7 +4240,6 @@ class AccountingApi
         $resourcePath = '/Employees';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4347,7 +4304,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -4462,7 +4418,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4530,7 +4485,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -4648,7 +4602,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4721,7 +4674,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -4836,7 +4788,6 @@ class AccountingApi
         $resourcePath = '/Invoices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -4904,7 +4855,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5040,7 +4990,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5121,7 +5070,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5245,7 +5193,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5318,7 +5265,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5430,7 +5376,6 @@ class AccountingApi
         $resourcePath = '/Items';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5495,7 +5440,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5613,7 +5557,6 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5686,7 +5629,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5798,7 +5740,6 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -5863,7 +5804,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -5975,7 +5915,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6040,7 +5979,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -6176,7 +6114,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6257,7 +6194,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -6381,7 +6317,6 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6454,7 +6389,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -6578,7 +6512,6 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6651,7 +6584,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -6763,7 +6695,6 @@ class AccountingApi
         $resourcePath = '/Payments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -6828,7 +6759,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -6952,7 +6882,6 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7025,7 +6954,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -7137,7 +7065,6 @@ class AccountingApi
         $resourcePath = '/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7202,7 +7129,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -7326,7 +7252,6 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7399,7 +7324,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -7523,7 +7447,6 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7596,7 +7519,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -7711,7 +7633,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7779,7 +7700,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -7903,7 +7823,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -7976,7 +7895,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -8088,7 +8006,6 @@ class AccountingApi
         $resourcePath = '/Receipts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -8153,7 +8070,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -8289,7 +8205,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -8370,7 +8285,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -8494,7 +8408,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -8567,7 +8480,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -8703,7 +8615,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -8784,7 +8695,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -8908,7 +8818,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -8981,7 +8890,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9093,7 +9001,6 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -9158,7 +9065,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9270,7 +9176,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -9335,7 +9240,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9459,7 +9363,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}/Options';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -9532,7 +9435,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9644,7 +9546,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -9714,7 +9615,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9805,7 +9705,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -9883,7 +9782,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -9962,7 +9860,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10032,7 +9929,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -10111,7 +10007,6 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10181,7 +10076,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -10260,7 +10154,6 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10330,7 +10223,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -10454,7 +10346,6 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10527,7 +10418,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -10639,7 +10529,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10709,7 +10598,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -10833,7 +10721,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -10911,7 +10798,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11002,7 +10888,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Email';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -11075,7 +10960,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11181,7 +11065,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -11251,7 +11134,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11381,7 +11263,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -11463,7 +11344,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11593,7 +11473,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -11675,7 +11554,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11781,7 +11659,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -11851,7 +11728,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -11954,7 +11830,6 @@ class AccountingApi
         $resourcePath = '/Accounts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12026,7 +11901,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -12132,7 +12006,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12202,7 +12075,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -12332,7 +12204,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12414,7 +12285,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -12544,7 +12414,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12626,7 +12495,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -12732,7 +12600,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12802,7 +12669,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -12911,7 +12777,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -12989,7 +12854,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -13095,7 +12959,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -13165,7 +13028,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -13271,7 +13133,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -13341,7 +13202,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -13471,7 +13331,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -13553,7 +13412,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -13683,7 +13541,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -13765,7 +13622,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -13871,7 +13727,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -13941,7 +13796,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14047,7 +13901,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14117,7 +13970,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14220,7 +14072,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14292,7 +14143,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14398,7 +14248,6 @@ class AccountingApi
         $resourcePath = '/BatchPayments/{BatchPaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14468,7 +14317,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14571,7 +14419,6 @@ class AccountingApi
         $resourcePath = '/BatchPayments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14643,7 +14490,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14749,7 +14595,6 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14819,7 +14664,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -14925,7 +14769,6 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -14995,7 +14838,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -15089,7 +14931,6 @@ class AccountingApi
         $resourcePath = '/BrandingThemes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -15151,7 +14992,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -15257,7 +15097,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -15327,7 +15166,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -15457,7 +15295,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -15539,7 +15376,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -15669,7 +15505,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -15751,7 +15586,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -15857,7 +15691,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -15927,7 +15760,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16033,7 +15865,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/CISSettings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16103,7 +15934,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16209,7 +16039,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16279,7 +16108,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16379,7 +16207,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16447,7 +16274,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16553,7 +16379,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16623,7 +16448,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16735,7 +16559,6 @@ class AccountingApi
         $resourcePath = '/Contacts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16816,7 +16639,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -16922,7 +16744,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -16992,7 +16813,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -17110,7 +16930,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/pdf';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -17184,7 +17003,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -17314,7 +17132,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -17396,7 +17213,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -17526,7 +17342,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -17608,7 +17423,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -17714,7 +17528,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -17784,7 +17597,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -17890,7 +17702,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -17960,7 +17771,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18066,7 +17876,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -18141,7 +17950,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18241,7 +18049,6 @@ class AccountingApi
         $resourcePath = '/Currencies';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -18309,7 +18116,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18415,7 +18221,6 @@ class AccountingApi
         $resourcePath = '/Employees/{EmployeeID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -18485,7 +18290,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18588,7 +18392,6 @@ class AccountingApi
         $resourcePath = '/Employees';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -18660,7 +18463,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18766,7 +18568,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -18836,7 +18637,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -18942,7 +18742,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19012,7 +18811,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -19115,7 +18913,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19187,7 +18984,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -19293,7 +19089,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19363,7 +19158,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -19481,7 +19275,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/pdf';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19555,7 +19348,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -19685,7 +19477,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19767,7 +19558,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -19897,7 +19687,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -19979,7 +19768,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20085,7 +19873,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -20155,7 +19942,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20261,7 +20047,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -20331,7 +20116,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20425,7 +20209,6 @@ class AccountingApi
         $resourcePath = '/InvoiceReminders/Settings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -20487,7 +20270,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20614,7 +20396,6 @@ class AccountingApi
         $resourcePath = '/Invoices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -20710,7 +20491,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20816,7 +20596,6 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -20886,7 +20665,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -20992,7 +20770,6 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21062,7 +20839,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -21168,7 +20944,6 @@ class AccountingApi
         $resourcePath = '/Items';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21243,7 +21018,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -21349,7 +21123,6 @@ class AccountingApi
         $resourcePath = '/Journals/{JournalID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21419,7 +21192,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -21522,7 +21294,6 @@ class AccountingApi
         $resourcePath = '/Journals';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21594,7 +21365,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -21700,7 +21470,6 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21770,7 +21539,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -21882,7 +21650,6 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -21962,7 +21729,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -22068,7 +21834,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -22138,7 +21903,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -22268,7 +22032,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -22350,7 +22113,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -22480,7 +22242,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -22562,7 +22323,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -22668,7 +22428,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -22738,7 +22497,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -22844,7 +22602,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -22919,7 +22676,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23025,7 +22781,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/OnlineInvoice';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23095,7 +22850,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23201,7 +22955,6 @@ class AccountingApi
         $resourcePath = '/Organisation/{OrganisationID}/CISSettings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23271,7 +23024,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23365,7 +23117,6 @@ class AccountingApi
         $resourcePath = '/Organisation';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23427,7 +23178,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23533,7 +23283,6 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23603,7 +23352,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23709,7 +23457,6 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23779,7 +23526,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -23888,7 +23634,6 @@ class AccountingApi
         $resourcePath = '/Overpayments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -23966,7 +23711,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24072,7 +23816,6 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -24142,7 +23885,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24248,7 +23990,6 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -24318,7 +24059,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24412,7 +24152,6 @@ class AccountingApi
         $resourcePath = '/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -24474,7 +24213,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24577,7 +24315,6 @@ class AccountingApi
         $resourcePath = '/Payments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -24649,7 +24386,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24755,7 +24491,6 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -24825,7 +24560,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -24931,7 +24665,6 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25001,7 +24734,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -25110,7 +24842,6 @@ class AccountingApi
         $resourcePath = '/Prepayments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25188,7 +24919,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -25294,7 +25024,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25364,7 +25093,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -25470,7 +25198,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25540,7 +25267,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -25652,7 +25378,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25733,7 +25458,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -25839,7 +25563,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -25909,7 +25632,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26039,7 +25761,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -26121,7 +25842,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26251,7 +25971,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -26333,7 +26052,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26439,7 +26157,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -26509,7 +26226,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26615,7 +26331,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -26685,7 +26400,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26791,7 +26505,6 @@ class AccountingApi
         $resourcePath = '/Receipts';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -26866,7 +26579,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -26972,7 +26684,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27042,7 +26753,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -27172,7 +26882,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27254,7 +26963,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -27384,7 +27092,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27466,7 +27173,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -27572,7 +27278,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27642,7 +27347,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -27748,7 +27452,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27818,7 +27521,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -27918,7 +27620,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -27986,7 +27687,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28101,7 +27801,6 @@ class AccountingApi
         $resourcePath = '/Reports/AgedPayablesByContact';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -28175,7 +27874,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28290,7 +27988,6 @@ class AccountingApi
         $resourcePath = '/Reports/AgedReceivablesByContact';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -28364,7 +28061,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28470,7 +28166,6 @@ class AccountingApi
         $resourcePath = '/Reports/{ReportID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -28540,7 +28235,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28634,7 +28328,6 @@ class AccountingApi
         $resourcePath = '/Reports';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -28696,7 +28389,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28811,7 +28503,6 @@ class AccountingApi
         $resourcePath = '/Reports/BalanceSheet';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -28894,7 +28585,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -28997,7 +28687,6 @@ class AccountingApi
         $resourcePath = '/Reports/BankSummary';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29068,7 +28757,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -29171,7 +28859,6 @@ class AccountingApi
         $resourcePath = '/Reports/BudgetSummary';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29242,7 +28929,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -29339,7 +29025,6 @@ class AccountingApi
         $resourcePath = '/Reports/ExecutiveSummary';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29404,7 +29089,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -29528,7 +29212,6 @@ class AccountingApi
         $resourcePath = '/Reports/ProfitAndLoss';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29620,7 +29303,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -29717,7 +29399,6 @@ class AccountingApi
         $resourcePath = '/Reports/TenNinetyNine';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29782,7 +29463,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -29882,7 +29562,6 @@ class AccountingApi
         $resourcePath = '/Reports/TrialBalance';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -29950,7 +29629,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30053,7 +29731,6 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -30124,7 +29801,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30227,7 +29903,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -30298,7 +29973,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30404,7 +30078,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -30474,7 +30147,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30580,7 +30252,6 @@ class AccountingApi
         $resourcePath = '/Users/{UserID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -30650,7 +30321,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30753,7 +30423,6 @@ class AccountingApi
         $resourcePath = '/Users';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -30825,7 +30494,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -30949,7 +30617,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -31022,7 +30689,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -31158,7 +30824,6 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -31239,7 +30904,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -31363,7 +31027,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -31436,7 +31099,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -31572,7 +31234,6 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -31653,7 +31314,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -31785,7 +31445,6 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -31866,7 +31525,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -31977,7 +31635,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -32050,7 +31707,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -32182,7 +31838,6 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -32263,7 +31918,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -32378,7 +32032,6 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -32451,7 +32104,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -32566,7 +32218,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -32639,7 +32290,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -32775,7 +32425,6 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -32856,7 +32505,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -32980,7 +32628,6 @@ class AccountingApi
         $resourcePath = '/Employees/{EmployeeID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -33053,7 +32700,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -33177,7 +32823,6 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -33250,7 +32895,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -33374,7 +33018,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -33447,7 +33090,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -33583,7 +33225,6 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -33664,7 +33305,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -33788,7 +33428,6 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -33861,7 +33500,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -33985,7 +33623,6 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -34058,7 +33695,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -34182,7 +33818,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -34255,7 +33890,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -34391,7 +34025,6 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -34472,7 +34105,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -34596,7 +34228,6 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -34669,7 +34300,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -34793,7 +34423,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -34866,7 +34495,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -35002,7 +34630,6 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -35083,7 +34710,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -35219,7 +34845,6 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -35300,7 +34925,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -35412,7 +35036,6 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -35477,7 +35100,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -35601,7 +35223,6 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -35674,7 +35295,6 @@ class AccountingApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -35850,18 +35470,12 @@ class AccountingApi
     }
 
     protected function buildHttpRequest(
-        array $headerParams,
         array $headers,
         array $queryParams,
         $httpBody,
         string $method,
         string $resourcePath
     ) {
-        $headers = array_merge(
-            $headerParams,
-            $headers
-        );
-
         if ($this->config->getUserAgent()) {
             $headers['User-Agent'] = $this->config->getUserAgent();
         }

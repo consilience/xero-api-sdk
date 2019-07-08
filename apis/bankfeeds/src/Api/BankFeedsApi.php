@@ -249,7 +249,6 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -319,7 +318,6 @@ class BankFeedsApi
         }
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -448,7 +446,6 @@ class BankFeedsApi
         $resourcePath = '/Statements';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -513,7 +510,6 @@ class BankFeedsApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -619,7 +615,6 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections/DeleteRequests';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -689,7 +684,6 @@ class BankFeedsApi
         }
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -795,7 +789,6 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -870,7 +863,6 @@ class BankFeedsApi
         }
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -970,7 +962,6 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1043,7 +1034,6 @@ class BankFeedsApi
         }
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1145,7 +1135,6 @@ class BankFeedsApi
         $resourcePath = '/Statements/{statementId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1215,7 +1204,6 @@ class BankFeedsApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1326,7 +1314,6 @@ class BankFeedsApi
         $resourcePath = '/Statements';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1406,7 +1393,6 @@ class BankFeedsApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1582,18 +1568,12 @@ class BankFeedsApi
     }
 
     protected function buildHttpRequest(
-        array $headerParams,
         array $headers,
         array $queryParams,
         $httpBody,
         string $method,
         string $resourcePath
     ) {
-        $headers = array_merge(
-            $headerParams,
-            $headers
-        );
-
         if ($this->config->getUserAgent()) {
             $headers['User-Agent'] = $this->config->getUserAgent();
         }

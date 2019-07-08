@@ -252,7 +252,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -325,7 +324,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -422,7 +420,6 @@ class FilesApi
         $resourcePath = '/Folders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -487,7 +484,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -593,7 +589,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -663,7 +658,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -781,7 +775,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations/{ObjectId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -859,7 +852,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -965,7 +957,6 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1035,7 +1026,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1141,7 +1131,6 @@ class FilesApi
         $resourcePath = '/Associations/{ObjectId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1211,7 +1200,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1317,7 +1305,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1387,7 +1374,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1493,7 +1479,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1563,7 +1548,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1669,7 +1653,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Content';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1739,7 +1722,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1862,7 +1844,6 @@ class FilesApi
         $resourcePath = '/Files';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1933,7 +1914,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2039,7 +2019,6 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2109,7 +2088,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2206,7 +2184,6 @@ class FilesApi
         $resourcePath = '/Folders';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2271,7 +2248,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2365,7 +2341,6 @@ class FilesApi
         $resourcePath = '/Inbox';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2427,7 +2402,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2536,7 +2510,6 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2609,7 +2582,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2727,7 +2699,6 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2800,7 +2771,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -2909,7 +2879,6 @@ class FilesApi
         $resourcePath = '/Files';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -2990,7 +2959,6 @@ class FilesApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -3166,18 +3134,12 @@ class FilesApi
     }
 
     protected function buildHttpRequest(
-        array $headerParams,
         array $headers,
         array $queryParams,
         $httpBody,
         string $method,
         string $resourcePath
     ) {
-        $headers = array_merge(
-            $headerParams,
-            $headers
-        );
-
         if ($this->config->getUserAgent()) {
             $headers['User-Agent'] = $this->config->getUserAgent();
         }

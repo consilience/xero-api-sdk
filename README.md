@@ -197,6 +197,8 @@ directory.
 ## TODO:
 
 * The file streaming generation functionality has not been worked on.
+  Multipart streams also need to be taken into account, which may require
+  access to a new factory to construct.
 * The generation of asynchrnous requests are disabled at present.
 * Request and response schema objects are not immutable.
   I would like to implmenent that, but work needs to be done learning how
@@ -208,3 +210,4 @@ directory.
   the APIs.
 * Creation of some general helper methods for construction where-conditions
   and perhaps date-based queries.
+

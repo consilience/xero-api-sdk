@@ -249,7 +249,6 @@ class AssetApi
         $resourcePath = '/Assets';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -314,7 +313,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -411,7 +409,6 @@ class AssetApi
         $resourcePath = '/AssetTypes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -476,7 +473,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -582,7 +578,6 @@ class AssetApi
         $resourcePath = '/Assets/{id}';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -652,7 +647,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -746,7 +740,6 @@ class AssetApi
         $resourcePath = '/Settings';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -808,7 +801,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -902,7 +894,6 @@ class AssetApi
         $resourcePath = '/AssetTypes';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -964,7 +955,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1085,7 +1075,6 @@ class AssetApi
         $resourcePath = '/Assets';
         $formParams = [];
         $queryParams = [];
-        $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
@@ -1165,7 +1154,6 @@ class AssetApi
 
 
         return $this->buildHttpRequest(
-            $headerParams,
             $headers,
             $queryParams,
             $httpBody,
@@ -1341,18 +1329,12 @@ class AssetApi
     }
 
     protected function buildHttpRequest(
-        array $headerParams,
         array $headers,
         array $queryParams,
         $httpBody,
         string $method,
         string $resourcePath
     ) {
-        $headers = array_merge(
-            $headerParams,
-            $headers
-        );
-
         if ($this->config->getUserAgent()) {
             $headers['User-Agent'] = $this->config->getUserAgent();
         }
