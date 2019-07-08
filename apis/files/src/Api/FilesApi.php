@@ -252,7 +252,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -420,7 +420,7 @@ class FilesApi
         $resourcePath = '/Folders';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -589,7 +589,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -775,7 +775,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations/{ObjectId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -957,7 +957,7 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1131,7 +1131,7 @@ class FilesApi
         $resourcePath = '/Associations/{ObjectId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1305,7 +1305,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1479,7 +1479,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Associations';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1653,7 +1653,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}/Content';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1844,7 +1844,7 @@ class FilesApi
         $resourcePath = '/Files';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -2019,7 +2019,7 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2184,7 +2184,7 @@ class FilesApi
         $resourcePath = '/Folders';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -2341,7 +2341,7 @@ class FilesApi
         $resourcePath = '/Inbox';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2510,7 +2510,7 @@ class FilesApi
         $resourcePath = '/Files/{FileId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2699,7 +2699,7 @@ class FilesApi
         $resourcePath = '/Folders/{FolderId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2879,7 +2879,7 @@ class FilesApi
         $resourcePath = '/Files';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -3133,11 +3133,20 @@ class FilesApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
+    /**
+     * Build a HTTP message from the supplied parts.
+     *
+     * @param array $headers includes multipart headers, parameter headers, other headers
+     * @param array $query all query parameters
+     * @param StreamInterface body payload stream
+     * @param string $httpMethod
+     * @param string $resourcePath the path relative to the API base path
+     */
     protected function buildHttpRequest(
         array $headers,
-        array $queryParams,
-        $httpBody,
-        string $method,
+        array $query,
+        ?StreamInterface $httpBody,
+        string $httpMethod,
         string $resourcePath
     ) {
         if ($this->config->getUserAgent()) {
@@ -3147,16 +3156,14 @@ class FilesApi
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);
 
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
+        if (count($query)) {
+            $url = $url->withQuery($this->buildQuery($query));
         }
 
-        $request = $this->createRequest($method, $url);
+        $request = $this->createRequest($httpMethod, $url);
 
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
+        foreach ($headers as $name => $value) {
+            $request = $request->withHeader($name, $value);
         }
 
         // Add the body if set.

@@ -255,7 +255,7 @@ class AccountingApi
         $resourcePath = '/Accounts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -454,7 +454,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -648,7 +648,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -850,7 +850,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1053,7 +1053,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1236,7 +1236,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1431,7 +1431,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1630,7 +1630,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1813,7 +1813,7 @@ class AccountingApi
         $resourcePath = '/BatchPayments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2000,7 +2000,7 @@ class AccountingApi
         $resourcePath = '/BatchPayments/{BatchPaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2195,7 +2195,7 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2374,7 +2374,7 @@ class AccountingApi
         $resourcePath = '/Contacts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2569,7 +2569,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2751,7 +2751,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -2929,7 +2929,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -3124,7 +3124,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -3301,7 +3301,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -3482,7 +3482,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -3689,7 +3689,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -3892,7 +3892,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -4065,7 +4065,7 @@ class AccountingApi
         $resourcePath = '/Currencies';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -4240,7 +4240,7 @@ class AccountingApi
         $resourcePath = '/Employees';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -4418,7 +4418,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -4602,7 +4602,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -4788,7 +4788,7 @@ class AccountingApi
         $resourcePath = '/Invoices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -4990,7 +4990,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -5193,7 +5193,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -5376,7 +5376,7 @@ class AccountingApi
         $resourcePath = '/Items';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -5557,7 +5557,7 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -5740,7 +5740,7 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -5915,7 +5915,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -6114,7 +6114,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -6317,7 +6317,7 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -6512,7 +6512,7 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -6695,7 +6695,7 @@ class AccountingApi
         $resourcePath = '/Payments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -6882,7 +6882,7 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -7065,7 +7065,7 @@ class AccountingApi
         $resourcePath = '/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -7252,7 +7252,7 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/Allocations';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -7447,7 +7447,7 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -7633,7 +7633,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -7823,7 +7823,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -8006,7 +8006,7 @@ class AccountingApi
         $resourcePath = '/Receipts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -8205,7 +8205,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -8408,7 +8408,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -8615,7 +8615,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -8818,7 +8818,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9001,7 +9001,7 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9176,7 +9176,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9363,7 +9363,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}/Options';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9546,7 +9546,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9705,7 +9705,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -9860,7 +9860,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}/Contacts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10007,7 +10007,7 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10154,7 +10154,7 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10346,7 +10346,7 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10529,7 +10529,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10721,7 +10721,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -10888,7 +10888,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Email';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -11065,7 +11065,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -11263,7 +11263,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -11473,7 +11473,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -11659,7 +11659,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -11830,7 +11830,7 @@ class AccountingApi
         $resourcePath = '/Accounts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -12006,7 +12006,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -12204,7 +12204,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -12414,7 +12414,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -12600,7 +12600,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -12777,7 +12777,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -12959,7 +12959,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -13133,7 +13133,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -13331,7 +13331,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -13541,7 +13541,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -13727,7 +13727,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -13901,7 +13901,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -14072,7 +14072,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -14248,7 +14248,7 @@ class AccountingApi
         $resourcePath = '/BatchPayments/{BatchPaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -14419,7 +14419,7 @@ class AccountingApi
         $resourcePath = '/BatchPayments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -14595,7 +14595,7 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -14769,7 +14769,7 @@ class AccountingApi
         $resourcePath = '/BrandingThemes/{BrandingThemeID}/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -14931,7 +14931,7 @@ class AccountingApi
         $resourcePath = '/BrandingThemes';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -15097,7 +15097,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -15295,7 +15295,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -15505,7 +15505,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -15691,7 +15691,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -15865,7 +15865,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/CISSettings';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -16039,7 +16039,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -16207,7 +16207,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -16379,7 +16379,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -16559,7 +16559,7 @@ class AccountingApi
         $resourcePath = '/Contacts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -16744,7 +16744,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -16930,7 +16930,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/pdf';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -17132,7 +17132,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -17342,7 +17342,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -17528,7 +17528,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -17702,7 +17702,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -17876,7 +17876,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -18049,7 +18049,7 @@ class AccountingApi
         $resourcePath = '/Currencies';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -18221,7 +18221,7 @@ class AccountingApi
         $resourcePath = '/Employees/{EmployeeID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -18392,7 +18392,7 @@ class AccountingApi
         $resourcePath = '/Employees';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -18568,7 +18568,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -18742,7 +18742,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -18913,7 +18913,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -19089,7 +19089,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -19275,7 +19275,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/pdf';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -19477,7 +19477,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -19687,7 +19687,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -19873,7 +19873,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -20047,7 +20047,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -20209,7 +20209,7 @@ class AccountingApi
         $resourcePath = '/InvoiceReminders/Settings';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -20396,7 +20396,7 @@ class AccountingApi
         $resourcePath = '/Invoices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -20596,7 +20596,7 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -20770,7 +20770,7 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -20944,7 +20944,7 @@ class AccountingApi
         $resourcePath = '/Items';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -21123,7 +21123,7 @@ class AccountingApi
         $resourcePath = '/Journals/{JournalID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -21294,7 +21294,7 @@ class AccountingApi
         $resourcePath = '/Journals';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -21470,7 +21470,7 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -21650,7 +21650,7 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -21834,7 +21834,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -22032,7 +22032,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -22242,7 +22242,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -22428,7 +22428,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -22602,7 +22602,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -22781,7 +22781,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/OnlineInvoice';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -22955,7 +22955,7 @@ class AccountingApi
         $resourcePath = '/Organisation/{OrganisationID}/CISSettings';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -23117,7 +23117,7 @@ class AccountingApi
         $resourcePath = '/Organisation';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -23283,7 +23283,7 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -23457,7 +23457,7 @@ class AccountingApi
         $resourcePath = '/Overpayments/{OverpaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -23634,7 +23634,7 @@ class AccountingApi
         $resourcePath = '/Overpayments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -23816,7 +23816,7 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -23990,7 +23990,7 @@ class AccountingApi
         $resourcePath = '/Payments/{PaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -24152,7 +24152,7 @@ class AccountingApi
         $resourcePath = '/PaymentServices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -24315,7 +24315,7 @@ class AccountingApi
         $resourcePath = '/Payments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -24491,7 +24491,7 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -24665,7 +24665,7 @@ class AccountingApi
         $resourcePath = '/Prepayments/{PrepaymentID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -24842,7 +24842,7 @@ class AccountingApi
         $resourcePath = '/Prepayments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -25024,7 +25024,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -25198,7 +25198,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -25378,7 +25378,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -25563,7 +25563,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -25761,7 +25761,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -25971,7 +25971,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -26157,7 +26157,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -26331,7 +26331,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -26505,7 +26505,7 @@ class AccountingApi
         $resourcePath = '/Receipts';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -26684,7 +26684,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -26882,7 +26882,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -27092,7 +27092,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{AttachmentID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -27278,7 +27278,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -27452,7 +27452,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/History';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -27620,7 +27620,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -27801,7 +27801,7 @@ class AccountingApi
         $resourcePath = '/Reports/AgedPayablesByContact';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -27988,7 +27988,7 @@ class AccountingApi
         $resourcePath = '/Reports/AgedReceivablesByContact';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -28166,7 +28166,7 @@ class AccountingApi
         $resourcePath = '/Reports/{ReportID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -28328,7 +28328,7 @@ class AccountingApi
         $resourcePath = '/Reports';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -28503,7 +28503,7 @@ class AccountingApi
         $resourcePath = '/Reports/BalanceSheet';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -28687,7 +28687,7 @@ class AccountingApi
         $resourcePath = '/Reports/BankSummary';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -28859,7 +28859,7 @@ class AccountingApi
         $resourcePath = '/Reports/BudgetSummary';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29025,7 +29025,7 @@ class AccountingApi
         $resourcePath = '/Reports/ExecutiveSummary';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29212,7 +29212,7 @@ class AccountingApi
         $resourcePath = '/Reports/ProfitAndLoss';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29399,7 +29399,7 @@ class AccountingApi
         $resourcePath = '/Reports/TenNinetyNine';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29562,7 +29562,7 @@ class AccountingApi
         $resourcePath = '/Reports/TrialBalance';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29731,7 +29731,7 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -29903,7 +29903,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -30078,7 +30078,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -30252,7 +30252,7 @@ class AccountingApi
         $resourcePath = '/Users/{UserID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -30423,7 +30423,7 @@ class AccountingApi
         $resourcePath = '/Users';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -30617,7 +30617,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -30824,7 +30824,7 @@ class AccountingApi
         $resourcePath = '/Accounts/{AccountID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -31027,7 +31027,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -31234,7 +31234,7 @@ class AccountingApi
         $resourcePath = '/BankTransactions/{BankTransactionID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -31445,7 +31445,7 @@ class AccountingApi
         $resourcePath = '/BankTransfers/{BankTransferID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -31635,7 +31635,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -31838,7 +31838,7 @@ class AccountingApi
         $resourcePath = '/Contacts/{ContactID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -32032,7 +32032,7 @@ class AccountingApi
         $resourcePath = '/ContactGroups/{ContactGroupID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -32218,7 +32218,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -32425,7 +32425,7 @@ class AccountingApi
         $resourcePath = '/CreditNotes/{CreditNoteID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -32628,7 +32628,7 @@ class AccountingApi
         $resourcePath = '/Employees/{EmployeeID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -32823,7 +32823,7 @@ class AccountingApi
         $resourcePath = '/ExpenseClaims/{ExpenseClaimID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -33018,7 +33018,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -33225,7 +33225,7 @@ class AccountingApi
         $resourcePath = '/Invoices/{InvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -33428,7 +33428,7 @@ class AccountingApi
         $resourcePath = '/Items/{ItemID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -33623,7 +33623,7 @@ class AccountingApi
         $resourcePath = '/LinkedTransactions/{LinkedTransactionID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -33818,7 +33818,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -34025,7 +34025,7 @@ class AccountingApi
         $resourcePath = '/ManualJournals/{ManualJournalID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -34228,7 +34228,7 @@ class AccountingApi
         $resourcePath = '/PurchaseOrders/{PurchaseOrderID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -34423,7 +34423,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -34630,7 +34630,7 @@ class AccountingApi
         $resourcePath = '/Receipts/{ReceiptID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -34845,7 +34845,7 @@ class AccountingApi
         $resourcePath = '/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -35036,7 +35036,7 @@ class AccountingApi
         $resourcePath = '/TaxRates';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -35223,7 +35223,7 @@ class AccountingApi
         $resourcePath = '/TrackingCategories/{TrackingCategoryID}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -35469,11 +35469,20 @@ class AccountingApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
+    /**
+     * Build a HTTP message from the supplied parts.
+     *
+     * @param array $headers includes multipart headers, parameter headers, other headers
+     * @param array $query all query parameters
+     * @param StreamInterface body payload stream
+     * @param string $httpMethod
+     * @param string $resourcePath the path relative to the API base path
+     */
     protected function buildHttpRequest(
         array $headers,
-        array $queryParams,
-        $httpBody,
-        string $method,
+        array $query,
+        ?StreamInterface $httpBody,
+        string $httpMethod,
         string $resourcePath
     ) {
         if ($this->config->getUserAgent()) {
@@ -35483,16 +35492,14 @@ class AccountingApi
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);
 
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
+        if (count($query)) {
+            $url = $url->withQuery($this->buildQuery($query));
         }
 
-        $request = $this->createRequest($method, $url);
+        $request = $this->createRequest($httpMethod, $url);
 
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
+        foreach ($headers as $name => $value) {
+            $request = $request->withHeader($name, $value);
         }
 
         // Add the body if set.

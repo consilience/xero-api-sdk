@@ -249,7 +249,7 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -446,7 +446,7 @@ class BankFeedsApi
         $resourcePath = '/Statements';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -615,7 +615,7 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections/DeleteRequests';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -789,7 +789,7 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections/{id}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -962,7 +962,7 @@ class BankFeedsApi
         $resourcePath = '/FeedConnections';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -1135,7 +1135,7 @@ class BankFeedsApi
         $resourcePath = '/Statements/{statementId}';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         
@@ -1314,7 +1314,7 @@ class BankFeedsApi
         $resourcePath = '/Statements';
         $formParams = [];
         $queryParams = [];
-        $httpBody = '';
+        $httpBody = null;
         $multipart = false;
 
         // Query parameters
@@ -1567,11 +1567,20 @@ class BankFeedsApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
+    /**
+     * Build a HTTP message from the supplied parts.
+     *
+     * @param array $headers includes multipart headers, parameter headers, other headers
+     * @param array $query all query parameters
+     * @param StreamInterface body payload stream
+     * @param string $httpMethod
+     * @param string $resourcePath the path relative to the API base path
+     */
     protected function buildHttpRequest(
         array $headers,
-        array $queryParams,
-        $httpBody,
-        string $method,
+        array $query,
+        ?StreamInterface $httpBody,
+        string $httpMethod,
         string $resourcePath
     ) {
         if ($this->config->getUserAgent()) {
@@ -1581,16 +1590,14 @@ class BankFeedsApi
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);
 
-        if ($queryParams) {
-            $url = $url->withQuery($this->buildQuery($queryParams));
+        if (count($query)) {
+            $url = $url->withQuery($this->buildQuery($query));
         }
 
-        $request = $this->createRequest($method, $url);
+        $request = $this->createRequest($httpMethod, $url);
 
-        if ($headers) {
-            foreach ($headers as $name => $value) {
-                $request = $request->withHeader($name, $value);
-            }
+        foreach ($headers as $name => $value) {
+            $request = $request->withHeader($name, $value);
         }
 
         // Add the body if set.
