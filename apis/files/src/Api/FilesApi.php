@@ -256,8 +256,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -266,7 +267,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($association)) {
             $_tempBody = $association;
@@ -283,6 +285,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -423,9 +426,11 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($folder)) {
             $_tempBody = $folder;
@@ -442,6 +447,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -591,8 +597,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -601,7 +608,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -615,6 +623,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -776,8 +785,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -785,7 +795,7 @@ class FilesApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($objectId !== null) {
             $resourcePath = str_replace(
                 '{' . 'ObjectId' . '}',
@@ -794,7 +804,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -808,6 +819,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -957,8 +969,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($folderId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FolderId' . '}',
@@ -967,7 +980,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -981,6 +995,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1130,8 +1145,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($objectId !== null) {
             $resourcePath = str_replace(
                 '{' . 'ObjectId' . '}',
@@ -1140,7 +1156,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1154,6 +1171,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1303,8 +1321,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -1313,7 +1332,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1327,6 +1347,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1476,8 +1497,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -1486,7 +1508,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1500,6 +1523,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1649,8 +1673,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -1659,7 +1684,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1673,6 +1699,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1839,21 +1866,20 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($pagesize !== null) {
             $queryParams['pagesize'] = ObjectSerializer::toQueryValue($pagesize);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($sort !== null) {
             $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1867,6 +1893,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2016,8 +2043,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($folderId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FolderId' . '}',
@@ -2026,7 +2054,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -2040,6 +2069,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2180,13 +2210,14 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($sort !== null) {
             $queryParams['sort'] = ObjectSerializer::toQueryValue($sort);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -2200,6 +2231,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2337,9 +2369,11 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -2353,6 +2387,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2505,8 +2540,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($fileId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileId' . '}',
@@ -2515,7 +2551,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($fileObject)) {
             $_tempBody = $fileObject;
@@ -2532,6 +2569,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2693,8 +2731,9 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($folderId !== null) {
             $resourcePath = str_replace(
                 '{' . 'FolderId' . '}',
@@ -2703,7 +2742,8 @@ class FilesApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($folder)) {
             $_tempBody = $folder;
@@ -2720,6 +2760,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2872,29 +2913,30 @@ class FilesApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($folderId !== null) {
             $queryParams['folderId'] = ObjectSerializer::toQueryValue($folderId);
         }
 
 
-        // form params
+// Form parameters
         if ($body !== null) {
             $formParams['body'] = ObjectSerializer::toFormValue($body);
         }
-        // form params
+
         if ($name !== null) {
             $formParams['name'] = ObjectSerializer::toFormValue($name);
         }
-        // form params
+
         if ($filename !== null) {
             $formParams['filename'] = ObjectSerializer::toFormValue($filename);
         }
-        // form params
+
         if ($mimeType !== null) {
             $formParams['mimeType'] = ObjectSerializer::toFormValue($mimeType);
         }
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -2908,6 +2950,7 @@ class FilesApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3122,7 +3165,7 @@ class FilesApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
-    function buildHttpRequest(
+    protected function buildHttpRequest(
         array $headerParams,
         array $headers,
         array $queryParams,
@@ -3130,17 +3173,14 @@ class FilesApi
         string $method,
         string $resourcePath
     ) {
-        $defaultHeaders = [];
-
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
         $headers = array_merge(
-            $defaultHeaders,
             $headerParams,
             $headers
         );
+
+        if ($this->config->getUserAgent()) {
+            $headers['User-Agent'] = $this->config->getUserAgent();
+        }
 
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);

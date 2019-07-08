@@ -253,9 +253,11 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($asset)) {
             $_tempBody = $asset;
@@ -272,6 +274,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -412,9 +415,11 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($assetType)) {
             $_tempBody = $assetType;
@@ -431,6 +436,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -580,8 +586,9 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -590,7 +597,8 @@ class AssetApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -604,6 +612,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -741,9 +750,11 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -757,6 +768,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -894,9 +906,11 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -910,6 +924,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1074,33 +1089,29 @@ class AssetApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($status !== null) {
             $queryParams['status'] = ObjectSerializer::toQueryValue($status);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($pageSize !== null) {
             $queryParams['pageSize'] = ObjectSerializer::toQueryValue($pageSize);
         }
-        // query params
         if ($orderBy !== null) {
             $queryParams['orderBy'] = ObjectSerializer::toQueryValue($orderBy);
         }
-        // query params
         if ($sortDirection !== null) {
             $queryParams['sortDirection'] = ObjectSerializer::toQueryValue($sortDirection);
         }
-        // query params
         if ($filterBy !== null) {
             $queryParams['filterBy'] = ObjectSerializer::toQueryValue($filterBy);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1114,6 +1125,7 @@ class AssetApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1328,7 +1340,7 @@ class AssetApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
-    function buildHttpRequest(
+    protected function buildHttpRequest(
         array $headerParams,
         array $headers,
         array $queryParams,
@@ -1336,17 +1348,14 @@ class AssetApi
         string $method,
         string $resourcePath
     ) {
-        $defaultHeaders = [];
-
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
         $headers = array_merge(
-            $defaultHeaders,
             $headerParams,
             $headers
         );
+
+        if ($this->config->getUserAgent()) {
+            $headers['User-Agent'] = $this->config->getUserAgent();
+        }
 
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);

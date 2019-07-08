@@ -259,9 +259,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($account)) {
             $_tempBody = $account;
@@ -278,6 +280,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -457,8 +460,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -466,7 +470,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -475,7 +479,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -492,6 +497,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -650,13 +656,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($summarizeErrors !== null) {
             $queryParams['SummarizeErrors'] = ObjectSerializer::toQueryValue($summarizeErrors);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($bankTransactions)) {
             $_tempBody = $bankTransactions;
@@ -673,6 +680,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -852,8 +860,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -861,7 +870,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -870,7 +879,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -887,6 +897,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1054,8 +1065,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -1064,7 +1076,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -1081,6 +1094,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1236,9 +1250,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($bankTransfers)) {
             $_tempBody = $bankTransfers;
@@ -1255,6 +1271,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1430,8 +1447,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -1439,7 +1457,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -1448,7 +1466,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -1465,6 +1484,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1628,8 +1648,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -1638,7 +1659,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -1655,6 +1677,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1810,9 +1833,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($batchPayments)) {
             $_tempBody = $batchPayments;
@@ -1829,6 +1854,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1996,8 +2022,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($batchPaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BatchPaymentID' . '}',
@@ -2006,7 +2033,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -2023,6 +2051,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2190,8 +2219,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($brandingThemeID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BrandingThemeID' . '}',
@@ -2200,7 +2230,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($paymentService)) {
             $_tempBody = $paymentService;
@@ -2217,6 +2248,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2368,9 +2400,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($contact)) {
             $_tempBody = $contact;
@@ -2387,6 +2421,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2562,8 +2597,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -2571,7 +2607,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -2580,7 +2616,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -2597,6 +2634,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2743,9 +2781,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($contactGroups)) {
             $_tempBody = $contactGroups;
@@ -2762,6 +2802,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -2920,8 +2961,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactGroupID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactGroupID' . '}',
@@ -2930,7 +2972,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($contacts)) {
             $_tempBody = $contacts;
@@ -2947,6 +2990,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3114,8 +3158,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -3124,7 +3169,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -3141,6 +3187,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3290,13 +3337,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($summarizeErrors !== null) {
             $queryParams['SummarizeErrors'] = ObjectSerializer::toQueryValue($summarizeErrors);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($creditNotes)) {
             $_tempBody = $creditNotes;
@@ -3313,6 +3361,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3471,8 +3520,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -3481,7 +3531,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($allocations)) {
             $_tempBody = $allocations;
@@ -3498,6 +3549,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3677,8 +3729,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -3686,7 +3739,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -3695,7 +3748,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -3712,6 +3766,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -3879,8 +3934,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -3889,7 +3945,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -3906,6 +3963,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4051,9 +4109,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($currencies)) {
             $_tempBody = $currencies;
@@ -4070,6 +4130,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4225,9 +4286,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($employees)) {
             $_tempBody = $employees;
@@ -4244,6 +4307,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4402,13 +4466,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($summarizeErrors !== null) {
             $queryParams['SummarizeErrors'] = ObjectSerializer::toQueryValue($summarizeErrors);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($expenseClaims)) {
             $_tempBody = $expenseClaims;
@@ -4425,6 +4490,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4586,8 +4652,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($expenseClaimID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ExpenseClaimID' . '}',
@@ -4596,7 +4663,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -4613,6 +4681,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4771,13 +4840,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($summarizeErrors !== null) {
             $queryParams['SummarizeErrors'] = ObjectSerializer::toQueryValue($summarizeErrors);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($invoices)) {
             $_tempBody = $invoices;
@@ -4794,6 +4864,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -4973,8 +5044,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -4982,7 +5054,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -4991,7 +5063,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -5008,6 +5081,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -5175,8 +5249,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -5185,7 +5260,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -5202,6 +5278,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -5357,9 +5434,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($items)) {
             $_tempBody = $items;
@@ -5376,6 +5455,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -5537,8 +5617,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($itemID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ItemID' . '}',
@@ -5547,7 +5628,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -5564,6 +5646,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -5719,9 +5802,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($linkedTransactions)) {
             $_tempBody = $linkedTransactions;
@@ -5738,6 +5823,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -5893,9 +5979,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($manualJournals)) {
             $_tempBody = $manualJournals;
@@ -5912,6 +6000,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -6091,8 +6180,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -6100,7 +6190,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -6109,7 +6199,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -6126,6 +6217,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -6293,8 +6385,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($overpaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'OverpaymentID' . '}',
@@ -6303,7 +6396,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($allocations)) {
             $_tempBody = $allocations;
@@ -6320,6 +6414,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -6487,8 +6582,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($overpaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'OverpaymentID' . '}',
@@ -6497,7 +6593,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -6514,6 +6611,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -6669,9 +6767,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($payments)) {
             $_tempBody = $payments;
@@ -6688,6 +6788,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -6855,8 +6956,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($paymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PaymentID' . '}',
@@ -6865,7 +6967,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -6882,6 +6985,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7037,9 +7141,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($paymentServices)) {
             $_tempBody = $paymentServices;
@@ -7056,6 +7162,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7223,8 +7330,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($prepaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PrepaymentID' . '}',
@@ -7233,7 +7341,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($allocations)) {
             $_tempBody = $allocations;
@@ -7250,6 +7359,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7417,8 +7527,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($prepaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PrepaymentID' . '}',
@@ -7427,7 +7538,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -7444,6 +7556,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7602,13 +7715,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($summarizeErrors !== null) {
             $queryParams['SummarizeErrors'] = ObjectSerializer::toQueryValue($summarizeErrors);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($purchaseOrders)) {
             $_tempBody = $purchaseOrders;
@@ -7625,6 +7739,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7792,8 +7907,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($purchaseOrderID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PurchaseOrderID' . '}',
@@ -7802,7 +7918,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -7819,6 +7936,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -7974,9 +8092,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($receipts)) {
             $_tempBody = $receipts;
@@ -7993,6 +8113,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -8172,8 +8293,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -8181,7 +8303,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -8190,7 +8312,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -8207,6 +8330,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -8374,8 +8498,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -8384,7 +8509,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -8401,6 +8527,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -8580,8 +8707,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -8589,7 +8717,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -8598,7 +8726,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -8615,6 +8744,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -8782,8 +8912,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -8792,7 +8923,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($historyRecords)) {
             $_tempBody = $historyRecords;
@@ -8809,6 +8941,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -8964,9 +9097,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($taxRates)) {
             $_tempBody = $taxRates;
@@ -8983,6 +9118,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9138,9 +9274,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($trackingCategory)) {
             $_tempBody = $trackingCategory;
@@ -9157,6 +9295,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9324,8 +9463,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($trackingCategoryID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingCategoryID' . '}',
@@ -9334,7 +9474,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($trackingOption)) {
             $_tempBody = $trackingOption;
@@ -9351,6 +9492,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9506,8 +9648,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -9516,7 +9659,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -9530,6 +9674,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9664,8 +9809,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactGroupID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactGroupID' . '}',
@@ -9673,7 +9819,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -9682,7 +9828,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -9696,6 +9843,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9818,8 +9966,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactGroupID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactGroupID' . '}',
@@ -9828,7 +9977,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -9842,6 +9992,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -9964,8 +10115,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($itemID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ItemID' . '}',
@@ -9974,7 +10126,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -9988,6 +10141,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -10110,8 +10264,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($linkedTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'LinkedTransactionID' . '}',
@@ -10120,7 +10275,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -10134,6 +10290,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -10301,8 +10458,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($paymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PaymentID' . '}',
@@ -10311,7 +10469,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($payments)) {
             $_tempBody = $payments;
@@ -10328,6 +10487,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -10483,8 +10643,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($trackingCategoryID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingCategoryID' . '}',
@@ -10493,7 +10654,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -10507,6 +10669,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -10674,8 +10837,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($trackingCategoryID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingCategoryID' . '}',
@@ -10683,7 +10847,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($trackingOptionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingOptionID' . '}',
@@ -10692,7 +10856,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -10706,6 +10871,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -10840,8 +11006,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -10850,7 +11017,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($requestEmpty)) {
             $_tempBody = $requestEmpty;
@@ -10867,6 +11035,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -11016,8 +11185,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -11026,7 +11196,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11040,6 +11211,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -11213,12 +11385,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -11226,7 +11395,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -11235,7 +11404,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11247,6 +11417,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -11422,12 +11597,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -11435,7 +11607,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -11444,7 +11616,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11456,6 +11629,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -11607,8 +11785,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -11617,7 +11796,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11631,6 +11811,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -11777,21 +11958,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11803,6 +11980,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -11954,8 +12136,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -11964,7 +12147,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -11978,6 +12162,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -12151,12 +12336,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -12164,7 +12346,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -12173,7 +12355,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -12185,6 +12368,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -12360,12 +12548,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -12373,7 +12558,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -12382,7 +12567,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -12394,6 +12580,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -12545,8 +12736,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -12555,7 +12747,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -12569,6 +12762,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -12721,29 +12915,23 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -12755,6 +12943,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -12906,8 +13099,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -12916,7 +13110,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -12930,6 +13125,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -13079,8 +13275,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -13089,7 +13286,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -13103,6 +13301,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -13276,12 +13475,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -13289,7 +13485,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -13298,7 +13494,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -13310,6 +13507,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -13485,12 +13687,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -13498,7 +13697,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -13507,7 +13706,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -13519,6 +13719,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -13670,8 +13875,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -13680,7 +13886,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -13694,6 +13901,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -13843,8 +14051,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -13853,7 +14062,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -13867,6 +14077,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -14013,21 +14224,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14039,6 +14246,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -14190,8 +14402,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($batchPaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BatchPaymentID' . '}',
@@ -14200,7 +14413,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14214,6 +14428,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -14360,21 +14575,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14386,6 +14597,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -14537,8 +14753,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($brandingThemeID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BrandingThemeID' . '}',
@@ -14547,7 +14764,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14561,6 +14779,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -14710,8 +14929,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($brandingThemeID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BrandingThemeID' . '}',
@@ -14720,7 +14940,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14734,6 +14955,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -14871,9 +15093,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -14887,6 +15111,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -15036,8 +15261,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -15046,7 +15272,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15060,6 +15287,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -15233,12 +15461,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -15246,7 +15471,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -15255,7 +15480,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15267,6 +15493,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -15442,12 +15673,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -15455,7 +15683,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -15464,7 +15692,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15476,6 +15705,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -15627,8 +15861,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -15637,7 +15872,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15651,6 +15887,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -15800,8 +16037,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -15810,7 +16048,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15824,6 +16063,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -15973,8 +16213,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactGroupID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactGroupID' . '}',
@@ -15983,7 +16224,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -15997,6 +16239,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -16140,17 +16383,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -16164,6 +16407,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -16313,8 +16557,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -16323,7 +16568,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -16337,6 +16583,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -16492,33 +16739,26 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($iDs !== null) {
             $queryParams['IDs'] = ObjectSerializer::toQueryValue($iDs);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($includeArchived !== null) {
             $queryParams['includeArchived'] = ObjectSerializer::toQueryValue($includeArchived);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -16530,6 +16770,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -16681,8 +16926,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -16691,7 +16937,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -16705,6 +16952,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -16866,12 +17114,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -16880,7 +17125,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -16892,6 +17138,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -17067,12 +17318,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -17080,7 +17328,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -17089,7 +17337,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -17101,6 +17350,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -17276,12 +17530,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -17289,7 +17540,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -17298,7 +17549,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -17310,6 +17562,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -17461,8 +17718,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -17471,7 +17729,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -17485,6 +17744,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -17634,8 +17894,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -17644,7 +17905,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -17658,6 +17920,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -17807,25 +18070,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -17837,6 +18095,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -17982,17 +18245,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18006,6 +18269,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -18155,8 +18419,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($employeeID !== null) {
             $resourcePath = str_replace(
                 '{' . 'EmployeeID' . '}',
@@ -18165,7 +18430,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18179,6 +18445,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -18325,21 +18592,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18351,6 +18614,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -18502,8 +18770,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($expenseClaimID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ExpenseClaimID' . '}',
@@ -18512,7 +18781,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18526,6 +18796,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -18675,8 +18946,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($expenseClaimID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ExpenseClaimID' . '}',
@@ -18685,7 +18957,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18699,6 +18972,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -18845,21 +19119,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -18871,6 +19141,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -19022,8 +19297,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19032,7 +19308,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19046,6 +19323,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -19207,12 +19485,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19221,7 +19496,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19233,6 +19509,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -19408,12 +19689,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19421,7 +19699,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -19430,7 +19708,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19442,6 +19721,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -19617,12 +19901,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19630,7 +19911,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -19639,7 +19920,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19651,6 +19933,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -19802,8 +20089,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19812,7 +20100,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19826,6 +20115,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -19975,8 +20265,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -19985,7 +20276,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -19999,6 +20291,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -20136,9 +20429,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -20152,6 +20447,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -20322,53 +20618,41 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($iDs !== null) {
             $queryParams['IDs'] = ObjectSerializer::toQueryValue($iDs);
         }
-        // query params
         if ($invoiceNumbers !== null) {
             $queryParams['InvoiceNumbers'] = ObjectSerializer::toQueryValue($invoiceNumbers);
         }
-        // query params
         if ($contactIDs !== null) {
             $queryParams['ContactIDs'] = ObjectSerializer::toQueryValue($contactIDs);
         }
-        // query params
         if ($statuses !== null) {
             $queryParams['Statuses'] = ObjectSerializer::toQueryValue($statuses);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($includeArchived !== null) {
             $queryParams['includeArchived'] = ObjectSerializer::toQueryValue($includeArchived);
         }
-        // query params
         if ($createdByMyApp !== null) {
             $queryParams['createdByMyApp'] = ObjectSerializer::toQueryValue($createdByMyApp);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -20380,6 +20664,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -20531,8 +20820,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($itemID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ItemID' . '}',
@@ -20541,7 +20831,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -20555,6 +20846,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -20704,8 +20996,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($itemID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ItemID' . '}',
@@ -20714,7 +21007,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -20728,6 +21022,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -20877,25 +21172,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -20907,6 +21197,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -21058,8 +21353,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($journalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'JournalID' . '}',
@@ -21068,7 +21364,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -21082,6 +21379,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -21228,21 +21526,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($offset !== null) {
             $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
-        // query params
         if ($paymentsOnly !== null) {
             $queryParams['paymentsOnly'] = ObjectSerializer::toQueryValue($paymentsOnly);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -21254,6 +21548,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -21405,8 +21704,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($linkedTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'LinkedTransactionID' . '}',
@@ -21415,7 +21715,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -21429,6 +21730,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -21584,33 +21886,29 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($linkedTransactionID !== null) {
             $queryParams['LinkedTransactionID'] = ObjectSerializer::toQueryValue($linkedTransactionID);
         }
-        // query params
         if ($sourceTransactionID !== null) {
             $queryParams['SourceTransactionID'] = ObjectSerializer::toQueryValue($sourceTransactionID);
         }
-        // query params
         if ($contactID !== null) {
             $queryParams['ContactID'] = ObjectSerializer::toQueryValue($contactID);
         }
-        // query params
         if ($status !== null) {
             $queryParams['Status'] = ObjectSerializer::toQueryValue($status);
         }
-        // query params
         if ($targetTransactionID !== null) {
             $queryParams['TargetTransactionID'] = ObjectSerializer::toQueryValue($targetTransactionID);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -21624,6 +21922,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -21773,8 +22072,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -21783,7 +22083,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -21797,6 +22098,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -21970,12 +22272,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -21983,7 +22282,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -21992,7 +22291,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22004,6 +22304,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -22179,12 +22484,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -22192,7 +22494,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -22201,7 +22503,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22213,6 +22516,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -22364,8 +22672,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -22374,7 +22683,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22388,6 +22698,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -22537,25 +22848,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22567,6 +22873,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -22718,8 +23029,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -22728,7 +23040,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22742,6 +23055,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -22891,8 +23205,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($organisationID !== null) {
             $resourcePath = str_replace(
                 '{' . 'OrganisationID' . '}',
@@ -22901,7 +23216,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -22915,6 +23231,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -23052,9 +23369,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23068,6 +23387,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -23217,8 +23537,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($overpaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'OverpaymentID' . '}',
@@ -23227,7 +23548,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23241,6 +23563,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -23390,8 +23713,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($overpaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'OverpaymentID' . '}',
@@ -23400,7 +23724,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23414,6 +23739,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -23566,29 +23892,23 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23600,6 +23920,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -23751,8 +24076,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($paymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PaymentID' . '}',
@@ -23761,7 +24087,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23775,6 +24102,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -23924,8 +24252,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($paymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PaymentID' . '}',
@@ -23934,7 +24263,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -23948,6 +24278,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -24085,9 +24416,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24101,6 +24434,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -24247,21 +24581,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24273,6 +24603,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -24424,8 +24759,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($prepaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PrepaymentID' . '}',
@@ -24434,7 +24770,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24448,6 +24785,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -24597,8 +24935,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($prepaymentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PrepaymentID' . '}',
@@ -24607,7 +24946,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24621,6 +24961,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -24773,29 +25114,23 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24807,6 +25142,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -24958,8 +25298,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($purchaseOrderID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PurchaseOrderID' . '}',
@@ -24968,7 +25309,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -24982,6 +25324,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -25131,8 +25474,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($purchaseOrderID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PurchaseOrderID' . '}',
@@ -25141,7 +25485,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -25155,6 +25500,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -25310,33 +25656,26 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($status !== null) {
             $queryParams['Status'] = ObjectSerializer::toQueryValue($status);
         }
-        // query params
         if ($dateFrom !== null) {
             $queryParams['DateFrom'] = ObjectSerializer::toQueryValue($dateFrom);
         }
-        // query params
         if ($dateTo !== null) {
             $queryParams['DateTo'] = ObjectSerializer::toQueryValue($dateTo);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -25348,6 +25687,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -25499,8 +25843,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -25509,7 +25854,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -25523,6 +25869,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -25696,12 +26043,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -25709,7 +26053,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -25718,7 +26062,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -25730,6 +26075,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -25905,12 +26255,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -25918,7 +26265,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -25927,7 +26274,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -25939,6 +26287,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -26090,8 +26443,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -26100,7 +26454,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -26114,6 +26469,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -26263,8 +26619,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -26273,7 +26630,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -26287,6 +26645,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -26436,25 +26795,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($unitdp !== null) {
             $queryParams['unitdp'] = ObjectSerializer::toQueryValue($unitdp);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -26466,6 +26820,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -26617,8 +26976,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -26627,7 +26987,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -26641,6 +27002,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -26814,12 +27176,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -26827,7 +27186,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -26836,7 +27195,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -26848,6 +27208,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -27023,12 +27388,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // header params
-        if ($contentType !== null) {
-            $headerParams['contentType'] = ObjectSerializer::toHeaderValue($contentType);
-        }
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -27036,7 +27398,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($attachmentID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AttachmentID' . '}',
@@ -27045,7 +27407,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27057,6 +27420,11 @@ class AccountingApi
                 ['application/octet-stream'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($contentType !== null) {
+            $headers['contentType'] = ObjectSerializer::toHeaderValue($contentType);
         }
 
         // For model (json/xml)
@@ -27208,8 +27576,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -27218,7 +27587,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27232,6 +27602,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -27381,8 +27752,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -27391,7 +27763,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27405,6 +27778,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -27548,17 +27922,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27572,6 +27946,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -27730,25 +28105,23 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($contactId !== null) {
             $queryParams['contactId'] = ObjectSerializer::toQueryValue($contactId);
         }
-        // query params
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($fromDate !== null) {
             $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
         }
-        // query params
         if ($toDate !== null) {
             $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27762,6 +28135,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -27920,25 +28294,23 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($contactId !== null) {
             $queryParams['contactId'] = ObjectSerializer::toQueryValue($contactId);
         }
-        // query params
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($fromDate !== null) {
             $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
         }
-        // query params
         if ($toDate !== null) {
             $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -27952,6 +28324,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28101,8 +28474,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($reportID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReportID' . '}',
@@ -28111,7 +28485,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28125,6 +28500,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28262,9 +28638,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28278,6 +28656,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28436,37 +28815,32 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($periods !== null) {
             $queryParams['periods'] = ObjectSerializer::toQueryValue($periods);
         }
-        // query params
         if ($timeframe !== null) {
             $queryParams['timeframe'] = ObjectSerializer::toQueryValue($timeframe);
         }
-        // query params
         if ($trackingOptionID1 !== null) {
             $queryParams['trackingOptionID1'] = ObjectSerializer::toQueryValue($trackingOptionID1);
         }
-        // query params
         if ($trackingOptionID2 !== null) {
             $queryParams['trackingOptionID2'] = ObjectSerializer::toQueryValue($trackingOptionID2);
         }
-        // query params
         if ($standardLayout !== null) {
             $queryParams['standardLayout'] = ObjectSerializer::toQueryValue($standardLayout);
         }
-        // query params
         if ($paymentsOnly !== null) {
             $queryParams['paymentsOnly'] = ObjectSerializer::toQueryValue($paymentsOnly);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28480,6 +28854,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28626,21 +29001,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($period !== null) {
             $queryParams['period'] = ObjectSerializer::toQueryValue($period);
         }
-        // query params
         if ($timeframe !== null) {
             $queryParams['timeframe'] = ObjectSerializer::toQueryValue($timeframe);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28654,6 +29028,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28800,21 +29175,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($period !== null) {
             $queryParams['period'] = ObjectSerializer::toQueryValue($period);
         }
-        // query params
         if ($timeframe !== null) {
             $queryParams['timeframe'] = ObjectSerializer::toQueryValue($timeframe);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28828,6 +29202,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -28968,13 +29343,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -28988,6 +29364,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -29155,49 +29532,41 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($fromDate !== null) {
             $queryParams['fromDate'] = ObjectSerializer::toQueryValue($fromDate);
         }
-        // query params
         if ($toDate !== null) {
             $queryParams['toDate'] = ObjectSerializer::toQueryValue($toDate);
         }
-        // query params
         if ($periods !== null) {
             $queryParams['periods'] = ObjectSerializer::toQueryValue($periods);
         }
-        // query params
         if ($timeframe !== null) {
             $queryParams['timeframe'] = ObjectSerializer::toQueryValue($timeframe);
         }
-        // query params
         if ($trackingCategoryID !== null) {
             $queryParams['trackingCategoryID'] = ObjectSerializer::toQueryValue($trackingCategoryID);
         }
-        // query params
         if ($trackingCategoryID2 !== null) {
             $queryParams['trackingCategoryID2'] = ObjectSerializer::toQueryValue($trackingCategoryID2);
         }
-        // query params
         if ($trackingOptionID !== null) {
             $queryParams['trackingOptionID'] = ObjectSerializer::toQueryValue($trackingOptionID);
         }
-        // query params
         if ($trackingOptionID2 !== null) {
             $queryParams['trackingOptionID2'] = ObjectSerializer::toQueryValue($trackingOptionID2);
         }
-        // query params
         if ($standardLayout !== null) {
             $queryParams['standardLayout'] = ObjectSerializer::toQueryValue($standardLayout);
         }
-        // query params
         if ($paymentsOnly !== null) {
             $queryParams['paymentsOnly'] = ObjectSerializer::toQueryValue($paymentsOnly);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -29211,6 +29580,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -29351,13 +29721,14 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($reportYear !== null) {
             $queryParams['reportYear'] = ObjectSerializer::toQueryValue($reportYear);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -29371,6 +29742,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -29514,17 +29886,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($date !== null) {
             $queryParams['date'] = ObjectSerializer::toQueryValue($date);
         }
-        // query params
         if ($paymentsOnly !== null) {
             $queryParams['paymentsOnly'] = ObjectSerializer::toQueryValue($paymentsOnly);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -29538,6 +29910,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -29684,21 +30057,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($taxType !== null) {
             $queryParams['TaxType'] = ObjectSerializer::toQueryValue($taxType);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -29712,6 +30084,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -29858,21 +30231,20 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // query params
         if ($includeArchived !== null) {
             $queryParams['includeArchived'] = ObjectSerializer::toQueryValue($includeArchived);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -29886,6 +30258,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -30035,8 +30408,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($trackingCategoryID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingCategoryID' . '}',
@@ -30045,7 +30419,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -30059,6 +30434,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -30208,8 +30584,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($userID !== null) {
             $resourcePath = str_replace(
                 '{' . 'UserID' . '}',
@@ -30218,7 +30595,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -30232,6 +30610,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -30378,21 +30757,17 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($where !== null) {
             $queryParams['where'] = ObjectSerializer::toQueryValue($where);
         }
-        // query params
         if ($order !== null) {
             $queryParams['order'] = ObjectSerializer::toQueryValue($order);
         }
-        // header params
-        if ($ifModifiedSince !== null) {
-            $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -30404,6 +30779,11 @@ class AccountingApi
                 ['application/json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($ifModifiedSince !== null) {
+            $headers['If-Modified-Since'] = ObjectSerializer::toHeaderValue($ifModifiedSince);
         }
 
         // For model (json/xml)
@@ -30573,8 +30953,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -30583,7 +30964,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($accounts)) {
             $_tempBody = $accounts;
@@ -30600,6 +30982,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -30779,8 +31162,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($accountID !== null) {
             $resourcePath = str_replace(
                 '{' . 'AccountID' . '}',
@@ -30788,7 +31172,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -30797,7 +31181,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -30814,6 +31199,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -30981,8 +31367,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -30991,7 +31378,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($bankTransactions)) {
             $_tempBody = $bankTransactions;
@@ -31008,6 +31396,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -31187,8 +31576,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransactionID' . '}',
@@ -31196,7 +31586,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -31205,7 +31595,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -31222,6 +31613,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -31397,8 +31789,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($bankTransferID !== null) {
             $resourcePath = str_replace(
                 '{' . 'BankTransferID' . '}',
@@ -31406,7 +31799,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -31415,7 +31808,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -31432,6 +31826,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -31586,8 +31981,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -31596,7 +31992,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($contacts)) {
             $_tempBody = $contacts;
@@ -31613,6 +32010,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -31788,8 +32186,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactID' . '}',
@@ -31797,7 +32196,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -31806,7 +32205,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -31823,6 +32223,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -31981,8 +32382,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($contactGroupID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ContactGroupID' . '}',
@@ -31991,7 +32393,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($contactGroups)) {
             $_tempBody = $contactGroups;
@@ -32008,6 +32411,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -32166,8 +32570,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -32176,7 +32581,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($creditNotes)) {
             $_tempBody = $creditNotes;
@@ -32193,6 +32599,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -32372,8 +32779,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($creditNoteID !== null) {
             $resourcePath = str_replace(
                 '{' . 'CreditNoteID' . '}',
@@ -32381,7 +32789,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -32390,7 +32798,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -32407,6 +32816,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -32574,8 +32984,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($employeeID !== null) {
             $resourcePath = str_replace(
                 '{' . 'EmployeeID' . '}',
@@ -32584,7 +32995,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($employees)) {
             $_tempBody = $employees;
@@ -32601,6 +33013,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -32768,8 +33181,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($expenseClaimID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ExpenseClaimID' . '}',
@@ -32778,7 +33192,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($expenseClaims)) {
             $_tempBody = $expenseClaims;
@@ -32795,6 +33210,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -32962,8 +33378,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -32972,7 +33389,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($invoices)) {
             $_tempBody = $invoices;
@@ -32989,6 +33407,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -33168,8 +33587,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($invoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'InvoiceID' . '}',
@@ -33177,7 +33597,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -33186,7 +33606,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -33203,6 +33624,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -33370,8 +33792,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($itemID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ItemID' . '}',
@@ -33380,7 +33803,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($items)) {
             $_tempBody = $items;
@@ -33397,6 +33821,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -33564,8 +33989,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($linkedTransactionID !== null) {
             $resourcePath = str_replace(
                 '{' . 'LinkedTransactionID' . '}',
@@ -33574,7 +34000,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($linkedTransactions)) {
             $_tempBody = $linkedTransactions;
@@ -33591,6 +34018,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -33758,8 +34186,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -33768,7 +34197,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($manualJournals)) {
             $_tempBody = $manualJournals;
@@ -33785,6 +34215,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -33964,8 +34395,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($manualJournalID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ManualJournalID' . '}',
@@ -33973,7 +34405,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -33982,7 +34414,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -33999,6 +34432,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -34166,8 +34600,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($purchaseOrderID !== null) {
             $resourcePath = str_replace(
                 '{' . 'PurchaseOrderID' . '}',
@@ -34176,7 +34611,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($purchaseOrders)) {
             $_tempBody = $purchaseOrders;
@@ -34193,6 +34629,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -34360,8 +34797,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -34370,7 +34808,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($receipts)) {
             $_tempBody = $receipts;
@@ -34387,6 +34826,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -34566,8 +35006,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($receiptID !== null) {
             $resourcePath = str_replace(
                 '{' . 'ReceiptID' . '}',
@@ -34575,7 +35016,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -34584,7 +35025,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -34601,6 +35043,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -34780,8 +35223,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($repeatingInvoiceID !== null) {
             $resourcePath = str_replace(
                 '{' . 'RepeatingInvoiceID' . '}',
@@ -34789,7 +35233,7 @@ class AccountingApi
                 $resourcePath
             );
         }
-        // path params
+
         if ($fileName !== null) {
             $resourcePath = str_replace(
                 '{' . 'FileName' . '}',
@@ -34798,7 +35242,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($body)) {
             $_tempBody = $body;
@@ -34815,6 +35260,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -34970,9 +35416,11 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($taxRates)) {
             $_tempBody = $taxRates;
@@ -34989,6 +35437,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -35156,8 +35605,9 @@ class AccountingApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($trackingCategoryID !== null) {
             $resourcePath = str_replace(
                 '{' . 'TrackingCategoryID' . '}',
@@ -35166,7 +35616,8 @@ class AccountingApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($trackingCategory)) {
             $_tempBody = $trackingCategory;
@@ -35183,6 +35634,7 @@ class AccountingApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -35397,7 +35849,7 @@ class AccountingApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
-    function buildHttpRequest(
+    protected function buildHttpRequest(
         array $headerParams,
         array $headers,
         array $queryParams,
@@ -35405,17 +35857,14 @@ class AccountingApi
         string $method,
         string $resourcePath
     ) {
-        $defaultHeaders = [];
-
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
         $headers = array_merge(
-            $defaultHeaders,
             $headerParams,
             $headers
         );
+
+        if ($this->config->getUserAgent()) {
+            $headers['User-Agent'] = $this->config->getUserAgent();
+        }
 
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);

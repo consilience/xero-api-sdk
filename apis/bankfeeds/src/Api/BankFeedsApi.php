@@ -253,9 +253,11 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($feedConnections)) {
             $_tempBody = $feedConnections;
@@ -272,6 +274,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -449,9 +452,11 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($statements)) {
             $_tempBody = $statements;
@@ -468,6 +473,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -617,9 +623,11 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
+        
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
         if (isset($feedConnections)) {
             $_tempBody = $feedConnections;
@@ -636,6 +644,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -790,8 +799,9 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($id !== null) {
             $resourcePath = str_replace(
                 '{' . 'id' . '}',
@@ -800,7 +810,8 @@ class BankFeedsApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -814,6 +825,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -962,17 +974,17 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($pageSize !== null) {
             $queryParams['pageSize'] = ObjectSerializer::toQueryValue($pageSize);
         }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -986,6 +998,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1136,8 +1149,9 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
+        
 
-        // path params
+// Path parameters
         if ($statementId !== null) {
             $resourcePath = str_replace(
                 '{' . 'statementId' . '}',
@@ -1146,7 +1160,8 @@ class BankFeedsApi
             );
         }
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1160,6 +1175,7 @@ class BankFeedsApi
             );
         }
 
+        
         // For model (json/xml)
 
         if (isset($_tempBody)) {
@@ -1314,29 +1330,17 @@ class BankFeedsApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
+        // Query parameters
         if ($page !== null) {
             $queryParams['page'] = ObjectSerializer::toQueryValue($page);
         }
-        // query params
         if ($pageSize !== null) {
             $queryParams['pageSize'] = ObjectSerializer::toQueryValue($pageSize);
         }
-        // header params
-        if ($xeroApplicationId !== null) {
-            $headerParams['Xero-Application-Id'] = ObjectSerializer::toHeaderValue($xeroApplicationId);
-        }
-        // header params
-        if ($xeroTenantId !== null) {
-            $headerParams['Xero-Tenant-Id'] = ObjectSerializer::toHeaderValue($xeroTenantId);
-        }
-        // header params
-        if ($xeroUserId !== null) {
-            $headerParams['Xero-User-Id'] = ObjectSerializer::toHeaderValue($xeroUserId);
-        }
 
 
-        // body params
+
+        // Body parameter
         $_tempBody = null;
 
         if ($multipart) {
@@ -1348,6 +1352,19 @@ class BankFeedsApi
                 ['application/json', 'application/problem+json'],
                 []
             );
+        }
+
+        // Header parameters
+        if ($xeroApplicationId !== null) {
+            $headers['Xero-Application-Id'] = ObjectSerializer::toHeaderValue($xeroApplicationId);
+        }
+
+        if ($xeroTenantId !== null) {
+            $headers['Xero-Tenant-Id'] = ObjectSerializer::toHeaderValue($xeroTenantId);
+        }
+
+        if ($xeroUserId !== null) {
+            $headers['Xero-User-Id'] = ObjectSerializer::toHeaderValue($xeroUserId);
         }
 
         // For model (json/xml)
@@ -1564,7 +1581,7 @@ class BankFeedsApi
         return $qs ? (string) substr($qs, 0, -1) : '';
     }
 
-    function buildHttpRequest(
+    protected function buildHttpRequest(
         array $headerParams,
         array $headers,
         array $queryParams,
@@ -1572,17 +1589,14 @@ class BankFeedsApi
         string $method,
         string $resourcePath
     ) {
-        $defaultHeaders = [];
-
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
         $headers = array_merge(
-            $defaultHeaders,
             $headerParams,
             $headers
         );
+
+        if ($this->config->getUserAgent()) {
+            $headers['User-Agent'] = $this->config->getUserAgent();
+        }
 
 
         $url = $this->createUri($this->config->getHost() . $resourcePath);
