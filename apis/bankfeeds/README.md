@@ -60,17 +60,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-// Configure API key authorization: ApiKeyAuth
-$config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
-
-
 $apiInstance = new Consilience\Xero\BankfeedsSdk\Api\BankFeedsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $feedConnections = {"items":[{"AccountToken":"10058695","AccountNumber":"3809058454321500","AccountName":"Mike's Savings Account","AccountType":"BANK","Currency":"GBP"},{"AccountToken":"10045844","AccountNumber":"3809058887441500","AccountName":"Gee's Saving's Account","AccountType":"BANK","Currency":"GBP","Country":"GB"}]}; // \Consilience\Xero\BankfeedsSdk\Model\FeedConnections | Feed Connection(s) to add
 

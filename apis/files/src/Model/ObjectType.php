@@ -35,7 +35,7 @@ use Consilience\Xero\FilesSdk\ObjectSerializer;
  * ObjectType Class Doc Comment
  *
  * @category Class
- * @description The  Type of object associated (i.e Account, Contact, etc)
+ * @description The Object Type
  * @package  Consilience\Xero\FilesSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -45,11 +45,11 @@ class ObjectType
     /**
      * Possible values of this enum
      */
-    const ACCPAY = 'Accpay';
-    const ACC_REC = 'AccRec';
     const ACCOUNT = 'ACCOUNT';
+    const ACCPAY = 'ACCPAY';
     const ACCPAYCREDIT = 'ACCPAYCREDIT';
     const ACCPAYPAYMENT = 'ACCPAYPAYMENT';
+    const ACCREC = 'ACCREC';
     const ACCRECCREDIT = 'ACCRECCREDIT';
     const ACCRECPAYMENT = 'ACCRECPAYMENT';
     const ADJUSTMENT = 'ADJUSTMENT';
@@ -86,11 +86,11 @@ class ObjectType
     public static function getAllowableEnumValues()
     {
         return [
-            self::ACCPAY,
-            self::ACC_REC,
             self::ACCOUNT,
+            self::ACCPAY,
             self::ACCPAYCREDIT,
             self::ACCPAYPAYMENT,
+            self::ACCREC,
             self::ACCRECCREDIT,
             self::ACCRECPAYMENT,
             self::ADJUSTMENT,

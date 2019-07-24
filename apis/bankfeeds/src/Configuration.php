@@ -756,7 +756,7 @@ class Configuration
     {
         return [
           [
-            "url" => "https://api.xero.com/bankfeeds.xro/1.0",
+            "url" => "https://api.xero.com/bankfeeds.xro/1.0/",
             "description" => "Xero Bank Feeds API base url",
           ]
         ];
