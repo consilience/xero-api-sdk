@@ -14,19 +14,19 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
     --spec=${DIR}/../vendor/xeroapi/xero-openapi/accounting-json/Xero_accounting_2.0.0_swagger.json \
     --namespace=Consilience\\Xero\\AccountingSdk \
-    --generated=${DIR}/../src/accounting/
+    --generated=${DIR}/../apis/accounting/
 
 ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
     --spec=${DIR}/../vendor/xeroapi/xero-openapi/bankfeeds-json/Xero_bankfeeds_1.0.0_swagger.json \
     --namespace=Consilience\\Xero\\BankfeedsSdk \
-    --generated=${DIR}/../src/bankfeeds/
+    --generated=${DIR}/../apis/bankfeeds/
 
 ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
     --spec=${DIR}/../vendor/xeroapi/xero-openapi/assets-json/Xero_assets_1.0.0_swagger.json \
     --namespace=Consilience\\Xero\\AssetsSdk \
-    --generated=${DIR}/../src/assets/
+    --generated=${DIR}/../apis/assets/
 
 ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
-    --spec=${DIR}/../vendor/xeroapi/xero-openapi/files-json/Xero_files_1.0.0_swagger.json \
+    --spec=${DIR}/../vendor/xeroapi/xero-openapi/files-yaml/Xero_files_1.0.0_swagger.yaml \
     --namespace=Consilience\\Xero\\FilesSdk \
-    --generated=${DIR}/../src/files/
+    --generated=${DIR}/../apis/files/
