@@ -169,7 +169,7 @@ class Payments implements Iterator, ArrayAccess, Countable
      */
     public function fetchPaymentsPage()
     {
-        // Ascending.
+        // Ascending update date is the ONLY way we can be sure to get all payments.
 
         $order = 'UpdatedDateUTC';
 
@@ -179,9 +179,9 @@ class Payments implements Iterator, ArrayAccess, Countable
             $order
         )->payments;
 
-        // Find the last record last update time to set for the next page.
-
         if (count($payments)) {
+            // Find the last record last update time to set for the next page.
+
             $lastPayment = array_values(array_slice($payments, -1))[0];
             $lastPaymentTime = clone $lastPayment->updatedDateUTC;
 
@@ -189,7 +189,9 @@ class Payments implements Iterator, ArrayAccess, Countable
                 new DateInterval('PT1S')
             );
 
-            // Add to overall contiguous index for array access.
+            // Add to the master contiguous index for array access.
+            // This also allows us to throw out duplicates where the
+            // pages of payments overlap.
 
             $duplicatesRemoved = false;
 
