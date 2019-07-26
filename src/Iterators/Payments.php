@@ -192,6 +192,7 @@ class Payments implements Iterator, ArrayAccess, Countable
             $lastPayment = array_values(array_slice($payments, -1))[0];
 
             $this->ifModifiedSince = $lastPayment->updatedDateUTC->sub(
+                // One second.
                 new DateInterval('PT1S')
             );
 
