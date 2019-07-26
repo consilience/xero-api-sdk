@@ -1,6 +1,6 @@
 {
     "name": "consilience/xero-api-sdk",
-    "description": "An SDK providing operations for the Xero APIs, using code generated from the OpenAPI specs.",
+    "description": "An SDK providing operations for the Xero APIs, using code generated from the OpenAPI descriptions",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -17,7 +17,8 @@
             "Consilience\\Xero\\AccountingSdk\\": "apis/accounting/src/",
             "Consilience\\Xero\\BankfeedsSdk\\": "apis/bankfeeds/src/",
             "Consilience\\Xero\\AssetsSdk\\": "apis/assets/src/",
-            "Consilience\\Xero\\FilesSdk\\": "apis/files/src/"
+            "Consilience\\Xero\\FilesSdk\\": "apis/files/src/",
+            "Consilience\\Xero\\Support\\": "src/"
         }
     },
     "repositories" : [
