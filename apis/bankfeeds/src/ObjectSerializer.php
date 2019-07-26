@@ -33,6 +33,11 @@ namespace Consilience\Xero\BankfeedsSdk;
 use Psr\Http\Message\MessageInterface;
 use Consilience\Xero\BankfeedsSdk\Model\ModelInterface;
 
+use DateTimeInterface;
+use DateTimeImmutable;
+use DateTimeZone;
+use DateTime;
+
 /**
  * ObjectSerializer Class Doc Comment
  *
@@ -56,8 +61,8 @@ class ObjectSerializer
     {
         if (is_scalar($data) || null === $data) {
             return $data;
-        } elseif ($data instanceof \DateTime) {
-            return ($format === 'date') ? $data->format('Y-m-d') : $data->format(\DateTime::ATOM);
+        } elseif ($data instanceof DateTimeInterface) {
+            return ($format === 'date') ? $data->format('Y-m-d') : $data->format(DateTimeInterface::ATOM);
         } elseif (is_array($data)) {
             foreach ($data as $property => $value) {
                 $data[$property] = static::sanitizeForSerialization($value);
@@ -139,7 +144,7 @@ class ObjectSerializer
      * If it's a string, pass through unchanged. It will be url-encoded
      * later.
      *
-     * @param string[]|string|\DateTime $object an object to be serialized to a string
+     * @param string[]|string|DateTimeInterface $object an object to be serialized to a string
      *
      * @return string the serialized object
      */
@@ -190,15 +195,15 @@ class ObjectSerializer
      * If it's a datetime object, format it in ISO8601
      * If it's a boolean, convert it to "true" or "false".
      *
-     * @param string|bool|\DateTime $value the value of the parameter
+     * @param string|bool|DateTimeInterface $value the value of the parameter
      *
      * @return string the header string
      */
     public static function toString($value)
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof DateTimeInterface) {
             // datetime in ISO8601 format
-            return $value->format(\DateTime::ATOM);
+            return $value->format(DateTimeInterface::ATOM);
         } else if (is_bool($value)) {
             return $value ? 'true' : 'false';
         } else {
@@ -328,6 +333,9 @@ class ObjectSerializer
             return $data;
         }
 
+        // '\DateTime' is the string generated in the generator logic, though we
+        // actually want to create an immutable datetime object.
+
         if ($class === '\DateTime') {
             // Some API's return an invalid, empty string as a
             // date-time property. DateTime::__construct() will return
@@ -355,11 +363,11 @@ class ObjectSerializer
                 if (substr($data, 0, 5) === '/Date'
                     && preg_match('#^(/Date\()([-]?[0-9]+)([0-9]{3})([+-][0-9]{4})?(\)/)$#', $data, $matches
                 )) {
-                    return \DateTime::createFromFormat('U u', $matches[2] . ' ' . $matches[3] . '000')
-                        ->setTimezone(new \DateTimeZone($matches[4] ?: '+0000'));
+                    return DateTimeImmutable::createFromFormat('U u', $matches[2] . ' ' . $matches[3] . '000')
+                        ->setTimezone(new DateTimeZone($matches[4] ?: '+0000'));
                 }
 
-                return new \DateTime($data);
+                return new DateTimeImmutable($data);
             } else {
                 return null;
             }

@@ -8,6 +8,8 @@ namespace Consilience\Xero\Support\Iterators;
  * in last update time order.
  */
 
+use DateTimeImmutable;
+use DateTimeInterface;
 use DateTime;
 use Iterator;
 use Countable;
@@ -19,7 +21,7 @@ use Consilience\Xero\AccountingSdk\Api\AccountingApi;
 class Payments implements Iterator, ArrayAccess, Countable
 {
     /**
-     * @var DateTime
+     * @var DateTimeInterface
      */
     protected $ifModifiedSince;
 
@@ -84,16 +86,20 @@ class Payments implements Iterator, ArrayAccess, Countable
 
     /**
      * @param AccountingApi $accountingApi the accounting API set up and ready to go
-     * @param DateTime|string|null $ifModifiedSince starting point for retrieving the payments
+     * @param DateTimeInterface|string|null $ifModifiedSince starting point for retrieving the payments
      * @param string $where the constructed query filter (likely to support an object later)
      */
     public function __construct(AccountingApi $accountingApi, $ifModifiedSince, $where = '')
     {
         if (is_string($ifModifiedSince)) {
-            $ifModifiedSince = new DateTime($ifModifiedSince);
+            $ifModifiedSince = new DateTimeImmutable($ifModifiedSince);
         }
 
-        if (! $ifModifiedSince instanceof DateTime) {
+        if ($ifModifiedSince instanceof DateTime) {
+            $ifModifiedSince = DateTimeImmutable::createFromMutable($ifModifiedSince);
+        }
+
+        if (! $ifModifiedSince instanceof DateTimeInterface) {
             throw new InvalidArgumentException(sprintf(
                 'Invalid datetime format for ifModifiedSince'
             ));
@@ -181,11 +187,11 @@ class Payments implements Iterator, ArrayAccess, Countable
 
         if (count($payments)) {
             // Find the last record last update time to set for the next page.
+            // The updatedDateUTC is immutable, so we can use sub() safely.
 
             $lastPayment = array_values(array_slice($payments, -1))[0];
-            $lastPaymentTime = clone $lastPayment->updatedDateUTC;
 
-            $this->ifModifiedSince = $lastPaymentTime->sub(
+            $this->ifModifiedSince = $lastPayment->updatedDateUTC->sub(
                 new DateInterval('PT1S')
             );
 
