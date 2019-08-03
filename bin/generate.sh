@@ -30,3 +30,8 @@ ${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
     --spec=${DIR}/../vendor/xeroapi/xero-openapi/files-yaml/Xero_files_1.0.0_swagger.yaml \
     --namespace=Consilience\\Xero\\FilesSdk \
     --generated=${DIR}/../apis/files/
+
+${DIR}/../vendor/consilience/openapi-generator-psr18/bin/generate.sh \
+    --spec=${DIR}/../openapi/payroll-au-openapi3.json \
+    --namespace=Consilience\\Xero\\PayrollAuSdk \
+    --generated=${DIR}/../apis/payroll-au/

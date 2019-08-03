@@ -18,6 +18,7 @@
             "Consilience\\Xero\\BankfeedsSdk\\": "apis/bankfeeds/src/",
             "Consilience\\Xero\\AssetsSdk\\": "apis/assets/src/",
             "Consilience\\Xero\\FilesSdk\\": "apis/files/src/",
+            "Consilience\\Xero\\PayrollAuSdk\\": "apis/payroll-au/src/",
             "Consilience\\Xero\\Support\\": "src/"
         }
     },
