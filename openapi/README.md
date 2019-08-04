@@ -13,3 +13,10 @@ I'm going to push Xero to release an OpenAPI description for this.
 We personally need the Payroll GB API description, and don't want to be
 duplicating work.
 
+The names of the operations are missing from the API description, which is probably
+why the names are all suffixed by "post", "gte" etc. It is just the default way
+of handling it in the code generator. Adding operatingId attributes will help a lot.
+
+The API supports both JSON and XML. The generated PHP code supports just JSON,
+and will remain that way until there is a need to support XML.
+
