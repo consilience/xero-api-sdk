@@ -8,7 +8,9 @@ namespace Consilience\Xero\Support\Iterators;
  * in last update time order.
  */
 
-class Payments extends PagelessAbstract
+use Consilience\Xero\Support\PagelessAbstractIterator;
+
+class Payments extends PagelessAbstractIterator
 {
     /**
      * Fetch a page of payment records, starting from the current

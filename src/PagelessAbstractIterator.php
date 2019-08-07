@@ -1,6 +1,6 @@
 <?php
 
-namespace Consilience\Xero\Support\Iterators;
+namespace Consilience\Xero\Support;
 
 /**
  * An abstract iterator for API endpoints returning lists of records
@@ -19,7 +19,7 @@ use DateInterval;
 use InvalidArgumentException;
 use Consilience\Xero\AccountingSdk\Api\AccountingApi;
 
-abstract class PagelessAbstract implements Iterator, ArrayAccess, Countable
+abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Countable
 {
     /**
      * @var DateTimeInterface
@@ -199,10 +199,18 @@ abstract class PagelessAbstract implements Iterator, ArrayAccess, Countable
 
             $lastPayment = array_values(array_slice($records, -1))[0];
 
-            $this->ifModifiedSince = $lastPayment->updatedDateUTC->sub(
-                // One second.
-                new DateInterval('PT1S')
-            );
+            // FIXME issue #2: we actually cannot do this.
+            // A payment batch can result in many payments crteated in the same
+            // millisecond, so we must continue from exactly where we finished.
+            // If we fetch a page that is coompletely dismissed as duplicates,
+            // then we can move on ONE microsecond, but we DO risk losing any
+            // transactions beyond the first page of the microsecond before.
+
+            $currentPageStartTime = $this->ifModifiedSince;
+
+            if ($lastPayment->updatedDateUTC > $this->ifModifiedSince) {
+                $this->ifModifiedSince = $lastPayment->updatedDateUTC;
+            }
 
             // Add to the master contiguous index for array access.
             // This also allows us to throw out duplicates where the
@@ -223,6 +231,27 @@ abstract class PagelessAbstract implements Iterator, ArrayAccess, Countable
 
             if ($duplicatesRemoved) {
                 $records = array_values($records);
+
+                if (count($records) === 0 && $currentPageStartTime === $lastPayment->updatedDateUTC) {
+                    // Every record has been marked as a duplicate.
+                    // Wind forward one millisecond IF the start and end times have not
+                    // shifted at all, then try one more time.
+                    // The ifModifiedSince search parameter is accurate to *one second*,
+                    // so that is what we are stuck with for now.
+
+                    // TODO: There is a risk of missing records, so we also need to flag
+                    // this somehow.
+
+                    $this->ifModifiedSince = $this->ifModifiedSince->modify('+1 second');
+
+                    // FIXME: limit the number of times this can recurse.
+                    // We are not really looking for recursion, so will be a
+                    // better way to do retries.
+
+                    $this->fetchPage();
+
+                    return;
+                }
             }
         }
 

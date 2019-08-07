@@ -17,7 +17,9 @@ namespace Consilience\Xero\Support\Iterators;
  * conditions and sending the page number that we already count up in the query.
  */
 
-class BankTransactions extends PagelessAbstract
+use Consilience\Xero\Support\PagelessAbstractIterator;
+
+class BankTransactions extends PagelessAbstractIterator
 {
     /**
      * Fetch a page of bank transaction records, starting from the current
