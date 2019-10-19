@@ -22,6 +22,11 @@ use Consilience\Xero\Support\PagelessAbstractIterator;
 class BankTransactions extends PagelessAbstractIterator
 {
     /**
+     * @var string the name of the model ID property
+     */
+    protected $idName = 'paymentID';
+
+    /**
      * Fetch a page of bank transaction records, starting from the current
      * last modified time and given the current where filter.
      *

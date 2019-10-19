@@ -3,25 +3,25 @@
 namespace Consilience\Xero\Support\Iterators;
 
 /**
- * An iterator for the payments API.
- * Iterates through all payments from a given last update time,
+ * An iterator for the accounts API.
+ * Iterates through all accounts from a given last update time,
  * in last update time order.
  */
 
 use Consilience\Xero\Support\PagelessAbstractIterator;
 
-class Payments extends PagelessAbstractIterator
+class Accounts extends PagelessAbstractIterator
 {
     /**
      * @var string the name of the model ID property
      */
-    protected $idName = 'paymentID';
+    protected $idName = 'accountID';
 
     /**
-     * Fetch a page of payment records, starting from the current
+     * Fetch a page of account records, starting from the current
      * last modified time and given the current where filter.
      *
-     * @return Consilience\Xero\AccountingSdk\Model\Payments[]
+     * @return Consilience\Xero\AccountingSdk\Model\Accounts[]
      */
     protected function fetchRecords(): array
     {
@@ -29,10 +29,10 @@ class Payments extends PagelessAbstractIterator
 
         $order = 'UpdatedDateUTC';
 
-        return $this->accountingApi->getPayments(
+        return $this->accountingApi->getAccounts(
             $this->ifModifiedSince,
             $this->where,
             $order
-        )->payments;
+        )->accounts;
     }
 }

@@ -32,24 +32,37 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
     protected $accountingApi;
 
     /**
-     * @var string payments query filter.
+     * @var string models query filter.
      */
     protected $where;
 
     /**
-     * @var Payment[] a page of payments fetched from the API.
+     * @var mixed[] a page of models fetched from the API.
      */
     protected $pages = [];
 
     /**
-     * @var Payment[] all payments fetched from the API indexed by paymentID.
+     * @var mixed[] all models fetched from the API indexed by the model ID.
      */
     protected $index = [];
+
+    /**
+     * @var string the name of the model ID property (examples: paymentID, accountID).
+     */
+    protected $idName = 'modelID';
 
     /**
      * @var int The current page number fetched from the API, zero-indexed.
      */
     protected $currentPage = 0;
+
+    /**
+     * The updatedDateUTC of the last record selected by this iterator.
+     */
+    public function updatedDateUTC()
+    {
+        return $this->current() ? $this->current()->updatedDateUTC : null;
+    }
 
     public function __debugInfo()
     {
@@ -88,7 +101,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
     }
 
     /**
-     * Returns the count of payments fetched *so far*
+     * Returns the count of models fetched *so far*
      * so use with caution if still party way through fetching.
      */
     public function count(): int
@@ -98,23 +111,25 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
 
     /**
      * @param AccountingApi $accountingApi the accounting API set up and ready to go
-     * @param DateTimeInterface|string|null $ifModifiedSince starting point for retrieving the payments
+     * @param DateTimeInterface|string|null $ifModifiedSince starting point for retrieving the models
      * @param string $where the constructed query filter (likely to support an object later)
      */
     public function __construct(AccountingApi $accountingApi, $ifModifiedSince, $where = '')
     {
-        if (is_string($ifModifiedSince)) {
-            $ifModifiedSince = new DateTimeImmutable($ifModifiedSince);
-        }
+        if ($ifModifiedSince !== null) {
+            if (is_string($ifModifiedSince)) {
+                $ifModifiedSince = new DateTimeImmutable($ifModifiedSince);
+            }
 
-        if ($ifModifiedSince instanceof DateTime) {
-            $ifModifiedSince = DateTimeImmutable::createFromMutable($ifModifiedSince);
-        }
+            if ($ifModifiedSince instanceof DateTime) {
+                $ifModifiedSince = DateTimeImmutable::createFromMutable($ifModifiedSince);
+            }
 
-        if (! $ifModifiedSince instanceof DateTimeInterface) {
-            throw new InvalidArgumentException(sprintf(
-                'Invalid datetime format for ifModifiedSince'
-            ));
+            if (! $ifModifiedSince instanceof DateTimeInterface) {
+                throw new InvalidArgumentException(sprintf(
+                    'Invalid datetime format for ifModifiedSince'
+                ));
+            }
         }
 
         $this->ifModifiedSince = $ifModifiedSince;
@@ -128,12 +143,12 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
     }
 
     /**
-     * Make this the Xero paymentID.
+     * Make this the Xero model ID.
      */
     public function key()
     {
         if ($this->valid()) {
-            return $this->current()->paymentID;
+            return $this->current()->{$this->idName};
         }
     }
 
@@ -155,7 +170,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
             }
 
             // Set the current item index to the first key in this page of
-            // payments.
+            // models.
             // The first  or any subsequent page could be empty, and valid()
             // will catch that.
 
@@ -164,7 +179,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
     }
 
     /**
-     * Go to the first payment on the first page of payments.
+     * Go to the first model on the first page of models.
      * If there is no first page yet, then fetch it from the API.
      */
     public function rewind()
@@ -185,7 +200,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
     }
 
     /**
-     * Fetch a single page of payments from the API.
+     * Fetch a single page of models from the API.
      * Sets the new ifModifiedSince time with a one-second overlap for
      * the next page.
      */
@@ -197,19 +212,20 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
             // Find the last record last update time to set for the next page.
             // The updatedDateUTC is immutable, so we can use sub() safely.
 
-            $lastPayment = array_values(array_slice($records, -1))[0];
+            $lastRecordOnPage = array_values(array_slice($records, -1))[0];
 
             // FIXME issue #2: we actually cannot do this.
-            // A payment batch can result in many payments crteated in the same
+            // A payment batch can result in many payments created in the same
             // millisecond, so we must continue from exactly where we finished.
-            // If we fetch a page that is coompletely dismissed as duplicates,
+            // If we fetch a page that is completely dismissed as duplicates,
             // then we can move on ONE microsecond, but we DO risk losing any
             // transactions beyond the first page of the microsecond before.
 
             $currentPageStartTime = $this->ifModifiedSince;
+            $currentPageEndTime = $lastRecordOnPage->updatedDateUTC;
 
-            if ($lastPayment->updatedDateUTC > $this->ifModifiedSince) {
-                $this->ifModifiedSince = $lastPayment->updatedDateUTC;
+            if ($this->ifModifiedSince === null || $currentPageEndTime > $this->ifModifiedSince) {
+                $this->ifModifiedSince = $currentPageEndTime;
             }
 
             // Add to the master contiguous index for array access.
@@ -218,12 +234,12 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
 
             $duplicatesRemoved = false;
 
-            foreach ($records as $index => $payment) {
-                if (array_key_exists($payment->paymentID, $this->index)) {
+            foreach ($records as $index => $record) {
+                if (array_key_exists($record->{$this->idName}, $this->index)) {
                     unset($records[$index]);
                     $duplicatesRemoved = true;
                 } else {
-                    $this->index[$payment->paymentID] = $payment;
+                    $this->index[$record->{$this->idName}] = $record;
                 }
             }
 
@@ -232,7 +248,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
             if ($duplicatesRemoved) {
                 $records = array_values($records);
 
-                if (count($records) === 0 && $currentPageStartTime === $lastPayment->updatedDateUTC) {
+                if (count($records) === 0 && $currentPageStartTime === $lastRecordOnPage->updatedDateUTC) {
                     // Every record has been marked as a duplicate.
                     // Wind forward one millisecond IF the start and end times have not
                     // shifted at all, then try one more time.
