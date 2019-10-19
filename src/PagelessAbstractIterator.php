@@ -248,7 +248,7 @@ abstract class PagelessAbstractIterator implements Iterator, ArrayAccess, Counta
             if ($duplicatesRemoved) {
                 $records = array_values($records);
 
-                if (count($records) === 0 && $currentPageStartTime === $lastRecordOnPage->updatedDateUTC) {
+                if (count($records) === 0 && $currentPageStartTime === $currentPageEndTime) {
                     // Every record has been marked as a duplicate.
                     // Wind forward one millisecond IF the start and end times have not
                     // shifted at all, then try one more time.
