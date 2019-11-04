@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **creditNote** | [**\Consilience\Xero\AccountingSdk\Model\CreditNote**](CreditNote.md) |  | [optional] 
 **prepayment** | [**\Consilience\Xero\AccountingSdk\Model\Prepayment**](Prepayment.md) |  | [optional] 
 **overpayment** | [**\Consilience\Xero\AccountingSdk\Model\Overpayment**](Overpayment.md) |  | [optional] 
+**batchPaymentID** | **string** | The Xero generated unique identifier for the bank transaction (read-only) | [optional] 
 **invoiceNumber** | **string** | Number of invoice or credit note you are applying payment to e.g.INV-4003 | [optional] 
 **creditNoteNumber** | **string** | Number of invoice or credit note you are applying payment to e.g. INV-4003 | [optional] 
 **account** | [**\Consilience\Xero\AccountingSdk\Model\Account**](Account.md) |  | [optional] 

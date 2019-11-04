@@ -1,0 +1,11 @@
+# # Timesheets
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**employees** | [**\Consilience\Xero\PayrollAuSdk\Model\Timesheet[]**](Timesheet.md) |  | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+
+

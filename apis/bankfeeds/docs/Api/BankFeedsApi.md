@@ -29,10 +29,17 @@ By passing in the appropriate body, you can create one or more new feed connecti
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
 $apiInstance = new Consilience\Xero\BankfeedsSdk\Api\BankFeedsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $feedConnections = {"items":[{"AccountToken":"10058695","AccountNumber":"3809058454321500","AccountName":"Mike's Savings Account","AccountType":"BANK","Currency":"GBP"},{"AccountToken":"10045844","AccountNumber":"3809058887441500","AccountName":"Gee's Saving's Account","AccountType":"BANK","Currency":"GBP","Country":"GB"}]}; // \Consilience\Xero\BankfeedsSdk\Model\FeedConnections | Feed Connection(s) to add
 
@@ -58,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -75,6 +82,8 @@ No authorization required
 > \Consilience\Xero\BankfeedsSdk\Model\Statements createStatements($statements)
 
 
+
+Create bank statements for one or more feed connections
 
 ### Example
 
@@ -139,10 +148,17 @@ By passing in the appropriate body, you can create a new feed connections in the
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
 $apiInstance = new Consilience\Xero\BankfeedsSdk\Api\BankFeedsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $feedConnections = {"items":[{"id":"50d3cf8d-95dc-4466-8dc0-47e6d1197e28"},{"accountToken":"10000123"}]}; // \Consilience\Xero\BankfeedsSdk\Model\FeedConnections | Feed Connections to delete
 
@@ -168,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -195,10 +211,17 @@ By passing in a FeedConnection Id options, you can search for available feed con
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
 $apiInstance = new Consilience\Xero\BankfeedsSdk\Api\BankFeedsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = xxxx; // string | feed connection id for single object
 
@@ -224,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -251,10 +274,17 @@ By passing in the appropriate options, you can search for available feed connect
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: ApiKeyAuth
+$config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKey('X-API-Key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Consilience\Xero\BankfeedsSdk\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-Key', 'Bearer');
+
+
 $apiInstance = new Consilience\Xero\BankfeedsSdk\Api\BankFeedsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $page = 1; // int | Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page=1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.
 $pageSize = 100; // int | Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100 to specify page size of 100.
@@ -282,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -299,6 +329,8 @@ No authorization required
 > \Consilience\Xero\BankfeedsSdk\Model\Statement getStatement($statementId)
 
 
+
+Retrieve a single Statement by ID
 
 ### Example
 
@@ -353,6 +385,8 @@ No authorization required
 > \Consilience\Xero\BankfeedsSdk\Model\Statements getStatements($page, $pageSize, $xeroApplicationId, $xeroTenantId, $xeroUserId)
 
 
+
+Retrieve all statements for an organisation
 
 ### Example
 

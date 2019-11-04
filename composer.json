@@ -33,9 +33,9 @@
                 "name": "xeroapi/xero-openapi",
                 "version": "dev-master",
                 "source": {
-                    "url": "https://github.com/XeroAPI/Xero-OpenAPI.git",
+                    "url": "git@github.com:consilience/Xero-OpenAPI.git",
                     "type": "git",
-                    "reference": "origin/master"
+                    "reference": "origin/oauth1_fixes"
                 }
             }
         }
