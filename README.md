@@ -5,6 +5,11 @@ in alpha. They will change, will be refined, so expect things to break.
 Please feel free to try them out, get involved, raise issues and PRs
 (even if it is just to fill gaps in the documentation).**
 
+**Note: this package supports the Xero OAuth 1.0a API API only.
+It is derived from a fork of the `oauth1` branch of https://github.com/XeroAPI/Xero-OpenAPI
+with some back-ports of some fixes from the `oauth2` and `master` branches.
+This package will be replaced with an OAuth 2.0 version.**
+
 This package is generated from the
 [Xero OpenAPI descriptions](https://github.com/XeroAPI/Xero-OpenAPI)
 and provides:
