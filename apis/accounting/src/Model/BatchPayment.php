@@ -236,7 +236,35 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
         return self::$openAPIModelName;
     }
 
-    
+    const TYPE_PAYBATCH = 'PAYBATCH';
+    const TYPE_RECBATCH = 'RECBATCH';const STATUS_AUTHORISED = 'AUTHORISED';
+    const STATUS_DELETED = 'DELETED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_PAYBATCH,
+            self::TYPE_RECBATCH,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_AUTHORISED,
+            self::STATUS_DELETED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -317,6 +345,24 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
                 'invalid value for "%s", the character length must be smaller than or equal to %d.',
                 'narrative',
                 18
+            );
+        }
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", must be one of "%s"',
+                'type',
+                implode('", "', $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                'invalid value for "%s", must be one of "%s"',
+                'status',
+                implode('", "', $allowedValues)
             );
         }
 
@@ -638,6 +684,16 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setType($type)
     {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (! is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Invalid value for "%s", must be one of "%s"',
+                    'type',
+                    implode('", "', $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
@@ -662,6 +718,16 @@ class BatchPayment implements ModelInterface, ArrayAccess, JsonSerializable
      */
     public function setStatus($status)
     {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (! is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Invalid value for "%s", must be one of "%s"',
+                    'status',
+                    implode('", "', $allowedValues)
+                )
+            );
+        }
         $this->container['status'] = $status;
 
         return $this;

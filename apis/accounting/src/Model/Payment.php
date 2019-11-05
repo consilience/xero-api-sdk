@@ -510,7 +510,7 @@ class Payment implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets batchPaymentID
      *
-     * @param string|null $batchPaymentID The Xero generated unique identifier for the bank transaction (read-only)
+     * @param string|null $batchPaymentID The optional Xero generated unique identifier for the batch this bank transaction may be in
      *
      * @return $this
      */
