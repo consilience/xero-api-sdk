@@ -215,14 +215,6 @@ class BatchPaymentDetails implements ModelInterface, ArrayAccess, JsonSerializab
     {
         $invalidProperties = [];
 
-        if (! is_null($this->container['details']) && (mb_strlen($this->container['details']) > 18)) {
-            $invalidProperties[] = sprintf(
-                'invalid value for "%s", the character length must be smaller than or equal to %d.',
-                'details',
-                18
-            );
-        }
-
         if (! is_null($this->container['code']) && (mb_strlen($this->container['code']) > 12)) {
             $invalidProperties[] = sprintf(
                 'invalid value for "%s", the character length must be smaller than or equal to %d.',
@@ -315,16 +307,12 @@ class BatchPaymentDetails implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Sets details
      *
-     * @param string|null $details (Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length = 18
+     * @param string|null $details (Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero.
      *
      * @return $this
      */
     public function setDetails($details)
     {
-        if (! is_null($details) && (mb_strlen($details) > 18)) {
-            throw new \InvalidArgumentException('invalid length for $details when calling BatchPaymentDetails., must be smaller than or equal to 18.');
-        }
-
         $this->container['details'] = $details;
 
         return $this;
